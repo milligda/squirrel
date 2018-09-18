@@ -1,0 +1,14 @@
+body {
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
