@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "../Form";
 import API from "../../../utils/API";
-import "./signup.css";
+import "./login.css";
 
-class Signup extends Component {
+class Login extends Component {
   state = {
     userEmail: "",
-    password: "",
-    redirectTo: null
+    password: ""
   };
 
   handleInputChange = event => {
@@ -20,12 +19,11 @@ class Signup extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.userEmail && this.state.password) {
-      API.createUser({
+      API.loginUser({
         userEmail: this.state.userEmail,
         userPassword: this.state.password
       })
-      .then(res => {
-        console.log(res)})
+      .then(res => console.log(res))
       .catch(err => console.log(err));
     }
   };
@@ -35,7 +33,7 @@ class Signup extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6 form-container">
-            <h2>Signup Form</h2>
+            <h2>Login Form</h2>
             <form>
               <Input
                 value={this.state.userEmail}
@@ -63,4 +61,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default Login;
