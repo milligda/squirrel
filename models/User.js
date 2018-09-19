@@ -4,14 +4,14 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
 
-  userNameFirst: {
-    type: String,
-    required: true
-  },
-  userNameLast: {
-    type: String,
-    required: true
-  },
+  // userNameFirst: {
+  //   type: String,
+  //   required: true
+  // },
+  // userNameLast: {
+  //   type: String,
+  //   required: true
+  // },
   userEmail: {
     type: String,
     required: true
@@ -20,14 +20,14 @@ var UserSchema = new Schema({
     type: String,
     required: true
   },
-  lastLogin: {
-    type: Date,
-    required: true
-  },
-  status: {
-    type: String,
-    required: true
-  },
+  // lastLogin: {
+  //   type: Date,
+  //   required: true
+  // },
+  // status: {
+  //   type: String,
+  //   required: true
+  // },
 
 });
 

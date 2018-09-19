@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import "./signup.css";
 import { Input, FormBtn } from "../Form";
+import API from "../../../utils/API";
+import "./signup.css";
 
 class Signup extends Component {
   state = {
-    username: "",
+    userEmail: "",
     password: ""
   };
 
@@ -17,9 +18,13 @@ class Signup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.username && this.state.password) {
-        console.log(this.state.username);
-        console.log(this.state.password);
+    if (this.state.userEmail && this.state.password) {
+      API.createUser({
+        userEmail: this.state.userEmail,
+        userPassword: this.state.password
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
     }
   };
 
@@ -29,24 +34,24 @@ class Signup extends Component {
         <div className="row">
           <div className="col-md-6 form-container">
             <form>
-                <Input 
-                    value={this.state.username}
-                    onChange={this.handleInputChange}
-                    name="username"
-                    placeholder="Email (required)"
-                />
-                <Input 
-                    value={this.state.password}
-                    onChange={this.handleInputChange}
-                    name="password"
-                    placeholder="password"
-                />
-                <FormBtn
-                    disabled={!(this.state.username && this.state.password)}
-                    onClick={this.handleFormSubmit}
-                >
-                    Signup
-                </FormBtn>
+              <Input
+                value={this.state.userEmail}
+                onChange={this.handleInputChange}
+                name="userEmail"
+                placeholder="Email (required)"
+              />
+              <Input
+                value={this.state.password}
+                onChange={this.handleInputChange}
+                name="password"
+                placeholder="password"
+              />
+              <FormBtn
+                disabled={!(this.state.userEmail && this.state.password)}
+                onClick={this.handleFormSubmit}
+              >
+                Signup
+              </FormBtn>
             </form>
           </div>
         </div>

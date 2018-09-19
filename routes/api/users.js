@@ -3,26 +3,24 @@
 // ==============================================================================
 
 const router = require("express").Router();
-// const booksController = require("../../controllers/booksController");
+const authController = require("../../controllers/authController");
 
 // ==============================================================================
 // Users API Routes
 // ==============================================================================
 
-/***** THESE ARE JUST EXAMPLES FOR NOW ****
 
-// Matches with "/api/collections"
+
+// Matches with "/api/users"
 router.route("/")
-  .get(booksController.findAll)
-  .post(booksController.create);
+  .get(authController.findAll)
+  .post(authController.create);
 
-// Matches with "/api/collections/:id"
-router
-  .route("/:id")
-  .get(booksController.findById)
-  .put(booksController.update)
-  .delete(booksController.remove);
-
-*/
+// Matches with "/api/users/:id"
+// router
+//   .route("/:id")
+//   .get(authController.findById)
+//   .put(authController.update)
+//   .delete(authController.remove);
 
 module.exports = router;
