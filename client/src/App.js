@@ -5,6 +5,9 @@ import Welcome from "./components/pages/Welcome";
 import Signup from "./components/partials/Signup";
 import Login from "./components/partials/Login";
 import Restricted from "./components/pages/Restricted";
+import Collection from "./components/pages/Collection";
+import PageNotFound from "./components/pages/PageNotFound";
+
 
 
 class App extends Component {
@@ -36,6 +39,8 @@ class App extends Component {
             }
           />
           <Route exact path="/restricted" component={ Restricted } />
+          <Route exact path="/collections/:id" render={ props => <Collection {...props} /> } />
+          <Route exact path="/404" component= {PageNotFound} />
         </div>
       </Router>
     )
