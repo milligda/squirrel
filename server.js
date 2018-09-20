@@ -4,8 +4,12 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
+const session = require("express-session");
 const routes = require("./routes");
+const passport = require("./config/passport");
+const mongoStore = require("connect-mongo")(session);
+const dbConnection = require("./database");
+
 // const path = require("path");
 
 // ==============================================================================
@@ -24,22 +28,26 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // ==============================================================================
-// Passport Setup - to come
+// Passport Setup
 // ==============================================================================
 
+app.use(
+  session({
+    secret: "awwww-nuts",
+    store: new mongoStore({ mongooseConnection: dbConnection }),
+    resave: false,
+    saveUninitialized: false
+  })
+);
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 // ==============================================================================
 // Routing - both API and views
 // ==============================================================================
 
 app.use(routes);
-
-// ==============================================================================
-// Database Connection - Mongo DB
-// ==============================================================================
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/squirrel");
 
 // ==============================================================================
 // Server Listener
