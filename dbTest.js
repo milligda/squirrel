@@ -12,15 +12,15 @@ var db = require("./models");
 db.User.create({
         userNameFirst: "Emily",
         userNameLast: "Mckenna",
-        userEmail: "emilymckenna08@gmail.com",
-        userPassword: "test",
+        username: "emilymckenna08@gmail.com",
+        password: "test",
         lastLogin: 08 / 26 / 1992,
         status: "Active",
     }, {
         userNameFirst: "Mitchell",
         userNameLast: "Brooks",
-        userEmail: "mitchellbrooks@gmail.com",
-        userPassword: "test2",
+        username: "mitchellbrooks@gmail.com",
+        password: "test2",
         lastLogin: 11 / 26 / 1989,
         status: "Active",
     }, )
