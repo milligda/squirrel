@@ -9,6 +9,7 @@ const routes = require("./routes");
 const passport = require("./config/passport");
 const mongoStore = require("connect-mongo")(session);
 const dbConnection = require("./database");
+const cors = require("cors");
 
 // const path = require("path");
 
@@ -30,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
 // ==============================================================================
 // Passport Setup
 // ==============================================================================
-
+app.use(cors());
 app.use(
   session({
     secret: "awwww-nuts",
