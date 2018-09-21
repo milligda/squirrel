@@ -14,11 +14,11 @@ const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  userEmail: {
+  username: {
     type: String,
     required: true
   },
-  userPassword: {
+  password: {
     type: String,
     required: true
   },
@@ -46,12 +46,12 @@ UserSchema.methods = {
 // ==============================================================================
 
 UserSchema.pre('save', function(next) {
-  if (!this.userPassword) {
+  if (!this.password) {
     console.log('********** NO PASSWORD PROVIDED **********');
     next();
   } else {
     console.log('hashpassword in pre save');
-    this.userPassword = this.hashPassword(this.userPassword);
+    this.password = this.hashPassword(this.password);
     next();
   }
 });
