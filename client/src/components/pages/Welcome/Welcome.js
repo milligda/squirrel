@@ -26,7 +26,7 @@ class Welcome extends Component {
 
   render() {
     if (this.state.loggedIn) {
-      <Redirect to="/home" />;
+      return <Redirect to="/home" />;
     }
 
     return (
