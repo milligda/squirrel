@@ -8,6 +8,8 @@ import Login from "./components/partials/Login";
 import Logout from "./utils/Logout";
 import Restricted from "./components/pages/Restricted";
 import API from "./utils/API";
+import Collection from "./components/pages/Collection";
+import PageNotFound from "./components/pages/PageNotFound";
 
 
 class App extends Component {
@@ -62,11 +64,13 @@ class App extends Component {
               : (<Home />)
             )} />
 
-            <Route exact path="/restricted" component={ Restricted } />
-            
             <Route exact path="/logout" render={() => (
               <Logout loggedIn={this.state.loggedIn} />
             )} />
+
+            <Route exact path="/restricted" component={ Restricted } />
+            <Route exact path="/collections/:id" render={ props => <Collection {...props} /> } />
+            <Route exact path="/404" component= {PageNotFound} />
 
           </Switch>
         </div>
