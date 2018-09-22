@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
 
+
 class Welcome extends Component {
   state = {
     loggedIn: null,
