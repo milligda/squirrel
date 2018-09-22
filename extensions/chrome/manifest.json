@@ -6,7 +6,7 @@
 "browser_action":{
 "default_icon":"img/logo_tail.png",
 "default_title": "Squirrel Away",
-"default_popup":"popup.html"
+"default_popup":"html/popup.html"
 },
 "permissions": [
    "tabs",
@@ -16,6 +16,8 @@
 ],
 "icons" : {
   "128" : "img/logo_tail.png"
+},
+"background": {
+  "page": "html/background.html"
 }
-
 }
