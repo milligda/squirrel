@@ -27,7 +27,7 @@ class Signup extends Component {
         password: this.state.password
       })
       .then(res => {
-        this.setState({ redirectTo: "/login" });
+        this.setState({ redirectTo: "/home" });
       })
       .catch(err => console.log(err));
     }
