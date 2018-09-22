@@ -32,6 +32,7 @@ class Home extends Component {
     return (
       <div>
         <h1>Welcome to your home page!</h1>
+        <h2>Hello user {this.state.userId}</h2>
       </div>
     );
   }
