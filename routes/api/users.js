@@ -53,6 +53,11 @@ router.route("/logout")
 router.route("/status")
   .get(authController.status);
 
+// Matches with "/api/users/cookie"
+router.route("/cookie")
+  .get(authController.cookie);
+
+
 // Matches with "/api/users/:id"
 // router.route("/:id")
 //   .get(authController.findById);

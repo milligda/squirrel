@@ -13,6 +13,7 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.getUser();
+    this.setCookie();
   };
 
   getUser = () => {
@@ -26,6 +27,19 @@ class Home extends Component {
       })
       .catch(err => console.log(err));
   };
+
+  setCookie = () => {
+    API.setCookie()
+      .then(res => {
+        console.log(res);
+        // this.setState({
+        //   loggedIn: res.data.loggedIn,
+        //   userId: res.data.userId
+        // });
+      })
+      .catch(err => console.log(err));
+  };
+
 
   render() {
     if (!this.state.loggedIn) {
