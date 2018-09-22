@@ -22,6 +22,21 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  collection: {
+    type: Schema.Types.ObjectId,
+    ref: "Collection"
+  },
+  allVideos:[
+     {
+    type: Schema.Types.ObjectId,
+    ref: "Video"
+    }
+  ]
+   
+  
+
+  
+
   // lastLogin: {
   //   type: Date,
   //   required: true
