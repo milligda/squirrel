@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
 import API from "../../../utils/API";
 import "./signup.css";
 
+
 class Signup extends Component {
   state = {
-    userEmail: "",
+    username: "",
     password: "",
     redirectTo: null
   };
@@ -19,47 +21,52 @@ class Signup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.userEmail && this.state.password) {
+    if (this.state.username && this.state.password) {
       API.createUser({
-        userEmail: this.state.userEmail,
-        userPassword: this.state.password
+        username: this.state.username,
+        password: this.state.password
       })
       .then(res => {
-        console.log(res)})
+        this.setState({ redirectTo: "/login" });
+      })
       .catch(err => console.log(err));
     }
   };
 
   render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 form-container">
-            <h2>Signup Form</h2>
-            <form>
-              <Input
-                value={this.state.userEmail}
-                onChange={this.handleInputChange}
-                name="userEmail"
-                placeholder="Email (required)"
-              />
-              <Input
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                name="password"
-                placeholder="password"
-              />
-              <FormBtn
-                disabled={!(this.state.userEmail && this.state.password)}
-                onClick={this.handleFormSubmit}
-              >
-                Signup
-              </FormBtn>
-            </form>
+    if (this.state.redirectTo) {
+      return <Redirect to={ this.state.redirectTo} />
+    } else {
+      return (
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 form-container">
+              <h2>Signup Form</h2>
+              <form>
+                <Input
+                  value={this.state.username}
+                  onChange={this.handleInputChange}
+                  name="username"
+                  placeholder="Email (required)"
+                />
+                <Input
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                  name="password"
+                  placeholder="password"
+                />
+                <FormBtn
+                  disabled={!(this.state.username && this.state.password)}
+                  onClick={this.handleFormSubmit}
+                >
+                  Signup
+                </FormBtn>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

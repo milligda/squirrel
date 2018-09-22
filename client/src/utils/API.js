@@ -9,7 +9,7 @@ export default {
     loginUser: function(userData) {
         return axios.post("/api/users/login", userData);
     },
-    // gets all books
+    // gets all collections
     getCollections: function() {
         return axios.get("/api/collections");
     },
@@ -21,4 +21,10 @@ export default {
     deleteCollection: function(userId) {
         return axios.delete("/api/collections/" + userId);
     },
+    getUserStatus: function() {
+        return axios.get(`/api/users/status`);
+    },
+    logout: function() {
+        return axios.get(`/api/users/logout`);
+    }
 };

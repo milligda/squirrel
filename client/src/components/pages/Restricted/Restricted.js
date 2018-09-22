@@ -4,7 +4,7 @@ class Restricted extends Component {
     render() {
         return (
             <div>
-                <h1>You are seeing a restricted page!</h1>
+                <h1>You do not have permission to see this page</h1>
             </div>
         );
     }

@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
 
-
-class Welcome extends Component {
+class Home extends Component {
   state = {
-    loggedIn: null,
+    loggedIn: true,
     userId: null
   };
 
@@ -26,16 +25,16 @@ class Welcome extends Component {
   };
 
   render() {
-    if (this.state.loggedIn) {
-      return <Redirect to="/home" />;
+    if (!this.state.loggedIn) {
+      return <Redirect to="/" />;
     }
 
     return (
       <div>
-        <h1>Welcome to the Squirrel Home Page!</h1>
+        <h1>Welcome to your home page!</h1>
       </div>
     );
   }
 }
 
-export default Welcome;
+export default Home;

@@ -3,7 +3,7 @@
 // ==============================================================================
 
 const passport = require("passport");
-const localSignup = require("./LocalSignup");
+const LocalStrategy = require("./LocalStrategy");
 const User = require("../../models/User");
 
 // ==============================================================================
@@ -12,26 +12,26 @@ const User = require("../../models/User");
 
 // called on login, saves the id to session req.session.passport.user = {id:'..'}
 passport.serializeUser((user, done) => {
-    console.log('*** serializeUser called, user: ');
-	console.log(user);
-    console.log('---------');
-    done(null, { _id: user._id });
+    console.log('*** serializeUser called, user: ')
+	console.log(user)
+    console.log('---------')
+    done(null, user._id)
 });
 
 passport.deserializeUser((id, done) => {
     console.log('DeserializeUser called');
-    User.findOne(
-        { _id: id },
-        'userEmail',
+    User.findById(id,
         (err, user) => {
-            console.log('*** Deserialize user, user:');
-			console.log(user);
-			console.log('--------------');
-			done(null, user);
+            console.log('*** Deserialize user, user:')
+			console.log(user)
+			console.log('--------------')
+			done(err, user)
         }
     )
 });
 
-passport.use(localSignup);
+passport.use(LocalStrategy);
+
+
 
 module.exports = passport;

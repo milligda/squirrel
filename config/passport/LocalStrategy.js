@@ -11,10 +11,12 @@ const LocalStrategy = require("passport-local").Strategy;
 
 const strategy = new LocalStrategy(
     {
-        usernameField: 'userEmail'
+        usernameField: 'username',
+        passwordField: 'password'
     },
+
     function (username, password, done) {
-        User.findOne({ userEmail: username }, (err, res) => {
+        User.findOne({ username: username }, (err, user) => {
             if (err) {
                 return done(err);
             }

@@ -35,8 +35,8 @@ app.use(
   session({
     secret: "awwww-nuts",
     store: new mongoStore({ mongooseConnection: dbConnection }),
-    resave: false,
-    saveUninitialized: false
+    resave: true,
+    saveUninitialized: true
   })
 );
 
