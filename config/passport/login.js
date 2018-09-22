@@ -12,8 +12,8 @@ const User = require("../../models/User");
 
 module.exports = function(passport) {
 
-  const isValidPassword = (user, password) => {
-    bCrypt.compareSync(password, user.password);
+  const isValidPassword = function(user, password) {
+    return bCrypt.compareSync(password, user.password);
   };
 
   // passport login strategy
@@ -30,11 +30,11 @@ module.exports = function(passport) {
           if (err) return done(err);
           if (!user) {
             console.log(`User Not Found with username ${username}`);
-            return done(null, false, req.flash("message", "User not found."));
+            return done(null, false);
           }
           if (!isValidPassword(user, password)) {
             console.log("Invalid Password");
-            return done(null, false, req.flash("message", "Invalid password"));
+            return done(null, false);
           }
           return done(null, user);
         });

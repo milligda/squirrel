@@ -12,7 +12,7 @@ const User = require("../../models/User");
 
 module.exports = function(passport) {
 
-  function createHash(password) {
+  const createHash = function(password) {
     return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
   };
 
@@ -45,11 +45,6 @@ module.exports = function(passport) {
               
               newUser.username = username;
               newUser.password = hashPassword;
-
-              console.log("***********************************");
-              console.log(hashPassword);
-              console.log("***********************************");
-              console.log(newUser);
 
               newUser.save(err => {
                 if (err) {
