@@ -2,7 +2,7 @@
 // Set Dependencies
 // ==============================================================================
 
-const bCrypt = require("bcryptjs");
+const bCrypt = require("bcrypt-nodejs");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../../models/User");
 
@@ -13,7 +13,7 @@ const User = require("../../models/User");
 module.exports = function(passport) {
 
   function createHash(password) {
-    bCrypt.hashSync(password, 10);
+    return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
   };
 
   // passport signup strategy
