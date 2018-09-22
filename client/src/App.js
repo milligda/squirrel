@@ -15,12 +15,12 @@ import PageNotFound from "./components/pages/PageNotFound";
 class App extends Component {
 
   state = {
-    loggedIn: true,
+    loggedIn: null,
     userId: null
   }
 
   componentDidMount = () => {
-    this.getUser();
+    // this.getUser();
   }
 
   updateUser = (userObject) => {
@@ -58,15 +58,9 @@ class App extends Component {
               <Signup updateUser={this.updateUser} />
             )} />
 
-            <Route exact path="/home" render={() => (
-              !this.state.loggedIn ? 
-              (<Redirect to="/restricted" />) 
-              : (<Home />)
-            )} />
+            <Route exact path="/home" component={ Home } />
 
-            <Route exact path="/logout" render={() => (
-              <Logout loggedIn={this.state.loggedIn} />
-            )} />
+            <Route exact path="/logout" component={ Logout } />
 
             <Route exact path="/restricted" component={ Restricted } />
             <Route exact path="/collections/:id" render={ props => <Collection {...props} /> } />
