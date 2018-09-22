@@ -18,6 +18,8 @@ router.route("/")
   // .put(videoController.update)
   // .delete(videoController.remove);
 
-
+router.route("/:id")
+  .get(videoController.findById)
+  .delete(videoController.remove);
 
 module.exports = router;
