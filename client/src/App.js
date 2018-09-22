@@ -8,9 +8,7 @@ import Login from "./components/partials/Login";
 import Logout from "./utils/Logout";
 import Restricted from "./components/pages/Restricted";
 import API from "./utils/API";
-import Collection from "./components/pages/Collection";
 import PageNotFound from "./components/pages/PageNotFound";
-import API from "./utils/API";
 import CollectionList from "./components/pages/Collection";
 
 
@@ -18,13 +16,8 @@ import CollectionList from "./components/pages/Collection";
 class App extends Component {
 
   state = {
-<<<<<<< HEAD
-    loggedIn: false,
-    username: null,
-=======
     loggedIn: null,
     userId: null
->>>>>>> 0f12f815730d36c56e2bfec64853b08b2d252951
   }
 
   componentDidMount = () => {
@@ -66,13 +59,6 @@ class App extends Component {
 
             <Route exact path="/login" render={() => (
               <Login updateUser={this.updateUser} />
-<<<<<<< HEAD
-            }
-          />
-          <Route exact path="/restricted" component={ Restricted } />
-          <Route exact path="/collections/" component={CollectionList} /> } />
-          <Route exact path="/404" component= {PageNotFound} />
-=======
             )} />
 
             <Route exact path="/signup" render={() => (
@@ -84,11 +70,10 @@ class App extends Component {
             <Route exact path="/logout" component={ Logout } />
 
             <Route exact path="/restricted" component={ Restricted } />
-            <Route exact path="/collections/:id" render={ props => <Collection {...props} /> } />
+            <Route exact path="/collections/" component={CollectionList} /> } />
             <Route exact path="/404" component= {PageNotFound} />
 
           </Switch>
->>>>>>> 0f12f815730d36c56e2bfec64853b08b2d252951
         </div>
       </Router>
     )

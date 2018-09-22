@@ -1,7 +1,7 @@
 import React from "react";
 import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
 
-export default ( props ) => {
+export const CollectionList = ( props ) => {
     
     return (
         <div>
