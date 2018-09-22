@@ -8,8 +8,9 @@ import Login from "./components/partials/Login";
 import Logout from "./utils/Logout";
 import Restricted from "./components/pages/Restricted";
 import API from "./utils/API";
-import Collection from "./components/pages/Collection";
 import PageNotFound from "./components/pages/PageNotFound";
+import CollectionList from "./components/pages/Collection";
+
 
 
 class App extends Component {
@@ -26,7 +27,13 @@ class App extends Component {
   updateUser = (userObject) => {
     console.log(userObject);
     this.setState(userObject);
-  }
+  };
+
+  loadCollections = () => {
+    API.getCollections()
+      .then(res => this.setState({ collections: res.data }))
+      .catch(err => console.log(err));
+  };
 
   getUser = () => {
     API.getUserStatus()
@@ -63,7 +70,7 @@ class App extends Component {
             <Route exact path="/logout" component={ Logout } />
 
             <Route exact path="/restricted" component={ Restricted } />
-            <Route exact path="/collections/:id" render={ props => <Collection {...props} /> } />
+            <Route exact path="/collections/" component={CollectionList} /> } />
             <Route exact path="/404" component= {PageNotFound} />
 
           </Switch>
