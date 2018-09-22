@@ -6,7 +6,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const routes = require("./routes");
-const passport = require("./config/passport");
+const passport = require("passport");
 const mongoStore = require("connect-mongo")(session);
 const dbConnection = require("./database");
 const cors = require("cors");
@@ -49,6 +49,12 @@ app.use(passport.session());
 // ==============================================================================
 
 app.use(routes);
+
+// ==============================================================================
+// Initialize Passport Strategy
+// ==============================================================================
+
+require("./config/passport")(passport);
 
 // ==============================================================================
 // Server Listener
