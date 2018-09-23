@@ -45,12 +45,18 @@ module.exports = {
   cookie: function(req, res) {
     // check if req.user exists and store the userId
     if (req.user) {
-      const cookieObj = {
-        userId: req.user._id,
-      };
       // set cookie
-      res.cookie('userid', req.user._id, { maxAge: 2592000000 });  // Expires in one month    }
-  },
+      const cookieObj = {
+        userId: req.user._id
+      };
+      res.cookie('userid', req.user._id, { maxAge: 2592000000 });  // Expires in one month    
+      res.send());
+  } else {
+    res.json({
+      error: `Sorry, there has been an error.`
+    });
+  }
+},
   // user signup process
   create: function(req, res) {
     // store the username and password from req.body
