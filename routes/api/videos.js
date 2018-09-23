@@ -9,20 +9,17 @@ const videoController = require("../../controllers/videoController");
 // Videos API Routes
 // ==============================================================================
 
-//***** THESE ARE JUST EXAMPLES FOR NOW ****
 
-// Matches with "/api/collections"
+// Matches with "/api/videos"
 router.route("/")
   .get(videoController.findAll)
   .post(videoController.create);
+  // routes below are not implemented yet
+  // .put(videoController.update)
+  // .delete(videoController.remove);
 
-// Matches with "/api/collections/:id"
-// router
-  // .route("/:id")
-  // .get(booksController.findById)
-  // .put(booksController.update)
-  // .delete(booksController.remove);
-
-
+router.route("/:id")
+  .get(videoController.findById)
+  .delete(videoController.remove);
 
 module.exports = router;

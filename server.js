@@ -6,9 +6,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const routes = require("./routes");
-const passport = require("./config/passport");
+const passport = require("passport");
 const mongoStore = require("connect-mongo")(session);
 const dbConnection = require("./database");
+const cors = require("cors");
 
 // const path = require("path");
 
@@ -30,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
 // ==============================================================================
 // Passport Setup
 // ==============================================================================
-
+app.use(cors());
 app.use(
   session({
     secret: "awwww-nuts",
@@ -48,6 +49,12 @@ app.use(passport.session());
 // ==============================================================================
 
 app.use(routes);
+
+// ==============================================================================
+// Initialize Passport Strategy
+// ==============================================================================
+
+require("./config/passport")(passport);
 
 // ==============================================================================
 // Server Listener

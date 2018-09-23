@@ -5,21 +5,29 @@
 const db = require("../models");
 
 // ==============================================================================
-// Methods for videoController
+// Methods for collectionsController
 // ==============================================================================
 
 module.exports = {
-  findAll: function (req, res) {
-    db.Video
-      .find({})
-      .then(dbResponse => res.json(dbResponse))
+  //Not sure we need a findAll method for collections, but leaving here just in case
+  // findAll: function(req, res) {
+  //   db.Collection.find({})
+  //     .then(dbResponse => res.json(dbResponse))
+  //     .catch(err => res.status(422).json(err));
+  //},
+
+  findByUser: function (req, res) {
+    db.Collection
+      .find({
+        "userId": req.params.id
+      })
+      .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   create: function (req, res) {
-    console.log(req.body)
-    db.Video
-      .create(req.body)
-    db.User.allVideos
+    console.log(req.body);
+    db.Collection
       .create(req.body)
       .then(dbResponse => res.json(dbResponse))
       // console.log(dbResponse))
@@ -27,14 +35,23 @@ module.exports = {
   },
 
   findById: function (req, res) {
-    db.Video
+    db.Collection
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
 
+  update: function (req, res) {
+    db.Collection
+      .findOneAndUpdate({
+        _id: req.params.id
+      }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
   remove: function (req, res) {
-    db.Video
+    db.Collection
       .findById({
         _id: req.params.id
       })
@@ -42,11 +59,18 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+
   delete: function (req, res) {
-    db.Video.findByIdAndRemove(req.params.id)
-    //db.User.allVideos.findByIdAndRemove(req.params.id)
-    //db.Collection.findByIdAndRemove(req.params.id)
-      .then(dbModel => res.json(dbModel))
+
+    let userId = req.params.id;
+    let videoId = req.body.videoId;
+
+    db.User.allVideos.findByIdAndRemove(videoId)
+
+    db.Collection.findByIdAndRemove(videoId)
+
+       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
 };
