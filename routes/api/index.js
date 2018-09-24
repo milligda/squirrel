@@ -4,7 +4,7 @@
 
 const router = require("express").Router();
 const userRoutes = require("./users");
-const collectionRoutes = require("./collections");
+const playlistRoutes = require("./playlists");
 const videoRoutes = require("./videos");
 
 // ==============================================================================
@@ -12,7 +12,7 @@ const videoRoutes = require("./videos");
 // ==============================================================================
 
 router.use("/users", userRoutes);
-router.use("/collections", collectionRoutes);
+router.use("/playlists", playlistRoutes);
 router.use("/videos", videoRoutes);
 
 module.exports = router;

@@ -3,7 +3,7 @@
 // ==============================================================================
 
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
+// const bcrypt = require("bcryptjs");
 
 // ==============================================================================
 // Establish the Schema
@@ -14,7 +14,7 @@ const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  email: {
+  username: {
     type: String,
     required: true,
   },
@@ -22,42 +22,40 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  collection: {
+  playlists: [{
     type: Schema.Types.ObjectId,
-    ref: "Collection"
-  },
-  allVideos:[
-     {
+    ref: "Playlist"
+  }],
+  allVideos: [{
     type: Schema.Types.ObjectId,
     ref: "Video"
-    }
-  ]
+  }]
 
 });
 
-UserSchema.methods = {
-  checkPassword: function (inputPassword) {
-    return bcrypt.compareSync(inputPassword, this.password);
-  },
-  hashPassword: plainTextPassword => {
-    return bcrypt.hashSync(plainTextPassword, 10);
-  }
-}
+// UserSchema.methods = {
+//   checkPassword: function (inputPassword) {
+//     return bcrypt.compareSync(inputPassword, this.password);
+//   },
+//   hashPassword: plainTextPassword => {
+//     return bcrypt.hashSync(plainTextPassword, 10);
+//   }
+// }
 
 // ==============================================================================
 // Create the Pre-hooks for hashing the password before it is saved to the DB
 // ==============================================================================
 
-UserSchema.pre('save', function(next) {
-  if (!this.password) {
-    console.log('********** NO PASSWORD PROVIDED **********');
-    next();
-  } else {
-    console.log('hashpassword in pre save');
-    this.password = this.hashPassword(this.password);
-    next();
-  }
-});
+// UserSchema.pre('save', function (next) {
+//   if (!this.password) {
+//     console.log('********** NO PASSWORD PROVIDED **********');
+//     next();
+//   } else {
+//     console.log('hashpassword in pre save');
+//     this.password = this.hashPassword(this.password);
+//     next();
+//   }
+// });
 
 const User = mongoose.model("User", UserSchema);
 
