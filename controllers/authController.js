@@ -42,28 +42,6 @@ module.exports = {
     res.json(statusObj);
   },
 
-  // user signup process
-  create: function(req, res) {
-    // store the username and password from req.body
-    const { username, password } = req.body;
-
-    // First - verify that the username does not already exist
-    // Then - create the user if the email does not already exist
-    db.User.findOne({ username: username }, (err, user) => {
-      if (err) {
-        console.log(err);
-      } else if (user) {
-        res.json({
-          error: `Sorry, there is already a user with email: ${username}`
-        })
-      } else {
-        db.User.create(req.body)
-        .then(dbResponse => res.json(dbResponse))
-        .catch(err => res.status(422).json(err));
-      }
-    });
-  },
-
   // user logout process
   logout: function(req, res) {
     console.log("******** Logout called ********")
