@@ -7,8 +7,8 @@
     border: 1px solid #555555;
     width: 700px;
     height: 394px;
-    max-width: 98vw;
-    max-height: calc(98vw * 9 / 16);
+    max-width: 90vw;
+    max-height: calc(90vw * 9 / 16);
     transition: .5s;
 }
 
@@ -21,3 +21,16 @@
     transition: .5s;
 }
 
+@media only screen and (max-width: 800px) {
+
+    .video-player-container {
+        padding-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+
+    .video-player-container {
+        padding-top: 60px;
+    }
+}
