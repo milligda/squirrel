@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
-
+import Login from "../../partials/Login/Login";
+// import "./welcome.css";
 
 class Welcome extends Component {
   state = {
@@ -31,8 +32,16 @@ class Welcome extends Component {
     }
 
     return (
-      <div>
-        <h1>Welcome to the Squirrel Home Page!</h1>
+      <div className="container">
+        <h1>Squirrel Home Page Tagline!</h1>
+        <br/>
+        <p>Info about Squirrel app goes here here here</p>
+        <p>Sign up or Log in to get started!</p>
+        
+        <Login/>
+        {/* Login is default, signup is within a button */}
+
+        {/* <a>Link to app in Chrome store</a> */}
       </div>
     );
   }

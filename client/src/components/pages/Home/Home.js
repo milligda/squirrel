@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
 import { CollectionList, CollectionListItem } from "../Collection";
+import "./home.css";
+import RecentlySaved from "../../partials/RecentlySaved";
 
 
 
@@ -33,11 +35,14 @@ class Home extends Component {
     }
 
     return (
-      <div>
+      <div className="home-container">
         
-        <h1>Welcome to your home page!</h1>
+        <h1>Welcome [user].</h1>
+        <h2>Here's everything you've squirreled away so far.</h2>
 
-        {/* <div>
+        {/* <RecentlySaved /> */}
+
+        {/* <div className="collections-menu">
           <CollectionList>
           {this.state.collections.map(collection => {
               return (

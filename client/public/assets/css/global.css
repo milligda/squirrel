@@ -1,5 +1,9 @@
 body {
-    background-color: #f7f7f7;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    background-image: url("../public/assets/images/leaves_bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
 }
@@ -11,4 +15,14 @@ a {
 
 a:hover {
     text-decoration: none;
+}
+
+h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 30px;
+}
+
+h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 24px;
 }

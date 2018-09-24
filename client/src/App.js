@@ -10,6 +10,8 @@ import Restricted from "./components/pages/Restricted";
 import API from "./utils/API";
 import PageNotFound from "./components/pages/PageNotFound";
 import CollectionList from "./components/pages/Collection";
+import RecentlySaved from "./components/partials/RecentlySaved";
+// import Background from "./components/partials/Background";
 
 
 

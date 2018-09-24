@@ -1,11 +1,31 @@
 .header-container {
     position: relative;
     width: 100%;
-    top: 10px;
-    left: 10px;
     z-index: 10;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    background-color: #ffc897;
+    margin-bottom: 60px;
 }
 
+/* .sticky {
+    position: fixed;
+    top: 0;
+  } */
+
 .home-icon {
-    width: 50px;
+    width: 30px;
+    position: relative;
+    top: 6px;
+    left: 6px;
+}
+
+#link-home {
+    position: relative;
+    float: left;
+    font-family: 'Source Sans Pro', sans-serif;
+    /* font-weight: bold; */
+    font-size: 30px;
+    text-decoration: none;
+    color: #b2722e;
 }

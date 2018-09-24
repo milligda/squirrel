@@ -1,0 +1,9 @@
+.container{
+    align-content: center;
+    padding: 15px;
+    background-image: url("../../../../public/assets/images/leaves.png");
+}
+
+h1{
+    padding-bottom: 20px;
+}
