@@ -55,7 +55,7 @@ class Home extends Component {
     return (
       <div>
         
-        <h1>Welcome to your home page!</h1>
+        <h1>Welcome to your home page {this.state.userId}!</h1>
 
         {/* <div>
           <CollectionList>
