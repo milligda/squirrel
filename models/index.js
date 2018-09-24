@@ -1,5 +1,5 @@
 module.exports = {
-    Collection: require("./Collection"),
+    Playlist: require("./Playlist"),
     User: require("./User"),
     Video: require("./Video")
   };

@@ -1,12 +1,12 @@
 import React from "react";
 import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
 
-export const CollectionList = ( props ) => {
+export const Playlist = ( props ) => {
     
     return (
         <div>
             <BreadcrumbMenu />
-            <h2>Collections</h2>
+            <h2>Playlists</h2>
             <ul className="list-group">{props.children}</ul>
 
             {/* <ShareBtn>

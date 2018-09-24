@@ -45,7 +45,7 @@ module.exports = {
   delete: function (req, res) {
     db.Video.findByIdAndRemove(req.params.id)
     //db.User.allVideos.findByIdAndRemove(req.params.id)
-    //db.Collection.findByIdAndRemove(req.params.id)
+    //db.Playlist.findByIdAndRemove(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

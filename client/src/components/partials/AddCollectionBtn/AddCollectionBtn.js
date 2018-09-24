@@ -1,11 +1,14 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import {
+    Redirect
+} from "react-router-dom";
 
-const AddCollectionBtn = (
-    <div>
-        {/* On Click, redirect to NewCollection page
-        <Redirect to="/new-collection" /> */}
-    </div>
+const AddPlaylistBtn = ( <
+    div > {
+        /* On Click, redirect to NewPlaylist page
+                <Redirect to="/new-Playlist" /> */
+    } <
+    /div>
 )
 
-export default AddCollectionBtn;
+export default AddPlaylistBtn;

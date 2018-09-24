@@ -1,1 +1,1 @@
-export { default } from "./CollectionList.js"
+export { default } from "./PlaylistList.js"

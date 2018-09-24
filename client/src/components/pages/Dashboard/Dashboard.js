@@ -1,22 +1,22 @@
 import React from "react";
-import CollectionList from "../Collection/CollectionList";
-import CollectionListItem from "../Collection/CollectionListItem";
+import PlaylistList from "../Playlist/PlaylistList";
+import PlaylistListItem from "../Playlist/PlaylistListItem";
 
 class Dashboard extends Component {
 
     state = {
-        collections: []
+        Playlists: []
     }
 
     componentDidMount() {
-        this.loadCollections()
+        this.loadPlaylists()
     }
 
-    loadCollections = () => {
+    loadPlaylists = () => {
         
-        API.getCollections()
+        API.getPlaylists()
         .then(data => data.json())
-        .then(res => this.setState({ collections: res.data }))
+        .then(res => this.setState({ Playlists: res.data }))
         .catch(err => console.log(err));
 
         console.log(res.data);
@@ -32,18 +32,18 @@ class Dashboard extends Component {
                 {/* </div> */}
 
                 <div>
-                <CollectionList>
-                {this.state.collections.map(collection => {
+                <PlaylistList>
+                {this.state.Playlists.map(Playlist => {
                     return (
-                    <CollectionListItem
-                        key={collection.userId}
-                        description={collection.description}
-                        title={collection.title}
-                        videos={collection.videos}
+                    <PlaylistListItem
+                        key={Playlist.userId}
+                        description={Playlist.description}
+                        title={Playlist.title}
+                        videos={Playlist.videos}
                     />
                     );
                 })}
-                </CollectionList>
+                </PlaylistList>
                 </div>
             </div>
         );

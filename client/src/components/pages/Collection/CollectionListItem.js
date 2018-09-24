@@ -1,8 +1,8 @@
 import React from "react";
 
-const CollectionListItem = (props) => (
+const PlaylistListItem = (props) => (
     <li className="list-group-item">
-        <p>Collection {props.key}</p>
+        <p>Playlist {props.key}</p>
         <p>{props.key}</p>
         <p>{props.description}</p>
         <p>{props.title}</p>
@@ -10,11 +10,11 @@ const CollectionListItem = (props) => (
     </li>
 )
 
-// On collection + id click, 
+// On Playlist + id click, 
 // import {Redirect} from "react-router-dom";
 // return (
-//     <Redirect to = {{ pathname: "/collections/" + id}} />
+//     <Redirect to = {{ pathname: "/Playlists/" + id}} />
 // )
 
 
-export default CollectionListItem;
+export default PlaylistListItem;

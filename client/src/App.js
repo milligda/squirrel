@@ -9,7 +9,7 @@ import Logout from "./utils/Logout";
 import Restricted from "./components/pages/Restricted";
 import API from "./utils/API";
 import PageNotFound from "./components/pages/PageNotFound";
-import CollectionList from "./components/pages/Collection";
+import PlaylistList from "./components/pages/Playlist";
 
 
 
@@ -29,9 +29,9 @@ class App extends Component {
     this.setState(userObject);
   };
 
-  loadCollections = () => {
-    API.getCollections()
-      .then(res => this.setState({ collections: res.data }))
+  loadPlaylists = () => {
+    API.getPlaylists()
+      .then(res => this.setState({ Playlists: res.data }))
       .catch(err => console.log(err));
   };
 
@@ -70,7 +70,7 @@ class App extends Component {
             <Route exact path="/logout" component={ Logout } />
 
             <Route exact path="/restricted" component={ Restricted } />
-            <Route exact path="/collections/" component={CollectionList} /> } />
+            <Route exact path="/Playlists/" component={PlaylistList} /> } />
             <Route exact path="/404" component= {PageNotFound} />
 
           </Switch>

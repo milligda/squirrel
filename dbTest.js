@@ -31,7 +31,7 @@ db.User.create({
         console.log(err.message);
     });
 
-db.Collection.create({
+db.Playlist.create({
         userId: 1,
         description: "Makeup Tutorials",
         title: "My Makeup Tuts",
@@ -50,8 +50,8 @@ db.Collection.create({
         private: false,
         videos: []
     })
-    .then(function (dbCollection) {
-        console.log(dbCollection);
+    .then(function (dbPlaylist) {
+        console.log(dbPlaylist);
     })
     .catch(function (err) {
         console.log(err.message);
