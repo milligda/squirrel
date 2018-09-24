@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
-import { CollectionList, CollectionListItem } from "../Collection";
+import { PlaylistList, PlaylistListItem } from "../Playlist";
 
 
 
@@ -38,18 +38,18 @@ class Home extends Component {
         <h1>Welcome to your home page!</h1>
 
         {/* <div>
-          <CollectionList>
-          {this.state.collections.map(collection => {
+          <PlaylistList>
+          {this.state.Playlists.map(Playlist => {
               return (
-              <CollectionListItem
-                  key={collection.userId}
-                  description={collection.description}
-                  title={collection.title}
-                  videos={collection.videos}
+              <PlaylistListItem
+                  key={Playlist.userId}
+                  description={Playlist.description}
+                  title={Playlist.title}
+                  videos={Playlist.videos}
               />
               );
           })}
-          </CollectionList>
+          </PlaylistList>
           </div> */}
       </div>
     );

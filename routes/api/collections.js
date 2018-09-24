@@ -3,25 +3,25 @@
 // ==============================================================================
 
 const router = require("express").Router();
-const collectionsController = require("../../controllers/collectionsController");
+const playlist = require("../../controllers/playlist");
 
 // ==============================================================================
-// Collections API Routes
+// Playlists API Routes
 // ==============================================================================
 
 //***** THESE ARE JUST EXAMPLES FOR NOW ****
 
-// Matches with "/api/collections"
+// Matches with "/api/playlists"
 router.route("/user/:userId")
-  .get(collectionsController.findByUser)
-  .post(collectionsController.create);
+  .get(playlist.findByUser)
+  .post(playlist.create);
 
-// Matches with "/api/collections/:id"
+// Matches with "/api/playlists/:id"
 router
   .route("/:id")
-  .get(collectionsController.findById)
-  .put(collectionsController.update)
-  .delete(collectionsController.remove);
+  .get(playlist.findById)
+  .put(playlist.update)
+  .delete(playlist.remove);
 
 
 

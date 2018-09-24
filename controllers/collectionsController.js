@@ -5,19 +5,19 @@
 const db = require("../models");
 
 // ==============================================================================
-// Methods for collectionsController
+// Methods for PlaylistsController
 // ==============================================================================
 
 module.exports = {
-  //Not sure we need a findAll method for collections, but leaving here just in case
+  //Not sure we need a findAll method for Playlists, but leaving here just in case
   // findAll: function(req, res) {
-  //   db.Collection.find({})
+  //   db.Playlist.find({})
   //     .then(dbResponse => res.json(dbResponse))
   //     .catch(err => res.status(422).json(err));
   //},
 
   findByUser: function (req, res) {
-    db.Collection
+    db.Playlist
       .find({
         "userId": req.params.id
       })
@@ -27,7 +27,7 @@ module.exports = {
 
   create: function (req, res) {
     console.log(req.body);
-    db.Collection
+    db.Playlist
       .create(req.body)
       .then(dbResponse => res.json(dbResponse))
       // console.log(dbResponse))
@@ -35,14 +35,14 @@ module.exports = {
   },
 
   findById: function (req, res) {
-    db.Collection
+    db.Playlist
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
 
   update: function (req, res) {
-    db.Collection
+    db.Playlist
       .findOneAndUpdate({
         _id: req.params.id
       }, req.body)
@@ -51,7 +51,7 @@ module.exports = {
   },
 
   remove: function (req, res) {
-    db.Collection
+    db.Playlist
       .findById({
         _id: req.params.id
       })

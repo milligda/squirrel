@@ -5,7 +5,7 @@ import Form from "../../partials/Form";
 import RecentlySaved from "../../partials/RecentlySaved";
 
 
-const NewCollection = (
+const NewPlaylist = (
     <div>
         <Form />
         <RecentlySaved />
@@ -13,4 +13,4 @@ const NewCollection = (
     </div>
 );
 
-export default NewCollection;
+export default NewPlaylist;

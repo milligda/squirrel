@@ -1,1 +1,1 @@
-export { default } from "./AddCollectionBtn.js";
+export { default } from "./AddPlaylistBtn.js";

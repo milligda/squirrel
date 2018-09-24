@@ -22,16 +22,14 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  collection: {
+  playlist: [{
     type: Schema.Types.ObjectId,
-    ref: "Collection"
-  },
-  allVideos:[
-     {
+    ref: "Playlist"
+  }],
+  allVideos: [{
     type: Schema.Types.ObjectId,
     ref: "Video"
-    }
-  ]
+  }]
 
 });
 
@@ -48,7 +46,7 @@ UserSchema.methods = {
 // Create the Pre-hooks for hashing the password before it is saved to the DB
 // ==============================================================================
 
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
   if (!this.password) {
     console.log('********** NO PASSWORD PROVIDED **********');
     next();
