@@ -39,7 +39,11 @@ class Home extends Component {
         <h2>Hello user {this.state.userId}</h2>
 
         <Link to="/video/1">
-          <span className="sql-btn">Video</span>
+          <p className="sql-btn">Video Player</p>
+        </Link>
+
+        <Link to="/playlist/play/1">
+          <p className="sql-btn">Playlist Player</p>
         </Link>
 
         {/* <div>

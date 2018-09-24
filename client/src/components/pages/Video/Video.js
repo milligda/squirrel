@@ -1,7 +1,10 @@
 import React, {Component} from "react";
+import { Link } from "react-router-dom";
 import API from "../../../utils/API";
 import PlayerBackground from "../../partials/PlayerBackground";
 import VideoPlayer from "../../partials/VideoPlayer";
+import { ControlsContainer } from "../../partials/Controls";
+import ReturnButton from "../../assets/images/return-icon.svg";
 import "./video.css";
 
 class Video extends Component {
@@ -26,6 +29,11 @@ class Video extends Component {
             <div id="video-page-container">
                 <PlayerBackground>
                     <VideoPlayer video={this.state.video} />
+                    <ControlsContainer>
+                        <Link to="/home">
+                            <img className="controls-button" src={ReturnButton} />
+                        </Link>
+                    </ControlsContainer>
                 </PlayerBackground>
                 
             </div>
