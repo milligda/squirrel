@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import API from "../../../utils/API";
 import PlayerBackground from "../../partials/PlayerBackground";
 import VideoPlayer from "../../partials/VideoPlayer";
-import { ControlsContainer, nextVideoButton, NextVideoButton } from "../../partials/Controls";
+import { ControlsContainer, NextVideoButton } from "../../partials/Controls";
 import ReturnButton from "../../assets/images/return-icon.svg";
 import "./listPlayer.css";
 
@@ -77,20 +77,12 @@ class ListPlayer extends Component {
 
     nextVideo = () => {
 
-        console.log("NEXT BUTTON CLICKED");
-
-        console.log(this.state.videoPlaying);
-
         let videoNum = this.state.videoPlaying + 1;
-
-        console.log(videoNum);
 
         // update the VideoPlaying number
         this.setState({
             videoPlaying: videoNum
         });
-
-        console.log(this.state.videoPlaying);
 
         // update the Current Video using the setVideo method
         this.setVideo(videoNum);
