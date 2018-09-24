@@ -28,6 +28,19 @@ document.getElementById("mainText").innerHTML = "<p>" + userId +  "</p>";
 // };
 // xhr.send();
 
+document.getElementById("mainText").innerHTML = "<p>To be replaced</p>";
+//Request from server to get playlist information based on userID
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://127.0.0.1:3000/api/playlists/user/1', true);
+xhr.setRequestHeader('Content-Type','application/json');
+xhr.onreadystatechange = function() {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+     // Typical action to be performed when the document is ready:
+
+    document.getElementById("mainText").innerHTML = "<p>Playlists: " + JSON.stringify(xhr.responseText) + "</p>";
+  } else {
+    // error result
+    document.getElementById("mainText").innerHTML = "<p>Response:" + xhr.responseText + "</p>";
 
 //Get video URL and parse info from it
 // chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
@@ -73,7 +86,7 @@ document.getElementById("mainText").innerHTML = "<p>" + userId +  "</p>";
 
 // // Receive response with mongo-generated ID
 
-// // New xhr to add video ID to selected collection
+// // New xhr to add video ID to selected playlist
 
 
 // });
