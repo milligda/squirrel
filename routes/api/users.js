@@ -45,6 +45,26 @@ router.route("/login")
     }
   );
 
+  router.route("/external/login")
+  .post(
+    (req, res, next) => {
+      console.log("userAPI File, req.body");
+      console.log(req.body)
+      next()
+    },
+    passport.authenticate('login'),
+    (req, res) => {
+      console.log("logged in", req.user);
+      const userInfo = {
+        username: req.user.username,
+        userId: req.user._id,
+        userStatus: 'logged in'
+      };
+      res.cookie('squirrelId', req.user._id);
+      res.send(userInfo)
+    }
+  );
+
 // Matches with "/api/users/logout"
 router.route("/logout")
   .get(authController.logout);

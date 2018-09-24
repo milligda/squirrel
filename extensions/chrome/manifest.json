@@ -13,7 +13,8 @@
    "http://*/*",
    "https://*/*",
    "debugger",
-   "storage"
+   "storage",
+   "cookies"
 ],
 "icons" : {
   "128" : "img/logo_tail.png"
