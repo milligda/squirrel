@@ -32,11 +32,12 @@ class Home extends Component {
   setCookie = () => {
     API.setCookie()
       .then(res => {
-        console.log(res);
-
-        document.cookie = ({'userId': res.userId,  maxAge: 2592000000 });  // Expires in one month    
+        console.log(res.data.userId);
+  
+        // document.cookie = ({'userId': res.userId,  maxAge: 2592000000});  // Expires in one month    
         // res.json();
-        
+        localStorage.setItem('squirrelId', res.data.userId);
+    
         // this.setState({
         //   loggedIn: res.data.loggedIn,
         //   userId: res.data.userId

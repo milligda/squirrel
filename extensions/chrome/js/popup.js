@@ -6,26 +6,30 @@ window.onload = function() {
   var reqObj = {};
   var title = "";
 
-  var userId = "1";
+  var userId = localStorage.getItem('squirrelId');
+
+document.getElementById("mainText").innerHTML = "<p>" + userId +  "</p>";
 
 
-document.getElementById("mainText").innerHTML = "<p>To be replaced</p>";
 //Request from server to get collection information based on userID
-var xhr = new XMLHttpRequest();
-xhr.open('GET', 'http://127.0.0.1:3000/api/collections/user/1', true);
-xhr.setRequestHeader('Content-Type','application/json');
-xhr.onreadystatechange = function() {
-  if (xhr.readyState == 4 && xhr.status == 200) {
-     // Typical action to be performed when the document is ready:
+// var xhr = new XMLHttpRequest();
+// xhr.open('GET', 'http://127.0.0.1:3000/api/collections/user/1', true);
+// xhr.setRequestHeader('Content-Type','application/json');
+// xhr.onreadystatechange = function() {
+//   if (xhr.readyState == 4 && xhr.status == 200) {
+//      // Typical action to be performed when the document is ready:
 
-    document.getElementById("mainText").innerHTML = "<p>Collections: " + JSON.stringify(xhr.responseText) + "</p>";
-  } else {
-    // error result
-    document.getElementById("mainText").innerHTML = "<p>Response:" + xhr.responseText + "</p>";
+//     document.getElementById("mainText").innerHTML = "<p>Collections: " + JSON.stringify(xhr.responseText) + "</p>";
+//   } else {
+//     // error result
+//     document.getElementById("mainText").innerHTML = "<p>Response:" + xhr.responseText + "</p>";
 
-  }
-};
-xhr.send();
+//   }
+// };
+// xhr.send();
+
+
+//Get video URL and parse info from it
 // chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
 //   url = tabs[0].url;
 //   source = url.hostname;

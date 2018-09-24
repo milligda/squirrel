@@ -12,7 +12,8 @@
    "tabs",
    "http://*/*",
    "https://*/*",
-   "debugger"
+   "debugger",
+   "storage"
 ],
 "icons" : {
   "128" : "img/logo_tail.png"

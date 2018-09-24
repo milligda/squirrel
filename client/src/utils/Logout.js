@@ -14,6 +14,11 @@ class Logout extends Component {
         this.setState({
           loggedIn: false
         });
+        localStorage.removeItem('squirrelId');
+        // deleting user cookie, doesn't work currently
+        document.cookie = res.data.UserId +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Domain=.locahlhost';
+        document.cookie = 'userId=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Domain=.locahlhost.com';
+
       })
       .catch(err => console.log(err));
   };

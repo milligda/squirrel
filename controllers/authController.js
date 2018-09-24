@@ -49,8 +49,8 @@ module.exports = {
       const cookieObj = {
         userId: req.user._id
       };
-      res.cookie('userid', req.user._id, { maxAge: 2592000000 });  // Expires in one month    
-      res.send());
+      res.cookie(req.user._id, req.user._id, { maxAge: 2592000000 });  // Expires in one month    
+      res.json(cookieObj);
   } else {
     res.json({
       error: `Sorry, there has been an error.`
@@ -83,8 +83,9 @@ module.exports = {
   logout: function(req, res) {
     console.log("******** Logout called ********")
     if (req.user) {
+      let userId = req.user._id;     
       req.logout();
-      res.send({ message: "logging out" });
+      res.json({ message: "logging out" , userId : userId });
     } else {
       res.send({ message: "no user to log out" });
     }
