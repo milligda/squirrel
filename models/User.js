@@ -3,7 +3,6 @@
 // ==============================================================================
 
 const mongoose = require("mongoose");
-// const bcrypt = require("bcryptjs");
 
 // ==============================================================================
 // Establish the Schema
@@ -13,22 +12,25 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  username: {
+  email: {
     type: String,
-    required: true
+    required: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
-  // lastLogin: {
-  //   type: Date,
-  //   required: true
-  // },
-  // status: {
-  //   type: String,
-  //   required: true
-  // },
+  collection: {
+    type: Schema.Types.ObjectId,
+    ref: "Collection"
+  },
+  allVideos:[
+     {
+    type: Schema.Types.ObjectId,
+    ref: "Video"
+    }
+  ]
+
 });
 
 const User = mongoose.model("User", UserSchema);
