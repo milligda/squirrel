@@ -1,0 +1,16 @@
+.controls-container {
+    margin: 0px auto;
+    text-align: center;
+}
+
+.controls-button {
+    border-radius: 10px;
+    background-color: #555;
+    width: 50px;
+    margin: 10px;
+}
+
+.controls-button:hover {
+    background-color: #85deff;
+    transition: .75s;
+}

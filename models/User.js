@@ -3,12 +3,10 @@
 // ==============================================================================
 
 const mongoose = require("mongoose");
-// const bcrypt = require("bcryptjs");
 
 // ==============================================================================
 // Establish the Schema
 // Create the new UserSchema
-// Create the UserSchema methods required for User Authentication
 // ==============================================================================
 
 const Schema = mongoose.Schema;
@@ -16,36 +14,28 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   username: {
     type: String,
-    required: true
+    required: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
-  // lastLogin: {
-  //   type: Date,
-  //   required: true
-  // },
-  // status: {
-  //   type: String,
-  //   required: true
-  // },
-});
+  playlists: [{
+    type: Schema.Types.ObjectId,
+    ref: "Playlist"
+  }],
+  allVideos: [{
+    type: Schema.Types.ObjectId,
+    ref: "Video"
+  }]
 
-// UserSchema.methods = {
-//   checkPassword: function (inputPassword) {
-//     return bcrypt.compareSync(inputPassword, this.password);
-//   },
-//   hashPassword: plainTextPassword => {
-//     return bcrypt.hashSync(plainTextPassword, 10);
-//   }
-// }
+});
 
 // ==============================================================================
 // Create the Pre-hooks for hashing the password before it is saved to the DB
 // ==============================================================================
 
-// UserSchema.pre('save', function(next) {
+// UserSchema.pre('save', function (next) {
 //   if (!this.password) {
 //     console.log('********** NO PASSWORD PROVIDED **********');
 //     next();

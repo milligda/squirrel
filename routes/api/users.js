@@ -43,7 +43,23 @@ router.route("/login")
       }
       res.send(userInfo)
     }
-  );
+  )
+  .get(
+    (req, res, next) => {
+      console.log("userAPI File, req.body");
+      console.log(req.body)
+      next()
+    },
+    passport.authenticate('login'),
+    (req, res) => {
+      console.log("logged in", req.user);
+      const userInfo = {
+        username: req.user.username
+      }
+      res.cookie('test', 'userId');
+      res.send(userInfo)
+    }
+  )
 
 // Matches with "/api/users/logout"
 router.route("/logout")

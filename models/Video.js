@@ -15,6 +15,14 @@ var VideoSchema = new Schema({
     type: String,
     required: false
   },
+  videoId: {
+    type: String,
+    required: true
+  },
+  playlists: [{
+    type: Schema.Types.ObjectId,
+    ref: "Playlist"
+  }]
 });
 
 var Video = mongoose.model("Video", VideoSchema);

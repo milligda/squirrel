@@ -1,0 +1,8 @@
+
+
+.player-background-container {
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: #222222;
+    transition: 1s;
+}

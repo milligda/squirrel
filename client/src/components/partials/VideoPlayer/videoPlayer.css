@@ -1,0 +1,12 @@
+.video-player-container {
+    text-align: center;
+    padding-top: 80px;
+}
+
+.video-frame {
+    border: 1px solid #555555;
+    width: 700px;
+    height: 394px;
+    max-width: 98vw;
+    max-height: calc(98vw * 9 / 16);
+}
