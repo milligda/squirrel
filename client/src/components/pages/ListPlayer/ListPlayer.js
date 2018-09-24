@@ -4,15 +4,25 @@ import PlayerBackground from "../../partials/PlayerBackground";
 import VideoPlayer from "../../partials/VideoPlayer";
 import "./video.css";
 
-class Video extends Component {
+class ListPlayer extends Component {
 
     state = {
-        video: {
-            url: "https://www.youtube.com/watch?v=4yikpWtIFU8",
-            videoId: "4yikpWtIFU8",
-            videoPlatform: "youtube",
-            title: "10 Funniest Squirrel Videos"
-        }
+        currentVideo: {},
+        results: [
+            {
+                url: "https://vimeo.com/163505789",
+                videoId: "163505789",
+                videoPlatform: "vimeo",
+                title: "Meager Into Might"
+            },
+            {
+                url: "https://www.youtube.com/watch?v=4yikpWtIFU8",
+                videoId: "4yikpWtIFU8",
+                videoPlatform: "youtube",
+                title: "10 Funniest Squirrel Videos"
+            }  
+        ]
+        
     }
 
     componentDidMount() {
@@ -25,7 +35,7 @@ class Video extends Component {
         return (
             <div id="video-page-container">
                 <PlayerBackground>
-                    <VideoPlayer video={this.state.video} />
+                    <VideoPlayer video={this.state.currentVideo} />
                 </PlayerBackground>
                 
             </div>
@@ -34,4 +44,4 @@ class Video extends Component {
 
 }
 
-export default Video;
+export default ListPlayer;

@@ -5,8 +5,8 @@
 
 .video-frame {
     border: 1px solid #555555;
-    width: 600px;
-    height: 337px;
+    width: 700px;
+    height: 394px;
     max-width: 98vw;
     max-height: calc(98vw * 9 / 16);
 }
