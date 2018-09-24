@@ -1,11 +1,13 @@
 .header-container {
     position: relative;
     width: 100%;
-    top: 10px;
-    left: 10px;
+    min-height: 60px;
     z-index: 10;
 }
 
 .home-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
     width: 50px;
 }

@@ -3,12 +3,10 @@
 // ==============================================================================
 
 const mongoose = require("mongoose");
-// const bcrypt = require("bcryptjs");
 
 // ==============================================================================
 // Establish the Schema
 // Create the new UserSchema
-// Create the UserSchema methods required for User Authentication
 // ==============================================================================
 
 const Schema = mongoose.Schema;
@@ -32,15 +30,6 @@ const UserSchema = new Schema({
   }]
 
 });
-
-// UserSchema.methods = {
-//   checkPassword: function (inputPassword) {
-//     return bcrypt.compareSync(inputPassword, this.password);
-//   },
-//   hashPassword: plainTextPassword => {
-//     return bcrypt.hashSync(plainTextPassword, 10);
-//   }
-// }
 
 // ==============================================================================
 // Create the Pre-hooks for hashing the password before it is saved to the DB

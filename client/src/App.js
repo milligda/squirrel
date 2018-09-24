@@ -10,6 +10,8 @@ import Restricted from "./components/pages/Restricted";
 import API from "./utils/API";
 import PageNotFound from "./components/pages/PageNotFound";
 import CollectionList from "./components/pages/Collection";
+import Video from "./components/pages/Video";
+import PlaylistPlayer from "./components/pages/ListPlayer";
 
 
 
@@ -51,8 +53,8 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
-          <Header />
+        <div id="app-container">
+          {/* <Header /> */}
           <Switch>
 
             <Route exact path="/" component={ Welcome } />
@@ -68,6 +70,10 @@ class App extends Component {
             <Route exact path="/home" component={ Home } />
 
             <Route exact path="/logout" component={ Logout } />
+
+            <Route exact path="/video/:id" component={ Video } />
+
+            <Route exact path="/playlist/play/:id" component={ PlaylistPlayer } />
 
             <Route exact path="/restricted" component={ Restricted } />
             <Route exact path="/collections/" component={CollectionList} /> } />
