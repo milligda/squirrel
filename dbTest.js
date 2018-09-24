@@ -10,12 +10,12 @@ mongoose.connect('mongodb://localhost/squirrel');
 var db = require("./models");
 
 db.User.create({
-    email: "emilymckenna08@gmail.com",
+    username: "emilymckenna08@gmail.com",
     password: "test",
     lastLogin: 08 / 26 / 1992,
     status: "Active",
   }, {
-    email: "mitchellbrooks@gmail.com",
+    username: "mitchellbrooks@gmail.com",
     password: "test2",
     lastLogin: 11 / 26 / 1989,
     status: "Active",
