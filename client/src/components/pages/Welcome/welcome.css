@@ -1,9 +1,14 @@
 .container{
     align-content: center;
     padding: 15px;
-    background-image: url("../../../../public/assets/images/leaves.png");
+    background: #fff;
 }
 
 h1{
     padding-bottom: 20px;
+}
+
+.login, .signup {
+    float: left;
+    margin: auto;
 }

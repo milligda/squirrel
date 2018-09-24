@@ -10,13 +10,9 @@ import Restricted from "./components/pages/Restricted";
 import API from "./utils/API";
 import PageNotFound from "./components/pages/PageNotFound";
 import CollectionList from "./components/pages/Collection";
-<<<<<<< HEAD
 import RecentlySaved from "./components/partials/RecentlySaved";
-// import Background from "./components/partials/Background";
-=======
 import Video from "./components/pages/Video";
 import PlaylistPlayer from "./components/pages/ListPlayer";
->>>>>>> 97fe377abbc7e0c6999f196f02ed050146751f1b
 
 
 
@@ -59,7 +55,7 @@ class App extends Component {
     return (
       <Router>
         <div id="app-container">
-          {/* <Header /> */}
+          <Header />
           <Switch>
 
             <Route exact path="/" component={ Welcome } />
