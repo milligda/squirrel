@@ -41,7 +41,7 @@ class Signup extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-6 form-container">
-              <h2>Signup Form</h2>
+              <h2>Don't have an account? Sign up here.</h2>
               <form>
                 <Input
                   value={this.state.username}
