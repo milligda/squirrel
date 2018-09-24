@@ -60,14 +60,4 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-
-  delete: function (req, res) {
-
-    db.User.allVideos.findByIdAndRemove(req.params.id)
-
-    db.Collection.findByIdAndRemove(req.params.id)
-
-       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
 };
