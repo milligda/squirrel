@@ -14,7 +14,7 @@ class Dashboard extends Component {
 
     loadCollections = () => {
         
-        API.getCollections()
+        API.getPlaylists()
         .then(data => data.json())
         .then(res => this.setState({ collections: res.data }))
         .catch(err => console.log(err));
