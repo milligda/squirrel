@@ -9,4 +9,15 @@
     height: 394px;
     max-width: 98vw;
     max-height: calc(98vw * 9 / 16);
+    transition: .5s;
 }
+
+.nytimes-container {
+    margin: 0px auto;
+    width: 670px;
+    height: 446px;
+    max-width: 98vw;
+    max-height: calc(98vw * 2 / 3);
+    transition: .5s;
+}
+

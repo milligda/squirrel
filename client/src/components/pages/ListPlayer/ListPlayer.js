@@ -26,21 +26,32 @@ class ListPlayer extends Component {
                 videoId: "4yikpWtIFU8",
                 videoPlatform: "youtube",
                 title: "10 Funniest Squirrel Videos"
-            }  
+            },
+            {
+                url: "https://www.nytimes.com/video/us/politics/100000006123538/trump-kavanaugh-accusations.html?playlistId=100000003890188&region=video-grid&version=video-grid-thumbnail&contentCollection=Times+Video&contentPlacement=0&module=recent-videos&action=click&pgType=Multimedia&eventName=video-grid-click",
+                videoId: "100000006123538",
+                videoPlatform: "nytimes",
+                title: "Trump Calls Kavanaugh Accusations Totally Political"
+            },
+            {
+                url: "https://www.youtube.com/watch?v=4yikpWtIFU8",
+                videoId: "4yikpWtIFU8",
+                videoPlatform: "youtube",
+                title: "10 Funniest Squirrel Videos"
+            }
         ]
     }
 
     componentDidMount() {
-        this.setVideo();
+        this.setVideo(0);
 
         // API.getPlaylist(this.props.match.params.id)
         // .then(res => this.setState({ results: res.data }))
         // .catch(err => console.log(err));
     }
 
-    setVideo = () => {
+    setVideo = (videoNumber) => {
         // set the variables
-        let videoNumber = this.state.videoPlaying;
         let lastVideo = false;
         let nextVideo = {};
 
@@ -60,16 +71,29 @@ class ListPlayer extends Component {
             playingLastVideo: lastVideo,
             nextVideo: nextVideo
         });
+
+        console.log(this.state);
     };
 
     nextVideo = () => {
+
+        console.log("NEXT BUTTON CLICKED");
+
+        console.log(this.state.videoPlaying);
+
+        let videoNum = this.state.videoPlaying + 1;
+
+        console.log(videoNum);
+
         // update the VideoPlaying number
         this.setState({
-            videoPlaying: this.state.videoPlaying++
+            videoPlaying: videoNum
         });
 
+        console.log(this.state.videoPlaying);
+
         // update the Current Video using the setVideo method
-        this.setVideo();
+        this.setVideo(videoNum);
     }
 
     render() {
