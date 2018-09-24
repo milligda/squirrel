@@ -31,7 +31,7 @@ class App extends Component {
   };
 
   loadCollections = () => {
-    API.getCollections()
+    API.getPlaylists()
       .then(res => this.setState({ collections: res.data }))
       .catch(err => console.log(err));
   };

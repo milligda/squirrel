@@ -12,7 +12,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  email: {
+  username: {
     type: String,
     required: true,
   },
@@ -20,18 +20,31 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  collection: {
+  playlists: [{
     type: Schema.Types.ObjectId,
-    ref: "Collection"
-  },
-  allVideos:[
-     {
+    ref: "Playlist"
+  }],
+  allVideos: [{
     type: Schema.Types.ObjectId,
     ref: "Video"
-    }
-  ]
+  }]
 
 });
+
+// ==============================================================================
+// Create the Pre-hooks for hashing the password before it is saved to the DB
+// ==============================================================================
+
+// UserSchema.pre('save', function (next) {
+//   if (!this.password) {
+//     console.log('********** NO PASSWORD PROVIDED **********');
+//     next();
+//   } else {
+//     console.log('hashpassword in pre save');
+//     this.password = this.hashPassword(this.password);
+//     next();
+//   }
+// });
 
 const User = mongoose.model("User", UserSchema);
 

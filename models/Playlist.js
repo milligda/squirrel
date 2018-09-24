@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-const CollectionSchema = new Schema({
+const PlaylistSchema = new Schema({
 
   userId: {
     type: Number,
@@ -30,8 +30,8 @@ const CollectionSchema = new Schema({
 
 });
 
-const Collection = mongoose.model("Collection", CollectionSchema);
+const Playlist = mongoose.model("Playlist", PlaylistSchema);
 
-module.exports = Collection;
+module.exports = Playlist;
 
   
