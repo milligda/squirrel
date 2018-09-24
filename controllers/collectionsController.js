@@ -63,12 +63,9 @@ module.exports = {
 
   delete: function (req, res) {
 
-    let userId = req.params.id;
-    let videoId = req.body.videoId;
+    db.User.allVideos.findByIdAndRemove(req.params.id)
 
-    db.User.allVideos.findByIdAndRemove(videoId)
-
-    db.Collection.findByIdAndRemove(videoId)
+    db.Collection.findByIdAndRemove(req.params.id)
 
        .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
