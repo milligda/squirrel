@@ -10,28 +10,25 @@ mongoose.connect('mongodb://localhost/squirrel');
 var db = require("./models");
 
 db.User.create({
-        userNameFirst: "Emily",
-        userNameLast: "Mckenna",
-        username: "emilymckenna08@gmail.com",
-        password: "test",
-        lastLogin: 08 / 26 / 1992,
-        status: "Active",
-    }, {
-        userNameFirst: "Mitchell",
-        userNameLast: "Brooks",
-        username: "mitchellbrooks@gmail.com",
-        password: "test2",
-        lastLogin: 11 / 26 / 1989,
-        status: "Active",
-    }, )
-    .then(function (dbUser) {
-        console.log(dbUser);
-    })
-    .catch(function (err) {
-        console.log(err.message);
-    });
+    username: "emilymckenna08@gmail.com",
+    password: "test",
+    lastLogin: 08 / 26 / 1992,
+    status: "Active",
+  }, {
+    username: "mitchellbrooks@gmail.com",
+    password: "test2",
+    lastLogin: 11 / 26 / 1989,
+    status: "Active",
+  }, )
+  .then(function (dbUser) {
+    console.log(dbUser);
+  })
+  .catch(function (err) {
+    console.log(err.message);
+  });
 
 db.Playlist.create({
+<<<<<<< HEAD
         userId: 1,
         description: "Makeup Tutorials",
         title: "My Makeup Tuts",
@@ -56,28 +53,58 @@ db.Playlist.create({
     .catch(function (err) {
         console.log(err.message);
     });
+=======
+    userId: 1,
+    description: "Makeup Tutorials",
+    title: "My Makeup Tuts",
+    private: true,
+    videos: []
+  }, {
+    userId: 1,
+    description: "Videos of Squirrels being Squirrely",
+    title: "My Squirrel Vids",
+    private: false,
+    videos: []
+  }, {
+    userId: 1,
+    description: "Recipes",
+    title: "My Cooking Videos",
+    private: false,
+    videos: []
+  })
+  .then(function (dbPlaylist) {
+    console.log(dbPlaylist);
+  })
+  .catch(function (err) {
+    console.log(err.message);
+  });
+>>>>>>> 97fe377abbc7e0c6999f196f02ed050146751f1b
 
 db.Video.create({
-        url: "https://www.youtube.com/watch?v=4yikpWtIFU8",
-        videoPlatform: "Youtube",
-        title: "10 Funniest Squirrel Videos"
-    }, {
-        url: "https://www.youtube.com/watch?v=IDaqFiLvcB0",
-        videoPlatform: "Youtube",
-        title: "Squirrels for Pets"
-    }, {
-        url: "https://www.youtube.com/watch?v=n9fKPPcZyS8",
-        videoPlatform: "Youtube",
-        title: "Squirrels being funnier than dogs?"
-    }, {
-        url: "https://www.youtube.com/watch?v=h6RWcDHA-h4",
-        videoPlatform: "Youtube",
-        title: "Rude Squirrels"
-    })
+    url: "https://www.youtube.com/watch?v=4yikpWtIFU8",
+    videoPlatform: "Youtube",
+    title: "10 Funniest Squirrel Videos",
+    videoId: "4yikpWtIFU8"
+  }, {
+    url: "https://www.youtube.com/watch?v=IDaqFiLvcB0",
+    videoPlatform: "Youtube",
+    title: "Squirrels for Pets",
+    videoId: "IDaqFiLvcB0"
+  }, {
+    url: "https://www.youtube.com/watch?v=n9fKPPcZyS8",
+    videoPlatform: "Youtube",
+    title: "Squirrels being funnier than dogs?",
+    videoId: "n9fKPPcZyS8"
+  }, {
+    url: "https://www.youtube.com/watch?v=h6RWcDHA-h4",
+    videoPlatform: "Youtube",
+    title: "Rude Squirrels",
+    videoId: "h6RWcDHA-h4"
+  })
 
-    .then(function (dbVideos) {
-        console.log(dbVideos);
-    })
-    .catch(function (err) {
-        console.log(err.message);
-    });
+  .then(function (dbVideos) {
+    console.log(dbVideos);
+  })
+  .catch(function (err) {
+    console.log(err.message);
+  });

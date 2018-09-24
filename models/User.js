@@ -3,18 +3,16 @@
 // ==============================================================================
 
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
 
 // ==============================================================================
 // Establish the Schema
 // Create the new UserSchema
-// Create the UserSchema methods required for User Authentication
 // ==============================================================================
 
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  email: {
+  username: {
     type: String,
     required: true,
   },
@@ -22,7 +20,11 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+<<<<<<< HEAD
   playlist: [{
+=======
+  playlists: [{
+>>>>>>> 97fe377abbc7e0c6999f196f02ed050146751f1b
     type: Schema.Types.ObjectId,
     ref: "Playlist"
   }],
@@ -33,19 +35,11 @@ const UserSchema = new Schema({
 
 });
 
-UserSchema.methods = {
-  checkPassword: function (inputPassword) {
-    return bcrypt.compareSync(inputPassword, this.password);
-  },
-  hashPassword: plainTextPassword => {
-    return bcrypt.hashSync(plainTextPassword, 10);
-  }
-}
-
 // ==============================================================================
 // Create the Pre-hooks for hashing the password before it is saved to the DB
 // ==============================================================================
 
+<<<<<<< HEAD
 UserSchema.pre('save', function (next) {
   if (!this.password) {
     console.log('********** NO PASSWORD PROVIDED **********');
@@ -56,6 +50,18 @@ UserSchema.pre('save', function (next) {
     next();
   }
 });
+=======
+// UserSchema.pre('save', function (next) {
+//   if (!this.password) {
+//     console.log('********** NO PASSWORD PROVIDED **********');
+//     next();
+//   } else {
+//     console.log('hashpassword in pre save');
+//     this.password = this.hashPassword(this.password);
+//     next();
+//   }
+// });
+>>>>>>> 97fe377abbc7e0c6999f196f02ed050146751f1b
 
 const User = mongoose.model("User", UserSchema);
 

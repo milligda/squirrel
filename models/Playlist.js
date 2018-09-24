@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 const PlaylistSchema = new Schema({
 
-  userId: [{
-    type: Schema.Types.ObjectId,
-    ref: "User"
-  }],
+  userId: {
+    type: Number,
+    required: true
+  },
   description: {
     type: String,
     required: false
@@ -16,10 +16,12 @@ const PlaylistSchema = new Schema({
     type: String,
     required: true
   },
-  videos: [{
-    type: Schema.Types.ObjectId,
-    ref: "Video"
-  }],
+  videos: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Video"
+    }
+  ],
   private: {
     type: Boolean,
     default: true,
@@ -31,3 +33,5 @@ const PlaylistSchema = new Schema({
 const Playlist = mongoose.model("Playlist", PlaylistSchema);
 
 module.exports = Playlist;
+
+  

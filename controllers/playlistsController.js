@@ -5,11 +5,19 @@
 const db = require("../models");
 
 // ==============================================================================
+<<<<<<< HEAD:controllers/collectionsController.js
 // Methods for PlaylistsController
 // ==============================================================================
 
 module.exports = {
   //Not sure we need a findAll method for Playlists, but leaving here just in case
+=======
+// Methods for playlistsController
+// ==============================================================================
+
+module.exports = {
+  //Not sure we need a findAll method for playlists, but leaving here just in case
+>>>>>>> 97fe377abbc7e0c6999f196f02ed050146751f1b:controllers/playlistsController.js
   // findAll: function(req, res) {
   //   db.Playlist.find({})
   //     .then(dbResponse => res.json(dbResponse))
