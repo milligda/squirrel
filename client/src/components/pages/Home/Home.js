@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import API from "../../../utils/API";
 import { CollectionList, CollectionListItem } from "../Collection";
 
@@ -55,7 +55,16 @@ class Home extends Component {
     return (
       <div>
         
-        <h1>Welcome to your home page {this.state.userId}!</h1>
+        <h1>Welcome to your home page!</h1>
+        <h2>Hello user {this.state.userId}</h2>
+
+        <Link to="/video/1">
+          <p className="sql-btn">Video Player</p>
+        </Link>
+
+        <Link to="/playlist/play/1">
+          <p className="sql-btn">Playlist Player</p>
+        </Link>
 
         {/* <div>
           <CollectionList>

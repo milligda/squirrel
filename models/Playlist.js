@@ -5,8 +5,8 @@ var Schema = mongoose.Schema;
 const PlaylistSchema = new Schema({
 
   userId: {
-    type: Number,
-    required: true
+    type: Schema.Types.ObjectId,
+    ref: "User"
   },
   description: {
     type: String,

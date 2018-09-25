@@ -29,5 +29,8 @@ export default {
     },
     logout: function() {
         return axios.get(`/api/users/logout`);
+    },
+    getVideo: function(videoId) {
+        return axios.get("/api/videos/" + videoId);
     }
 };

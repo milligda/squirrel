@@ -14,6 +14,8 @@ module.exports = {
   // find all users
   findAll: function(req, res) {
     db.User.find({})
+      .populate("playlists")
+      .populate("allVideos")
       .then(dbResponse => res.json(dbResponse))
       .catch(err => res.status(422).json(err));
   },
@@ -42,6 +44,7 @@ module.exports = {
     res.json(statusObj);
   },
 
+<<<<<<< HEAD
   cookie: function(req, res) {
     // check if req.user exists and store the userId
     if (req.user) {
@@ -79,6 +82,8 @@ module.exports = {
     });
   },
 
+=======
+>>>>>>> master
   // user logout process
   logout: function(req, res) {
     console.log("******** Logout called ********")
