@@ -45,7 +45,7 @@ router.route("/login")
     }
   );
 
-  router.route("/external/login")
+  router.route("/login/external")
   .post(
     (req, res, next) => {
       console.log("userAPI File, req.body");

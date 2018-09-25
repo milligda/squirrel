@@ -30,15 +30,6 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Video"
   }]
-  // , 
-  //   lastLogin: {
-  //   type: Date,
-  //   required: true
-  // },
-  // status: {
-  //   type: String,
-  //   required: true
-  // }
 
 });
 

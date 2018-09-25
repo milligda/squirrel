@@ -18,6 +18,10 @@ router.route("/")
   // .put(videoController.update)
   // .delete(videoController.remove);
 
+router.route("/external")
+  .post(videoController.createExternal)
+  .put(videoController.addUserVid);
+
 router.route("/:id")
   .get(videoController.findById)
   .delete(videoController.remove);
