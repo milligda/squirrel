@@ -44,7 +44,7 @@ class AddVideo extends Component {
   };
 
   componentDidMount = () => {
-    // this.getUser();
+    this.getUser();
   };
 
   getUser = () => {
@@ -107,13 +107,19 @@ class AddVideo extends Component {
 
       console.log(storeVideoObj);
 
+      API.saveVideo(this.state.userId, storeVideoObj)
+        .then(res => {
+          console.log(res);
+        });
+
       // API.loginUser({
       //   username: this.state.username,
       //   password: this.state.password
       // })
       // .then(res => {
       //   console.log(res);
-      //   this.setState({ redirectTo: "/home" });
+      //   this.setState({ url: "" });
+      //   this.getUserData();
       // })
       // .catch(err => console.log(err));
     }

@@ -19,6 +19,10 @@ var VideoSchema = new Schema({
     type: String,
     required: true
   },
+  imageUrl: {
+    type: String,
+    required: false
+  },
   selected: {
     type: Boolean,
     default: false,

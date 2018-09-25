@@ -37,5 +37,8 @@ export default {
     },
     getVideo: function(videoId) {
         return axios.get("/api/videos/" + videoId);
+    },
+    saveVideo: function(userId, videoObj) {
+        return axios.post(`/api/videos/save/${userId}`, videoObj);
     }
 };
