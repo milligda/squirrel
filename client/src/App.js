@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <Router>
         <div id="app-container">
-          <Header />
+          {/* <Header /> */}
           <Switch>
 
             <Route exact path="/" component={ Welcome } />

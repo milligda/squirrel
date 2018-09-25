@@ -41,7 +41,7 @@ class Login extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-6 form-container">
-              <h2>Log In to Get Started</h2>
+              {/* <h2>Log In to Get Started</h2> */}
               <form>
                 <Input
                   value={this.state.username}

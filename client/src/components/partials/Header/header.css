@@ -1,18 +1,16 @@
 .header-container {
-    position: relative;
     width: 100%;
     min-height: 60px;
     z-index: 10;
-    padding-bottom: 10px;
     padding-left: 10px;
-    background-color: #ffc897;
-    margin-bottom: 60px;
+    background-color: #ffe2c8;
+    margin-bottom: auto;
 }
 
-/* .sticky {
+.sticky {
     position: fixed;
     top: 0;
-  } */
+}
 
 .home-icon {
     width: 30px;

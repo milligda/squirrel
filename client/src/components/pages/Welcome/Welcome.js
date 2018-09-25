@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
+import Header from "../../partials/Header";
 import Login from "../../partials/Login/Login";
 import "./welcome.css";
 import Signup from "../../partials/Signup";
@@ -33,17 +34,32 @@ class Welcome extends Component {
     }
 
     return (
-      <div className="container">
-        <h1>Squirrel Home Page Tagline!</h1>
-        <br/>
-        <p>Info about Squirrel app goes here here here</p>
-        <p>Sign up or Log in to get started!</p>
+      <div className="page-container">
         
         <Login className="login"/>
-        <Signup className="signup"/>
+          
+        < Header />
 
-        {/* <a>Link to app in Chrome store</a> */}
+        <div className="container">
+          <div className="app-info">
+            <h1>Squirrel Home Page Tagline!</h1>
+            <br/>
+            <h2>Save videos to watch later</h2>
+            <br/>
+            <h2>Create playlists of videos from multiple websites like YouTube and Vimeo</h2>
+            <br/>
+            {/* <h2>Share your page with your friends</h2>
+            <br/> */}
+            <a href="https://chrome.google.com/webstore/category/extensions?hl=en">Find us in the Chrome Web Store</a>
+          </div>
+          
+          <div className="signup">
+            < Signup />
+          </div>
+        </div>
+
       </div>
+      
     );
   }
 }

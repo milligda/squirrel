@@ -4,6 +4,7 @@ import API from "../../../utils/API";
 import { CollectionList, CollectionListItem } from "../Collection";
 import "./home.css";
 import RecentlySaved from "../../partials/RecentlySaved";
+import Header from "../../partials/Header";
 
 
 
@@ -36,7 +37,7 @@ class Home extends Component {
 
     return (
       <div className="home-container">
-        
+        < Header />
         <h2>Hello user {this.state.userId}</h2>
         <h2>Here's everything you've squirreled away so far.</h2>
 

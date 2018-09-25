@@ -8,6 +8,7 @@ const Header = () => (
             <img className="home-icon" src="assets/images/icon_tail.svg" alt="Home Icon"></img>
             <p id="link-home">Squirrel</p>
         </Link>
+
     </div>
 )
 

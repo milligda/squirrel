@@ -1,14 +1,26 @@
+body {
+    background: #85deff;   
+    color: #1a8799;
+}
+
 .container{
+    margin-top: 10%;
     align-content: center;
     padding: 15px;
-    background: #fff;
+    height: auto;
 }
 
 h1{
     padding-bottom: 20px;
 }
 
-.login, .signup {
+.app-info, .signup {
     float: left;
-    margin: auto;
+    width: 50%;
+}
+
+.login {
+    float: right;
+    position: relative;
+    
 }
