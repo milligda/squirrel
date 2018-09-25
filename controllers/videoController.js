@@ -35,18 +35,20 @@ module.exports = {
 
   //removing a video finds all instances of the video in all collections and removes it from any collection where it exists.  it also removes the video from the user's "all videos" list.
   remove: function (req, res) {
-    db.User.allVideos
+    db.User.update(
+      { },
+      { $pull: { allVideos: req.params.id }},
+      { multi: true }
+  ).then(
+    db.Playlist.update(
+        { },
+        { $pull: { videos: req.params.id }},
+        { multi: true }
+      )).then(
+    db.Video
       .findByIdAndRemove({
         _id: req.params.id
-      })
-    db.Playlist
-      .findById({
-        _id: req.params.id
-      })
-    db.Video
-      .findById({
-        _id: req.params.id
-      })
+      }))
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
