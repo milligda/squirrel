@@ -27,6 +27,16 @@ const PlaylistSchema = new Schema({
     default: true,
     required: true
   },
+  selected: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
+  key: {
+    type: String,
+    required: true,
+    default: 'playlist'
+  }
 
 });
 

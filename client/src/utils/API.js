@@ -24,6 +24,9 @@ export default {
     getUserStatus: function() {
         return axios.get(`/api/users/status`);
     },
+    getUserData: function(userId) {
+        return axios.get(`/api/users/data/` + userId);
+    },
     logout: function() {
         return axios.get(`/api/users/logout`);
     },

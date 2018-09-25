@@ -20,6 +20,15 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
+  // get the user's data
+  userData: function(req, res) {
+    db.User.findById(req.params.id)
+      .populate("playlists")
+      .populate("allVideos")
+      .then(dbResponse => res.json(dbResponse))
+      .catch(err => res.status(422).json(err));
+  },
+
   // user status is checked for setting the App.js state
   status: function(req, res) {
     // create id and status variables
