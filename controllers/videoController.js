@@ -26,6 +26,26 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
+  createExternal: function (req, res) {
+    console.log(req.body)
+    db.Video
+      .create(req.body)
+      .then(dbResponse => res.json(dbResponse))
+      // console.log(dbResponse))
+      .catch(err => res.status(422).json(err));
+  },
+
+  addUserVid: function (req, res) {
+    console.log(req.body)
+    db.User
+      .findOneAndUpdate({
+        _id: req.body.userId
+      }, { $addToSet : { allVideos : req.body.vidId } })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+
+  },
+
   findById: function (req, res) {
     db.Video
       .findById(req.params.id)
@@ -44,8 +64,8 @@ module.exports = {
   },
   delete: function (req, res) {
     db.Video.findByIdAndRemove(req.params.id)
-    //db.User.allVideos.findByIdAndRemove(req.params.id)
-    //db.Playlist.findByIdAndRemove(req.params.id)
+      //db.User.allVideos.findByIdAndRemove(req.params.id)
+      //db.Playlist.findByIdAndRemove(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
