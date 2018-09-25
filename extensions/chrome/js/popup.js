@@ -1,4 +1,6 @@
-var domain = 'http://127.0.0.1:3000';
+// var domain = 'http://127.0.0.1:3000';
+var domain = 'https://squirrel-video.herokuapp.com';
+
 sq = {};
 var userId = "";
 sq.authenticate = function () {
@@ -35,11 +37,11 @@ sq.authenticate = function () {
 
 sq.urlSend = function () {
   console.log("hello");
-  var url = "";
-  var terms = [];
-  var id = "";
-  var reqObj = {};
+  var vidObj = {};
+  var vP = ""
   var title = "";
+  var src = "";
+  var id = "";
 
   chrome.tabs.query({
     'active': true,
@@ -145,13 +147,3 @@ sq.getPlaylists = function () {
 window.onload = function () {
   sq.authenticate();
 };
-
-
-
-
-// // Receive response with mongo-generated ID
-
-// // New xhr to add video ID to selected playlist
-
-
-// });
