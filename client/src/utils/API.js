@@ -24,6 +24,9 @@ export default {
     getUserStatus: function() {
         return axios.get(`/api/users/status`);
     },
+    setCookie: function() {
+      return axios.get(`/api/users/cookie`)
+    },
     logout: function() {
         return axios.get(`/api/users/logout`);
     },

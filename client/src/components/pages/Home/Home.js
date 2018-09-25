@@ -13,6 +13,8 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.getUser();
+    this.setCookie();
+    console.log("console did mount");
   };
 
   getUser = () => {
@@ -26,6 +28,24 @@ class Home extends Component {
       })
       .catch(err => console.log(err));
   };
+
+  setCookie = () => {
+    API.setCookie()
+      .then(res => {
+        console.log(res.data.userId);
+  
+        // document.cookie = ({'userId': res.userId,  maxAge: 2592000000});  // Expires in one month    
+        // res.json();
+        localStorage.setItem('squirrelId', res.data.userId);
+    
+        // this.setState({
+        //   loggedIn: res.data.loggedIn,
+        //   userId: res.data.userId
+        // });
+      })
+      .catch(err => console.log(err));
+  };
+
 
   render() {
     if (!this.state.loggedIn) {
