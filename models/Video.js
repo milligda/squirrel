@@ -27,10 +27,10 @@ var VideoSchema = new Schema({
 
 
 
-// Video.pre('remove', function(next) {
-//   // Remove all the assignment docs that reference the removed person.
-//   this.model('Playlist').remove({ video: this._id }, next);
-// });
+Video.pre('remove', function(next) {
+  // Remove all the collection docs that reference the removed video.
+  this.model('Playlist').remove({ video: this._id }, next);
+});
 
 var Video = mongoose.model("Video", VideoSchema);
 
