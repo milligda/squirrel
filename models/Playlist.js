@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 const PlaylistSchema = new Schema({
 
-  userId: {
-    type: Number,
-    required: true
-  },
+  userId: [{
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }],
   description: {
     type: String,
     required: false
@@ -29,6 +29,30 @@ const PlaylistSchema = new Schema({
   },
 
 });
+
+// example from the article above
+
+// var bandSchema = new mongoose.Schema({
+//   name: String,
+//   lead: { type: mongoose.Schema.Types.ObjectId, ref: 'person' }
+// });
+
+var autoPopulateVideos = function(next) {
+  this.populate('videos');
+  next();
+};
+
+var autoPopulateUserId = function(next) {
+  this.populate('userId');
+  next();
+};
+
+PlaylistSchema.
+  pre('findOne', autoPopulateVideos, autoPopulateUserId).
+  pre('find', autoPopulateVideos, autoPopulateUserId).
+  pre('findOneAndUpdate', autoPopulateVideos, autoPopulateUserId).
+  pre('create', autoPopulateVideos, autoPopulateUserId).
+  pre('findById', autoPopulateVideos, autoPopulateUserId);
 
 const Playlist = mongoose.model("Playlist", PlaylistSchema);
 

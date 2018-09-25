@@ -19,11 +19,18 @@ var VideoSchema = new Schema({
     type: String,
     required: true
   },
-  playlists: [{
-    type: Schema.Types.ObjectId,
-    ref: "Playlist"
-  }]
+  // playlists: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Playlist"
+  // }]
 });
+
+
+
+// Video.pre('remove', function(next) {
+//   // Remove all the assignment docs that reference the removed person.
+//   this.model('Playlist').remove({ video: this._id }, next);
+// });
 
 var Video = mongoose.model("Video", VideoSchema);
 
