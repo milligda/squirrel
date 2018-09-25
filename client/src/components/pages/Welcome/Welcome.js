@@ -35,11 +35,12 @@ class Welcome extends Component {
 
     return (
       <div className="page-container">
-        
-        <Login className="login"/>
-          
-        < Header />
-
+        <div className="login">
+          < Header >
+            <Login className="login"/>
+          </ Header>
+        </div>
+    
         <div className="container">
           <div className="app-info">
             <h1>Squirrel Home Page Tagline!</h1>

@@ -10,7 +10,7 @@ import Logout from "./utils/Logout";
 import Restricted from "./components/pages/Restricted";
 import API from "./utils/API";
 import PageNotFound from "./components/pages/PageNotFound";
-import CollectionList from "./components/pages/Collection";
+import CollectionList from "./components/pages/Collection/CollectionList";
 import RecentlySaved from "./components/partials/RecentlySaved";
 import Video from "./components/pages/Video";
 import PlaylistPlayer from "./components/pages/ListPlayer";

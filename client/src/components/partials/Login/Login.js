@@ -40,27 +40,26 @@ class Login extends Component {
       return (
         <div className="container">
           <div className="row">
-            <div className="col-md-6 form-container">
-              {/* <h2>Log In to Get Started</h2> */}
+            <div className="form-container">
               <form>
                 <Input
                   value={this.state.username}
                   onChange={this.handleInputChange}
                   name="username"
                   placeholder="Email (required)"
-                />
-                <Input
-                  value={this.state.password}
-                  onChange={this.handleInputChange}
-                  name="password"
-                  placeholder="password"
-                />
-                <FormBtn
-                  disabled={!(this.state.username && this.state.password)}
-                  onClick={this.handleFormSubmit}
-                >
-                  Login
-                </FormBtn>
+                /> <Input
+                value={this.state.password}
+                onChange={this.handleInputChange}
+                name="password"
+                placeholder="password"
+              /> <FormBtn
+              disabled={!(this.state.username && this.state.password)}
+              onClick={this.handleFormSubmit}
+            >
+              Login
+            </FormBtn>
+                
+                
               </form>
             </div>
           </div>

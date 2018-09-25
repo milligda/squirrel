@@ -1,6 +1,8 @@
 body {
-    background: #85deff;   
     color: #1a8799;
+    background-image: url("../../assets/images/leaves_bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .container{
@@ -15,12 +17,20 @@ h1{
 }
 
 .app-info, .signup {
+    position: relative;
+    top: -300px;
     float: left;
-    width: 50%;
+    height: 300px;
+    background: #85deff;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px;
 }
 
-.login {
-    float: right;
-    position: relative;
-    
+.signup {
+    width: 35%;
+}
+
+.app-info{
+    width: 50%;
 }

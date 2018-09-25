@@ -1,4 +1,5 @@
 .form-container{
     margin: auto;
     padding: 15px;
+    z-index: 12;
 }

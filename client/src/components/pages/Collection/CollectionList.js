@@ -1,13 +1,15 @@
 import React from "react";
 import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
 
-export const CollectionList = ( props ) => {
+const CollectionList = ( props ) => {
     
     return (
         <div>
-            <BreadcrumbMenu />
-            <h2>Collections</h2>
-            <ul className="list-group">{props.children}</ul>
+            {/* <BreadcrumbMenu /> */}
+            <h2>Playlists</h2>
+            <ul className="list-group">
+            {props.children}
+            </ul>
 
             {/* <ShareBtn>
             <EditMenu>
@@ -17,6 +19,7 @@ export const CollectionList = ( props ) => {
     );
 };
 
+export default CollectionList;
 // Sorting
 
 // import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';

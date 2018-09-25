@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import API from "../../../utils/API";
-import { CollectionList, CollectionListItem } from "../Collection";
+import CollectionList from "../Collection/CollectionList";
+import CollectionListItem from "../Collection/CollectionListItem";
 import "./home.css";
 import RecentlySaved from "../../partials/RecentlySaved";
 import Header from "../../partials/Header";
+import PlaylistTile from "../../partials/PlaylistTile"
 
 
 
 class Home extends Component {
   state = {
     loggedIn: true,
-    userId: null
+    userId: null,
+    playlists: []
   };
 
   componentDidMount = () => {
@@ -28,6 +31,17 @@ class Home extends Component {
         });
       })
       .catch(err => console.log(err));
+  };
+
+  getPlaylists = () => {
+    API.getPlaylists()
+    .then( res => {
+      console.log(res);
+      this.setState({
+        playlists: res.data.playlists
+      });
+    })
+    .catch(err => console.log(err));
   };
 
   render() {
@@ -49,22 +63,23 @@ class Home extends Component {
           <p className="sql-btn">Playlist Player</p>
         </Link>
 
-        {/* <RecentlySaved /> */}
+        {/* <RecentlySaved />  would go here*/}
 
-        {/* <div className="collections-menu">
+        <div className="playlists-menu">
           <CollectionList>
-          {this.state.collections.map(collection => {
+          {this.state.playlists.map(playlist => {
               return (
               <CollectionListItem
-                  key={collection.userId}
-                  description={collection.description}
-                  title={collection.title}
-                  videos={collection.videos}
+                  key={playlist.userId}
+                  // id={playlist.userId}
+                  description={playlist.description}
+                  title={playlist.title}
+                  videos={playlist.videos}
               />
               );
           })}
           </CollectionList>
-          </div> */}
+          </div>
       </div>
     );
   }
