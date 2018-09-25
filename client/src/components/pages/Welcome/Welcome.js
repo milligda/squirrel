@@ -37,8 +37,10 @@ class Welcome extends Component {
       <div className="page-container">
         <div className="login">
           < Header >
-            <Login className="login"/>
-          </ Header>
+          
+          </Header >
+
+          <Login className="login"/>
         </div>
     
         <div className="container">

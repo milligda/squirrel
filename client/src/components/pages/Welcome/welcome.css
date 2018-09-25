@@ -5,14 +5,14 @@ body {
     background-repeat: no-repeat;
 }
 
-.container{
+.container {
     margin-top: 10%;
     align-content: center;
     padding: 15px;
     height: auto;
 }
 
-h1{
+h1 {
     padding-bottom: 20px;
 }
 
@@ -31,6 +31,6 @@ h1{
     width: 35%;
 }
 
-.app-info{
+.app-info {
     width: 50%;
 }

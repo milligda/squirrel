@@ -1,5 +1,6 @@
 .header-container {
     position: fixed;
+    top: 0;
     width: 100%;
     min-height: 60px;
     z-index: 10;
@@ -9,15 +10,10 @@
     margin: auto;
 }
 
-.link-home, .home-icon{
-    align-content: center;
-    width: auto;
-}
-
-.sticky {
+/* .sticky {
     position: fixed;
     top: 0;
-}
+} */
 
 .home-icon {
     width: 30px;

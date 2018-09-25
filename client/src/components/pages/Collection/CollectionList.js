@@ -20,7 +20,8 @@ const CollectionList = ( props ) => {
 };
 
 export default CollectionList;
-// Sorting
+
+// Reordering code to implement
 
 // import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
