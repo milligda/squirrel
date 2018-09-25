@@ -14,6 +14,8 @@ module.exports = {
   // find all users
   findAll: function(req, res) {
     db.User.find({})
+      .populate("playlists")
+      .populate("allVideos")
       .then(dbResponse => res.json(dbResponse))
       .catch(err => res.status(422).json(err));
   },
