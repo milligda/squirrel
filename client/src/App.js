@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import Header from "./components/partials/Header";
 import Welcome from "./components/pages/Welcome";
 import Home from "./components/pages/Home";
@@ -12,6 +13,7 @@ import PageNotFound from "./components/pages/PageNotFound";
 import CollectionList from "./components/pages/Collection";
 import Video from "./components/pages/Video";
 import PlaylistPlayer from "./components/pages/ListPlayer";
+import "./App.css";
 
 
 
@@ -73,11 +75,14 @@ class App extends Component {
 
             <Route exact path="/video/:id" component={ Video } />
 
-            <Route exact path="/playlist/play/:id" component={ PlaylistPlayer } />
-
             <Route exact path="/restricted" component={ Restricted } />
             <Route exact path="/collections/" component={CollectionList} /> } />
             <Route exact path="/404" component= {PageNotFound} />
+
+            <CSSTransition in={true} appear={true} timeout={500} classNames="fade">
+              <Route exact path="/playlist/play/:id" component={ PlaylistPlayer } />  
+            </CSSTransition>
+            
 
           </Switch>
         </div>
