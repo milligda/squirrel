@@ -124,20 +124,22 @@ sq.addUserVid = function (xres) {
 
 sq.getPlaylists = function () {
   //Request from server to get playlist information based on userID
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', `${domain}/api/playlists/user/${userId}`, true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
+  var xhr4 = new XMLHttpRequest();
+  xhr4.open('GET', `${domain}/api/playlists/user/${userId}`, true);
+  xhr4.setRequestHeader('Content-Type', 'application/json');
+  xhr4.onreadystatechange = function () {
+    if (xhr4.readyState == 4 && xhr4.status == 200) {
       // Typical action to be performed when the document is ready:
-
-      document.getElementById("mainText").innerHTML = "<p>Playlists: " + JSON.stringify(xhr.responseText) + "</p>";
+      var playlists = JSON.stringify(xhr4.responseText);
+      document.getElementById("mainText").innerHTML = "<p>Playlists: " + JSON.parse(playlists) + "</p>";
     } else {
       // error result
       document.getElementById("mainText").innerHTML = "<p>Response:" + xhr.responseText + "</p>";
 
+
     }
   };
+  xhr4.send();
 };
 
 window.onload = function () {
