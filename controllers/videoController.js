@@ -96,6 +96,26 @@ const getMetaData = (req, res) => {
   });
 };
 
+// create a search object for MongoDB with the different Playlist IDs
+const playlistSearchObj = (req) => {
+
+  // store the array of the playlists
+  let playlists = req.body.playlist;
+  // create an array container to add the search objects
+  let idSearchObj = [];
+
+  // for each item in the playlists array, create an object and push it to the idSearchObj array
+  for (let i = 0; i < playlists.length; i++) {
+    let searchObj = {};
+    searchObj._id = playlists[i];
+
+    idSearchObj.push(searchObj);
+  }
+
+  // return the array with the IDs for the different playlists
+  return idSearchObj;
+}
+
 // ==============================================================================
 // Methods for videoController
 // ==============================================================================
@@ -189,8 +209,38 @@ module.exports = {
 
 
   scrapeAndSave: function (req, res) {
+    // get the data required to create the Video document
     getMetaData(req).then((response) => {
-      res.json(response);
+
+      // create the object with the playlist IDs to update
+      const playlistsToUpdate = playlistSearchObj(req);
+
+      // save the new video in the Video collection
+      db.Video.create(response)
+      .then(function(newVideo) {
+
+        // update the User's All Videos array to include the new video ID
+        db.User.findByIdAndUpdate(req.params.id, {$push: { allVideos: newVideo._id }}, { new: true })
+        .then(function(newUserData) {
+          // update the playlist documents to include the new video ID
+          db.Playlist.updateMany({ $or: playlistsToUpdate }, {$push: { videos: newVideo._id }}, { new: true })
+          .then(function(newPlaylistData) {
+            res.json(newPlaylistData);
+          })
+          .catch(function(err) {
+            console.log("Error updating the Playlists with the new video ID");
+            res.json(err);
+          });
+        })
+        .catch(function(err) { 
+          console.log("Error updating the User's All Video array with the new video ID");
+          res.json(err);
+        });
+      })
+      .catch(function(err) {
+        console.log("Error saving the new video");
+        res.json(err);
+      });
     });
   }
 };
