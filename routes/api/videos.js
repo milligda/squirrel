@@ -22,4 +22,7 @@ router.route("/:id")
   .get(videoController.findById)
   .delete(videoController.remove);
 
+router.route("/:playlistId/:videoId")
+  .delete(videoController.delete);
+
 module.exports = router;

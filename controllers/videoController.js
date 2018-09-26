@@ -55,7 +55,10 @@ module.exports = {
 
   //deleting a video will only delete it from the collection you're currently in.  this functionality will only be available from inside a collecction
   delete: function (req, res) {
-    db.Playlist.findByIdAndRemove(req.params.id)
+    db.Playlist.update(
+      { _id: req.params.playlistId },
+      { $pull: { videos: req.body.videoId }},
+    )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
