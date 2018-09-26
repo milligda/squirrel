@@ -13,6 +13,7 @@ import PageNotFound from "./components/pages/PageNotFound";
 import CollectionList from "./components/pages/Collection";
 import Video from "./components/pages/Video";
 import PlaylistPlayer from "./components/pages/ListPlayer";
+import AddVideo from "./components/pages/AddVideo";
 import "./App.css";
 
 
@@ -72,6 +73,8 @@ class App extends Component {
             <Route exact path="/home" component={ Home } />
 
             <Route exact path="/logout" component={ Logout } />
+
+            <Route exact path="/video/add" component={ AddVideo } />
 
             <Route exact path="/video/:id" component={ Video } />
 

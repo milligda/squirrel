@@ -19,6 +19,20 @@ var VideoSchema = new Schema({
     type: String,
     required: true
   },
+  imageUrl: {
+    type: String,
+    required: false
+  },
+  selected: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
+  key: {
+    type: String,
+    required: true,
+    default: 'video'
+  },
   playlists: [{
     type: Schema.Types.ObjectId,
     ref: "Playlist"
