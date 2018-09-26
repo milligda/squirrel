@@ -10,7 +10,7 @@ const CollectionList = ( props ) => {
             <ul className="list-group">
             {props.children}
             </ul>
-
+        
             {/* <ShareBtn>
             <EditMenu>
             <ReorderMenu> */}
@@ -21,7 +21,7 @@ const CollectionList = ( props ) => {
 
 export default CollectionList;
 
-// Reordering code to implement
+// Reordering code --implementation to come
 
 // import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 

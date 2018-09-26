@@ -52,15 +52,13 @@ class Login extends Component {
                 onChange={this.handleInputChange}
                 name="password"
                 placeholder="password"
-              /> <FormBtn
-              disabled={!(this.state.username && this.state.password)}
-              onClick={this.handleFormSubmit}
-            >
-              Login
-            </FormBtn>
-                
-                
-              </form>
+                /> <FormBtn
+                disabled={!(this.state.username && this.state.password)}
+                onClick={this.handleFormSubmit}
+              >
+                Login
+                </FormBtn>
+              </form>   
             </div>
           </div>
         </div>

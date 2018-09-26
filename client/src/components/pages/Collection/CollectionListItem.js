@@ -4,6 +4,7 @@ import "./collection.css";
 const CollectionListItem = (props) => (
     <div>
         <li className="list-group-item">
+            list
             <p>{props.title}</p>
             {/* <p>{props.description}</p>
             <p>{props.videos}</p> */}

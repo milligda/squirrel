@@ -19,6 +19,7 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.getUser();
+    // this.getPlaylists();
     this.setCookie();
     console.log("console did mount");
   };
@@ -26,7 +27,7 @@ class Home extends Component {
   getUser = () => {
     API.getUserStatus()
       .then(res => {
-        console.log(res);
+        console.log("getUser: ", res);
         this.setState({
           loggedIn: res.data.loggedIn,
           userId: res.data.userId
@@ -35,21 +36,21 @@ class Home extends Component {
       .catch(err => console.log(err));
   };
 
-  getPlaylists = () => {
-    API.getPlaylists()
-    .then( res => {
-      console.log(res);
-      this.setState({
-        playlists: res.data.playlists
-      });
-    })
-    .catch(err => console.log(err));
-  };
+  // getPlaylists = () => {
+  //   API.getPlaylists()
+  //   .then(res => {
+  //     console.log("get playlists: " + res.data);
+  //     this.setState({
+  //       playlists: res.data
+  //     });
+  //   })
+  //   .catch(err => console.log(err));
+  // };
 
   setCookie = () => {
     API.setCookie()
       .then(res => {
-        console.log(res.data.userId);
+        console.log("userID: ", res.data.userId);
   
         // document.cookie = ({'userId': res.userId,  maxAge: 2592000000});  // Expires in one month    
         // res.json();
@@ -72,8 +73,10 @@ class Home extends Component {
     return (
       <div className="home-container">
         < Header />
-        <h2>Hello user {this.state.userId}</h2>
+        <h1>Hello user!</h1>
         <h2>Here's everything you've squirreled away so far.</h2>
+
+        
 
         <Link to="/video/1">
           <p className="sql-btn">Video Player</p>
@@ -84,6 +87,11 @@ class Home extends Component {
         </Link>
 
         {/* <RecentlySaved />  would go here*/}
+
+        {this.state.playlists}
+
+        <PlaylistTile title="Collection"/>
+
 
         <div className="playlists-menu">
           <CollectionList>

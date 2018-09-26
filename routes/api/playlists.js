@@ -12,9 +12,13 @@ const playlistsController = require("../../controllers/playlistsController");
 //***** THESE ARE JUST EXAMPLES FOR NOW ****
 
 // Matches with "/api/playlists"
+router.route("/")
+.get(playlistsController.findAll);
+
 router.route("/user/:userId")
   .get(playlistsController.findByUser)
-  .post(playlistsController.create);
+  .post(playlistsController.create)
+  .get(playlistsController.findAll);
 
 // Matches with "/api/playlists/:id"
 router
