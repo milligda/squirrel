@@ -26,6 +26,8 @@ router.route("/:id")
   .get(videoController.findById)
   .delete(videoController.remove);
 
+router.route("/:playlistId/:videoId")
+  .delete(videoController.delete);
 router.route("/save/:id")
   .post(videoController.scrapeAndSave);
 

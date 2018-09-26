@@ -46,6 +46,25 @@ const UserSchema = new Schema({
 //   }
 // });
 
+var autoPopulatePlaylist = function (next) {
+  this.populate('playlists');
+  next();
+};
+
+var autoPopulateAllVideos = function (next) {
+  this.populate('allVideos');
+  next();
+};
+
+
+
+UserSchema.
+pre('findOne', autoPopulateAllVideos, autoPopulatePlaylist).
+pre('find', autoPopulateAllVideos, autoPopulatePlaylist).
+pre('findOneAndUpdate', autoPopulateAllVideos, autoPopulatePlaylist).
+pre('create', autoPopulateAllVideos, autoPopulatePlaylist).
+pre('findById', autoPopulateAllVideos, autoPopulatePlaylist);
+
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
