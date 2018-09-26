@@ -23,6 +23,4 @@ router
   .put(playlistsController.update)
   .delete(playlistsController.remove);
 
-
-
 module.exports = router;

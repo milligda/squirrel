@@ -27,7 +27,7 @@ class Login extends Component {
       })
       .then(res => {
         console.log(res);
-        this.setState({ redirectTo: "/" });
+        this.setState({ redirectTo: "/home" });
       })
       .catch(err => console.log(err));
     }

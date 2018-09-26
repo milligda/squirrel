@@ -14,6 +14,8 @@ module.exports = {
   // find all users
   findAll: function(req, res) {
     db.User.find({})
+      .populate("playlists")
+      .populate("allVideos")
       .then(dbResponse => res.json(dbResponse))
       .catch(err => res.status(422).json(err));
   },
@@ -41,13 +43,29 @@ module.exports = {
     // respond with the statusObj
     res.json(statusObj);
   },
+  cookie: function(req, res) {
+    // check if req.user exists and store the userId
+    if (req.user) {
+      // set cookie
+      const cookieObj = {
+        userId: req.user._id
+      };
+      res.cookie(req.user._id, req.user._id, { maxAge: 2592000000 });  // Expires in one month    
+      res.json(cookieObj);
+  } else {
+    res.json({
+      error: `Sorry, there has been an error.`
+    });
+  }
+},
 
   // user logout process
   logout: function(req, res) {
     console.log("******** Logout called ********")
     if (req.user) {
+      let userId = req.user._id;     
       req.logout();
-      res.send({ message: "logging out" });
+      res.json({ message: "logging out" , userId : userId });
     } else {
       res.send({ message: "no user to log out" });
     }
