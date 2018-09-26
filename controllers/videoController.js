@@ -3,7 +3,7 @@
 // ==============================================================================
 
 const db = require("../models");
-const axios = require("axios");
+const request = require("request");
 const cheerio = require("cheerio");
 
 // ==============================================================================
@@ -52,50 +52,47 @@ const getUrlParsedData = url => {
 // scrape meta data from the url submitted
 const getMetaData = (req, res) => {
 
-  console.log("*****************");
-  console.log("WE ARE HERE");
-
   const url = req.body.url;
   let siteName = "";
   let urlParsedData = getUrlParsedData(url);
 
-  console.log(urlParsedData);
-
-  let videoObj = {};
-  videoObj.playlists = req.body.playlist;
-
   // scrape the meta data needed from the url
-  axios.get(url, (err, response, html) => {
-    var $ = cheerio.load(html);
+  return new Promise(resolve => {
+    request.get(url, (err, response, html) => {
 
-    $('meta[property="og:site_name"]').each(function(i, element) {
-      siteName = $(element).attr("content");
-    });
+      let videoObj = {};
+      videoObj.playlists = req.body.playlist;
 
-    $('meta[property="og:url"]').each(function(i, element) {
-      videoObj.url = $(element).attr("content");
-    });
+      var $ = cheerio.load(html);
 
-    $('meta[property="og:title"]').each(function(i, element) {
-      videoObj.title = $(element).attr("content");
-    });
-
-    $('meta[property="og:image"]').each(function(i, element) {
-      videoObj.imageUrl = $(element).attr("content");
-    });
-
-    if (siteName === "NYTimes.com - Video") {
-      $('meta[name="articleid"]').each(function(i, element) {
-        videoObj.videoId = $(element).attr("content");
-        videoObj.videoPlatform = "nytimes";
+      $('meta[property="og:site_name"]').each(function(i, element) {
+        siteName = $(element).attr("content");
       });
-    } else {
-      videoObj.videoId = urlParsedData.videoId;
-      videoObj.videoPlatform = urlParsedData.videoPlatform;
-    }
 
-    console.log(videoObj);
-    return videoObj;
+      $('meta[property="og:url"]').each(function(i, element) {
+        videoObj.url = $(element).attr("content");
+      });
+
+      $('meta[property="og:title"]').each(function(i, element) {
+        videoObj.title = $(element).attr("content");
+      });
+
+      $('meta[property="og:image"]').each(function(i, element) {
+        videoObj.imageUrl = $(element).attr("content");
+      });
+
+      if (siteName === "NYTimes.com - Video") {
+        $('meta[name="articleid"]').each(function(i, element) {
+          videoObj.videoId = $(element).attr("content");
+          videoObj.videoPlatform = "nytimes";
+        });
+      } else {
+        videoObj.videoId = urlParsedData.videoId;
+        videoObj.videoPlatform = urlParsedData.videoPlatform;
+      }
+
+      resolve(videoObj);
+    });
   });
 };
 
@@ -163,6 +160,8 @@ module.exports = {
   },
 
   scrapeAndSave: function(req, res) {
-    getMetaData(req).then(videoData => res.json(videoData));
+    getMetaData(req).then((response) => {
+      res.json(response);
+    });
   }
 };
