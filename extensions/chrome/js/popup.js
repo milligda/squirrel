@@ -1,8 +1,10 @@
-// var domain = 'http://127.0.0.1:3000';
-var domain = 'https://squirrel-video.herokuapp.com';
+var domain = 'http://127.0.0.1:3000';
+// var domain = 'https://squirrel-video.herokuapp.com';
 
 sq = {};
 var userId = "";
+var playlists = [];
+
 sq.authenticate = function () {
   if (!localStorage.getItem("userId")) {
     var xhr = new XMLHttpRequest();
@@ -13,7 +15,7 @@ sq.authenticate = function () {
         // Typical action to be performed when the document is ready:
         userId = JSON.parse(xhr.responseText).userId;
         localStorage.setItem("userId", userId);
-        sq.urlSend();
+        sq.getPlaylists();
       } else {
         // error result
         document.getElementById("mainText").innerHTML = "<p>Error: " + xhr.responseText + "</p>";
@@ -31,7 +33,7 @@ sq.authenticate = function () {
     document.getElementById("mainText").innerHTML = `logging in`;
   } else {
     userId = localStorage.getItem("userId")
-    sq.urlSend();
+    sq.getPlaylists();
   }
 }
 
@@ -132,7 +134,7 @@ sq.getPlaylists = function () {
   xhr4.onreadystatechange = function () {
     if (xhr4.readyState == 4 && xhr4.status == 200) {
       // Typical action to be performed when the document is ready:
-      var playlists = JSON.stringify(xhr4.responseText);
+      var playlists = JSON.parse(xhr4.responseText);
       document.getElementById("mainText").innerHTML = "<p>Playlists: " + JSON.parse(playlists) + "</p>";
     } else {
       // error result
