@@ -1,0 +1,36 @@
+body {
+    color: #1a8799;
+    background-image: url("../../assets/images/leaves_bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    margin-top: 10%;
+    align-content: center;
+    padding: 15px;
+    height: auto;
+}
+
+h1 {
+    padding-bottom: 20px;
+}
+
+.app-info, .signup {
+    position: relative;
+    top: -300px;
+    float: left;
+    height: 300px;
+    background: #85deff;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px;
+}
+
+.signup {
+    width: 35%;
+}
+
+.app-info {
+    width: 50%;
+}

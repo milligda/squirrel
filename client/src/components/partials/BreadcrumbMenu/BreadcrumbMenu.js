@@ -1,8 +1,9 @@
 import React from "react";
+import { Link, Redirect } from "react-router-dom";
 
 const BreadcrumbMenu = (
     <div>
-        {/* Menu Here */}
+        <Link to="/"> Home </ Link> {/* {playlistName} */}
     </div>
 );
 

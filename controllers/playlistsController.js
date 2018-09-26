@@ -10,11 +10,11 @@ const db = require("../models");
 
 module.exports = {
   //Not sure we need a findAll method for playlists, but leaving here just in case
-  // findAll: function(req, res) {
-  //   db.Playlist.find({})
-  //     .then(dbResponse => res.json(dbResponse))
-  //     .catch(err => res.status(422).json(err));
-  //},
+  findAll: function(req, res) {
+    db.Playlist.find({})
+      .then(dbResponse => res.json(dbResponse))
+      .catch(err => res.status(422).json(err));
+  },
 
   findByUser: function (req, res) {
     db.Playlist

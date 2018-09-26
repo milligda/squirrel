@@ -1,0 +1,7 @@
+.form-container{
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    padding: 15px;
+    z-index: 12;
+}
