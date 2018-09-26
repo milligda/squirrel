@@ -28,5 +28,7 @@ router.route("/:id")
 
 router.route("/:playlistId/:videoId")
   .delete(videoController.delete);
+router.route("/save/:id")
+  .post(videoController.scrapeAndSave);
 
 module.exports = router;
