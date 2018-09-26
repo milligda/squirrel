@@ -26,4 +26,7 @@ router.route("/:id")
   .get(videoController.findById)
   .delete(videoController.remove);
 
+router.route("/save/:id")
+  .post(videoController.scrapeAndSave);
+
 module.exports = router;

@@ -21,8 +21,13 @@ export default {
     deletePlaylist: function(userId) {
         return axios.delete("/api/playlists/" + userId);
     },
+    // determines if the user is logged in or not
     getUserStatus: function() {
         return axios.get(`/api/users/status`);
+    },
+    // gets the user's data and playlists
+    getUserData: function(userId) {
+        return axios.get(`/api/users/data/` + userId);
     },
     setCookie: function() {
       return axios.get(`/api/users/cookie`)
@@ -32,5 +37,8 @@ export default {
     },
     getVideo: function(videoId) {
         return axios.get("/api/videos/" + videoId);
+    },
+    saveVideo: function(userId, videoObj) {
+        return axios.post(`/api/videos/save/${userId}`, videoObj);
     }
 };
