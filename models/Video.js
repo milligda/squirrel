@@ -27,7 +27,7 @@ var VideoSchema = new Schema({
 
 
 
-Video.pre('remove', function(next) {
+VideoSchema.pre('remove', function(next) {
   // Remove all the collection docs that reference the removed video.
   this.model('Playlist').remove({ video: this._id }, next);
 });

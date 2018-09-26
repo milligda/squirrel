@@ -34,7 +34,7 @@ export default {
         return axios.get("/api/videos/" + videoId);
     },
     removeVideo: function(videoId) {
-        return axios.get ("/api/videos/"+ videoID);
+        return axios.get ("/api/videos/"+ videoId);
     }
 
 
