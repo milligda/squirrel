@@ -49,3 +49,27 @@ h2 {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 24px;
 }
+
+.header-present {
+    padding-top: 60px;
+}
+
+.squirrel-btn {
+    border-radius: 10px;
+    height: 40px;
+    padding: 5px 20px;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.squirrel-blue-btn {
+    color: #ffffff;
+    background-color: #21accc;
+}
+
+.squirrel-btn:hover {
+    transform: scale(1.1);
+}
