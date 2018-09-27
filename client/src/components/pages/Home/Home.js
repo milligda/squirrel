@@ -7,7 +7,6 @@ import "./home.css";
 import RecentlySaved from "../../partials/RecentlySaved";
 import Header from "../../partials/Header";
 import NewCollection from "../NewCollection/";
-import PlaylistTile from "../../partials/PlaylistTile";
 
 
 
@@ -90,27 +89,27 @@ class Home extends Component {
           </Link>
 
           <div className="recents">
+            <h2>Recents</h2>
             {/* <RecentlySaved />  would go here*/}
           </div>   
 
           <div className="playlists-menu">
+            <h2>Playlists</h2>
             <CollectionList>
-            {this.state.playlists.map(playlist => {
-                return (
-                <CollectionListItem
-                    key={playlist.userId}
-                    id={playlist.userId}
-                    description={playlist.description}
-                    title={playlist.title}
-                    videos={playlist.videos}
-                />
-                );
-            })}
-            < CollectionListItem new="Create"/>
-            {/* <Link to="/new-playlist">
-              < PlaylistTile title="Create" />
-            </ Link> */}
-
+              {this.state.playlists.map(playlist => {
+                  return (
+                  
+                  <CollectionListItem
+                      key={playlist.userId}
+                      id={playlist._id}
+                      description={playlist.description}
+                      title={playlist.title}
+                      videos={playlist.videos}
+                  />
+                
+                  );
+              })}
+              < CollectionListItem title="Create New" id="new"/>
             </CollectionList>
           </div>
         </div>

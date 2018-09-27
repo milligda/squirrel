@@ -12,7 +12,7 @@ const CollectionList = ( props ) => {
                 <ul className="list-group">
                 {props.children}
                 </ul>
-            
+                
                 {/* <ShareBtn>
                 <EditMenu>
                 <ReorderMenu> */}

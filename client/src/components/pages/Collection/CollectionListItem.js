@@ -1,15 +1,18 @@
 import React from "react";
 // import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+import { Link } from "react-router-dom";
 import "./collection.css";
 
 
 const CollectionListItem = (props) => (
     <div className="playlist-card">
+        < Link to={"/playlists/"+ props.id}>
         <li className="playlist-item">
             <p>{props.title}</p>
-            <p>{props.new}</p>
-            <button type="button">Edit</button>
+            <p>{props.videos}</p>
+            {/* <button type="button">Edit</button> */}
         </li>
+        </ Link>
     </div>
 );
 
