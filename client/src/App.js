@@ -15,6 +15,7 @@ import RecentlySaved from "./components/partials/RecentlySaved";
 import Video from "./components/pages/Video";
 import PlaylistPlayer from "./components/pages/ListPlayer";
 import AddVideo from "./components/pages/AddVideo";
+import EditPlaylist from "./components/pages/EditPlaylist/EditPlaylist.js"
 import "./App.css";
 
 
@@ -82,6 +83,8 @@ class App extends Component {
             <Route exact path="/restricted" component={ Restricted } />
             <Route exact path="/collections/" component={CollectionList} /> } />
             <Route exact path="/404" component= {PageNotFound} />
+
+            <Route exact path="/edit" component={ EditPlaylist } />
 
             <CSSTransition in={true} appear={true} timeout={500} classNames="fade">
               <Route exact path="/playlist/play/:id" component={ PlaylistPlayer } />  

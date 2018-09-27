@@ -7,3 +7,8 @@ body {
 .home-container {
     margin-top: 10%;
 }
+
+.home-content-container{
+    margin-left: 25%;
+    margin-right: 25%;
+}
