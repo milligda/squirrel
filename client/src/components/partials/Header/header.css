@@ -6,14 +6,8 @@
     z-index: 10;
     padding-left: 10px;
     background-color: #ffe2c8;
-    margin-bottom: auto;
-    margin: auto;
+    margin-bottom: 5%;
 }
-
-/* .sticky {
-    position: fixed;
-    top: 0;
-} */
 
 .home-icon {
     width: 30px;
