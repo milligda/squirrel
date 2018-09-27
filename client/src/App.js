@@ -18,6 +18,7 @@ import AddVideo from "./components/pages/AddVideo";
 import EditPlaylist from "./components/pages/EditPlaylist/EditPlaylist.js"
 import "./App.css";
 import {SortableContainer, SortableElement} from 'react-sortable-hoc';
+import NewCollection from "./components/pages/NewCollection/NewCollection.js";
 
 
 
@@ -87,6 +88,8 @@ class App extends Component {
             <Route exact path="/404" component= {PageNotFound} />
 
             <Route exact path="/edit" component={ EditPlaylist } />
+
+            <Route exact path="/new-playlist" component={ NewCollection } />
 
             <CSSTransition in={true} appear={true} timeout={500} classNames="fade">
               <Route exact path="/playlist/play/:id" component={ PlaylistPlayer } />  

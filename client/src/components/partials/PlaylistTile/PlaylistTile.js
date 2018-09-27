@@ -4,7 +4,7 @@ import "./playlistTile.css";
 const PlaylistTile = (props) => (
 <div className="tile">
     <div className="playlist-id">
-      <p>Collection {props.title}</p>
+      <p>{props.title}</p>
     </div>
 </div>
 )

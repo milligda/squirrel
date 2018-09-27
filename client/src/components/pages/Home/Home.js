@@ -6,7 +6,8 @@ import CollectionListItem from "../Collection/CollectionListItem";
 import "./home.css";
 import RecentlySaved from "../../partials/RecentlySaved";
 import Header from "../../partials/Header";
-import PlaylistTile from "../../partials/PlaylistTile"
+import NewCollection from "../NewCollection/";
+import PlaylistTile from "../../partials/PlaylistTile";
 
 
 
@@ -105,6 +106,11 @@ class Home extends Component {
                 />
                 );
             })}
+            < CollectionListItem new="Create"/>
+            {/* <Link to="/new-playlist">
+              < PlaylistTile title="Create" />
+            </ Link> */}
+
             </CollectionList>
           </div>
         </div>

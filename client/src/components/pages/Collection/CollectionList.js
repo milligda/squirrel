@@ -5,16 +5,21 @@ import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
 const CollectionList = ( props ) => {
     
     return (
-        <div>
+        <div className="">
             {/* <BreadcrumbMenu /> */}
-            <ul className="list-group">
-            {props.children}
-            </ul>
-        
-            {/* <ShareBtn>
-            <EditMenu>
-            <ReorderMenu> */}
+
+            <div className="">
+                <ul className="list-group">
+                {props.children}
+                </ul>
+            
+                {/* <ShareBtn>
+                <EditMenu>
+                <ReorderMenu> */}
+            </div>
+
         </div>
+        
         
     );
 };
