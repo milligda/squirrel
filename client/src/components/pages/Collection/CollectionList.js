@@ -1,12 +1,12 @@
 import React from "react";
 import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
+// import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
 const CollectionList = ( props ) => {
     
     return (
         <div>
             {/* <BreadcrumbMenu /> */}
-            <h2>Playlists</h2>
             <ul className="list-group">
             {props.children}
             </ul>
@@ -22,8 +22,6 @@ const CollectionList = ( props ) => {
 export default CollectionList;
 
 // Reordering code --implementation to come
-
-// import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
 // const CollectionListItem = SortableElement(({value}) =>
 //   <li>{value}</li>
@@ -49,9 +47,11 @@ export default CollectionList;
 //     });
 //   };
 //   render() {
-//     return <CollectionList items={this.state.items} onSortEnd={this.onSortEnd} />;
+//     return (
+//     <CollectionList items={this.state.items} onSortEnd={this.onSortEnd} />)
+//     ;
 //   }
 // }
 
-// export default {CollectionList, CollectionListItem};
+// export default CollectionList;
 
