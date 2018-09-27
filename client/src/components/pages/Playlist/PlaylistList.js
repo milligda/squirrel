@@ -2,7 +2,7 @@ import React from "react";
 import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
 // import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
-const CollectionList = ( props ) => {
+const PlaylistList = ( props ) => {
     
     return (
         <div className="">
@@ -24,7 +24,7 @@ const CollectionList = ( props ) => {
     );
 };
 
-export default CollectionList;
+export default PlaylistList;
 
 // Reordering code --implementation to come
 

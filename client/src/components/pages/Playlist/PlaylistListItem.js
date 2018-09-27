@@ -1,10 +1,10 @@
 import React from "react";
 // import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import { Link } from "react-router-dom";
-import "./collection.css";
+import "./playlists.css";
 
 
-const CollectionListItem = (props) => (
+const PlaylistListItem = (props) => (
     <div className="playlist-card">
         < Link to={"/playlists/"+ props.id}>
         <li className="playlist-item">
@@ -16,4 +16,4 @@ const CollectionListItem = (props) => (
     </div>
 );
 
-export default CollectionListItem;
+export default PlaylistListItem;

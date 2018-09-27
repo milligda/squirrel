@@ -6,7 +6,7 @@ import Header from "../../partials/Header";
 import RecentlySaved from "../../partials/RecentlySaved";
 
 
-const NewCollection = (
+const NewPlaylist = (
     <div className="new-playlist">
         < Header />
         <div className="new-playlist-container">
@@ -19,4 +19,4 @@ const NewCollection = (
     
 );
 
-export default NewCollection;
+export default NewPlaylist;

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import API from "../../../utils/API";
-import CollectionList from "../Collection/CollectionList";
-import CollectionListItem from "../Collection/CollectionListItem";
+import PlaylistList from "../Playlist/PlaylistList";
+import PlaylistListItem from "../Playlist/PlaylistListItem";
 import "./home.css";
 import RecentlySaved from "../../partials/RecentlySaved";
 import Header from "../../partials/Header";
-import NewCollection from "../NewCollection/";
+import NewPlaylist from "../NewPlaylist/";
 
 
 
@@ -95,11 +95,11 @@ class Home extends Component {
 
           <div className="playlists-menu">
             <h2>Playlists</h2>
-            <CollectionList>
+            <PlaylistList>
               {this.state.playlists.map(playlist => {
                   return (
                   
-                  <CollectionListItem
+                  <PlaylistListItem
                       key={playlist.userId}
                       id={playlist._id}
                       description={playlist.description}
@@ -109,8 +109,8 @@ class Home extends Component {
                 
                   );
               })}
-              < CollectionListItem title="Create New" id="new"/>
-            </CollectionList>
+              < PlaylistListItem title="Create New" id="new"/>
+            </PlaylistList>
           </div>
         </div>
         
