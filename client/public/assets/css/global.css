@@ -54,6 +54,12 @@ h2 {
     padding-top: 60px;
 }
 
+.page-container {
+    padding: 70px 20px 0px 20px;
+    max-width: 1170px;
+    margin: 0px auto 50px auto;
+}
+
 .squirrel-btn {
     border-radius: 10px;
     height: 40px;

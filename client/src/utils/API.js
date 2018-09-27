@@ -17,6 +17,10 @@ export default {
     getPlaylist: function(userId) {
         return axios.get("/api/playlists/" + userId);
     },
+    // get playlist data based on playlist ID
+    getPlaylistData: function(playlistId) {
+        return axios.get("/api/playlists/data/" + playlistId);
+    },
     // deletes the playlist based on id
     deletePlaylist: function(userId) {
         return axios.delete("/api/playlists/" + userId);
@@ -30,7 +34,7 @@ export default {
         return axios.get(`/api/users/data/` + userId);
     },
     setCookie: function() {
-      return axios.get(`/api/users/cookie`)
+      return axios.get(`/api/users/cookie`);
     },
     logout: function() {
         return axios.get(`/api/users/logout`);
@@ -38,8 +42,13 @@ export default {
     getVideo: function(videoId) {
         return axios.get("/api/videos/" + videoId);
     },
-    removeVideo: function(videoId) {
-        return axios.get ("/api/videos/"+ videoId);
+    // deletes the video from all playlists 
+    deleteVideo: function(videoId) {
+        return axios.put(`/api/videos/delete/${videoId}`);
+    },
+    // removes the video from one playlist
+    removeVideo: function(videoId, playlistId) {
+        return axios.put(`/api/videos/remove/${videoId}/${playlistId}`);
     },
     saveVideo: function(userId, videoObj) {
         return axios.post(`/api/videos/save/${userId}`, videoObj);

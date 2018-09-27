@@ -15,6 +15,7 @@ import RecentlySaved from "./components/partials/RecentlySaved";
 import Video from "./components/pages/Video";
 import PlaylistPlayer from "./components/pages/ListPlayer";
 import AddVideo from "./components/pages/AddVideo";
+import Playlist from "./components/pages/Playlist";
 import "./App.css";
 
 
@@ -78,6 +79,8 @@ class App extends Component {
             <Route exact path="/video/add" component={ AddVideo } />
 
             <Route exact path="/video/:id" component={ Video } />
+
+            <Route exact path="/playlist/:id" component={ Playlist } />
 
             <Route exact path="/restricted" component={ Restricted } />
             <Route exact path="/collections/" component={CollectionList} /> } />
