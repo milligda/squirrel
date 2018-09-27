@@ -1,16 +1,16 @@
 import React from "react";
+// import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import "./collection.css";
 
+
 const CollectionListItem = (props) => (
-    <div>
-        <li className="list-group-item">
-            list
+    <div className="playlist-card">
+        <li className="playlist-item">
             <p>{props.title}</p>
-            {/* <p>{props.description}</p>
-            <p>{props.videos}</p> */}
+            
+            <button type="button">Edit</button>
         </li>
     </div>
-    
 );
 
 export default CollectionListItem;
