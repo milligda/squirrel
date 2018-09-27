@@ -19,7 +19,7 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.getUser();
-    // this.getPlaylists();
+    this.getPlaylists();
     this.setCookie();
     console.log("console did mount");
   };
@@ -36,16 +36,19 @@ class Home extends Component {
       .catch(err => console.log(err));
   };
 
-  // getPlaylists = () => {
-  //   API.getPlaylists()
-  //   .then(res => {
-  //     console.log("get playlists: " + res.data);
-  //     this.setState({
-  //       playlists: res.data
-  //     });
-  //   })
-  //   .catch(err => console.log(err));
-  // };
+  getPlaylists = () => {
+    API.getPlaylists()
+    .then(res => {
+      console.log("get playlists: ", res.data);
+      this.setState({
+        playlists: res.data
+      });
+      console.log(this.state.playlists)
+    })
+    .catch(err => console.log(err));
+  };
+
+
 
   setCookie = () => {
     API.setCookie()
@@ -73,41 +76,39 @@ class Home extends Component {
     return (
       <div className="home-container">
         < Header />
-        <h1>Hello user!</h1>
-        <h2>Here's everything you've squirreled away so far.</h2>
+        <div className="home-content-container">
+          <h1>Hello user!</h1>
+          <h2>Here's everything you've squirreled away so far.</h2>
 
-        
+          <Link to="/video/1">
+            <p className="sql-btn">Video Player</p>
+          </Link>
 
-        <Link to="/video/1">
-          <p className="sql-btn">Video Player</p>
-        </Link>
+          <Link to="/playlist/play/1">
+            <p className="sql-btn">Playlist Player</p>
+          </Link>
 
-        <Link to="/playlist/play/1">
-          <p className="sql-btn">Playlist Player</p>
-        </Link>
+          <div className="recents">
+            {/* <RecentlySaved />  would go here*/}
+          </div>   
 
-        {/* <RecentlySaved />  would go here*/}
-
-        {this.state.playlists}
-
-        <PlaylistTile title="Collection"/>
-
-
-        <div className="playlists-menu">
-          <CollectionList>
-          {this.state.playlists.map(playlist => {
-              return (
-              <CollectionListItem
-                  key={playlist.userId}
-                  // id={playlist.userId}
-                  description={playlist.description}
-                  title={playlist.title}
-                  videos={playlist.videos}
-              />
-              );
-          })}
-          </CollectionList>
+          <div className="playlists-menu">
+            <CollectionList>
+            {this.state.playlists.map(playlist => {
+                return (
+                <CollectionListItem
+                    key={playlist.userId}
+                    id={playlist.userId}
+                    description={playlist.description}
+                    title={playlist.title}
+                    videos={playlist.videos}
+                />
+                );
+            })}
+            </CollectionList>
           </div>
+        </div>
+        
       </div>
     );
   }
