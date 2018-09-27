@@ -19,7 +19,7 @@ module.exports = {
   findByUser: function (req, res) {
     db.Playlist
       .find({
-        "userId": req.params.id
+        userId: req.params.userId
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
