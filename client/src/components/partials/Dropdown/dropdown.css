@@ -6,7 +6,6 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 460px;
 }
 .dd-wrapper {
   -webkit-user-select: none;
@@ -27,8 +26,8 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   line-height: 38px;
-  border: 1px solid #dfdfdf;
-  border-radius: 3px;
+  border: 1px solid #21accc;
+  border-radius: 5px;
   cursor: default;
   position: relative;
   background-color: #fff;
@@ -74,9 +73,9 @@
 }
 .dd-list-item.selected {
   color: #fff;
-  background-color: #ffcc01;
+  background-color: #85deff;
 }
 .dd-list-item:hover {
   color: #fff;
-  background-color: #ffcc01;
+  background-color: #85deff;
 }

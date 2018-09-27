@@ -1,18 +1,25 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import API from "../../../utils/API";
-import { CollectionList, CollectionListItem } from "../Collection";
+import CollectionList from "../Collection/CollectionList";
+import CollectionListItem from "../Collection/CollectionListItem";
+import "./home.css";
+import RecentlySaved from "../../partials/RecentlySaved";
+import Header from "../../partials/Header";
+import PlaylistTile from "../../partials/PlaylistTile"
 
 
 
 class Home extends Component {
   state = {
     loggedIn: true,
-    userId: null
+    userId: null,
+    playlists: []
   };
 
   componentDidMount = () => {
     this.getUser();
+    // this.getPlaylists();
     this.setCookie();
     console.log("console did mount");
   };
@@ -20,7 +27,7 @@ class Home extends Component {
   getUser = () => {
     API.getUserStatus()
       .then(res => {
-        console.log(res);
+        console.log("getUser: ", res);
         this.setState({
           loggedIn: res.data.loggedIn,
           userId: res.data.userId
@@ -29,10 +36,21 @@ class Home extends Component {
       .catch(err => console.log(err));
   };
 
+  // getPlaylists = () => {
+  //   API.getPlaylists()
+  //   .then(res => {
+  //     console.log("get playlists: " + res.data);
+  //     this.setState({
+  //       playlists: res.data
+  //     });
+  //   })
+  //   .catch(err => console.log(err));
+  // };
+
   setCookie = () => {
     API.setCookie()
       .then(res => {
-        console.log(res.data.userId);
+        console.log("userID: ", res.data.userId);
   
         // document.cookie = ({'userId': res.userId,  maxAge: 2592000000});  // Expires in one month    
         // res.json();
@@ -53,10 +71,12 @@ class Home extends Component {
     }
 
     return (
-      <div>
+      <div className="home-container">
+        < Header />
+        <h1>Hello user!</h1>
+        <h2>Here's everything you've squirreled away so far.</h2>
+
         
-        <h1>Welcome to your home page!</h1>
-        <h2>Hello user {this.state.userId}</h2>
 
         <Link to="/video/1">
           <p className="sql-btn">Video Player</p>
@@ -66,20 +86,28 @@ class Home extends Component {
           <p className="sql-btn">Playlist Player</p>
         </Link>
 
-        {/* <div>
+        {/* <RecentlySaved />  would go here*/}
+
+        {this.state.playlists}
+
+        <PlaylistTile title="Collection"/>
+
+
+        <div className="playlists-menu">
           <CollectionList>
-          {this.state.collections.map(collection => {
+          {this.state.playlists.map(playlist => {
               return (
               <CollectionListItem
-                  key={collection.userId}
-                  description={collection.description}
-                  title={collection.title}
-                  videos={collection.videos}
+                  key={playlist.userId}
+                  // id={playlist.userId}
+                  description={playlist.description}
+                  title={playlist.title}
+                  videos={playlist.videos}
               />
               );
           })}
           </CollectionList>
-          </div> */}
+          </div>
       </div>
     );
   }

@@ -1,0 +1,42 @@
+.add-video-container {
+    text-align: center;
+}
+
+.add-video-title {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.centered-container {
+    border: 2px solid #cccccc;
+    background-color: #ffffff;
+    border-radius: 25px;
+    width: 500px;
+    max-width: 90vw;
+    margin: 0px auto;
+    padding: 20px 10px;
+}
+
+.centered-container > .wrapper > .dd-wrapper {
+    margin: 10px auto;
+}
+
+.centered-container > .wrapper > .dd-wrapper > .dd-header {
+    height: 40px;
+}
+
+.centered-container > .form-group {
+    margin: 10px auto 20px auto;
+}
+
+.centered-container > .form-group > .form-control {
+    font-size: 14px;
+    color: #1a8799;
+    border-radius: 5px;
+    border: 1px solid #21accc;
+    width: 80%;
+    margin: 0px auto;
+    height: 40px;
+}
+
+
