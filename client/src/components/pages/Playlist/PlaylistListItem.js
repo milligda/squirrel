@@ -1,19 +1,19 @@
 import React from "react";
 // import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./playlists.css";
 
 
-const PlaylistListItem = (props) => (
-    <div className="playlist-card">
-        < Link to={"/playlists/"+ props.id}>
+const PlaylistListItem = withRouter((props) => (
+    <div className="playlist-card" onClick={() => props.history.push(`/edit/${props.id}`)}>
+        
         <li className="playlist-item">
             <p>{props.title}</p>
             <p>{props.videos}</p>
             {/* <button type="button">Edit</button> */}
         </li>
-        </ Link>
+        
     </div>
-);
+));
 
 export default PlaylistListItem;

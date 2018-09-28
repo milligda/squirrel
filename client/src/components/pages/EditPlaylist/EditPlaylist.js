@@ -24,8 +24,16 @@ class EditPlaylist extends Component {
     state = {
         videos: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
       };
-      componentDidMount = () => {
-          
+
+      componentDidMount() {
+          API.getPlaylist(this.props.match.params.id)
+        .then(res => {
+          console.log("get videos: ", res.data);
+          this.setState({
+            videos: res.data.videos
+          });
+        })
+        .catch(err => console.log(err));
       };
 
       onSortEnd = ({oldIndex, newIndex}) => {

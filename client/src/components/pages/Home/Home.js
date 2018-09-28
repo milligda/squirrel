@@ -98,7 +98,7 @@ class Home extends Component {
             <PlaylistList>
               {this.state.playlists.map(playlist => {
                   return (
-                  
+                // < Link to={"/playlists/"+ playlist._id}>
                   <PlaylistListItem
                       key={playlist.userId}
                       id={playlist._id}
@@ -106,7 +106,7 @@ class Home extends Component {
                       title={playlist.title}
                       videos={playlist.videos}
                   />
-                
+                // </ Link>
                   );
               })}
               < PlaylistListItem title="Create New" id="new"/>

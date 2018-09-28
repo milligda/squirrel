@@ -88,10 +88,8 @@ class App extends Component {
             <Route exact path="/playlists" component={PlaylistList} /> } />
             <Route exact path="/404" component= {PageNotFound} />
 
-            <Route exact path="/edit" component={ EditPlaylist } />
-
-            {/* <Route exact path={"/playlists/" + this.state.collections.} component={} /> */}
-
+            <Route exact path="/edit/:id" component={ EditPlaylist } />
+            
             <Route exact path="/playlists/new" component={ NewPlaylist } />
 
             <CSSTransition in={true} appear={true} timeout={500} classNames="fade">
