@@ -14,3 +14,21 @@
     background-color: #85deff;
     transition: .75s;
 }
+
+.delete-icon {
+    position: absolute;
+    background-color: #85deff;
+    z-index: 5;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0px 0px 8px #cccccc;
+    -webkit-box-shadow: 0px 0px 8px #cccccc;
+    transition: 0.3s;
+}
+
+.delete-icon:hover {
+    background-color: #FF3E5E;
+}

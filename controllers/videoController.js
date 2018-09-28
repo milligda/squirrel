@@ -164,33 +164,35 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  //removing a video finds all instances of the video in all collections and removes it from any collection where it exists.  it also removes the video from the user's "all videos" list.
-  remove: function (req, res) {
-    db.User.update({}, {
-        $pull: {
-          allVideos: req.params.id
-        }
-      }, {
-        multi: true
-      }).then(
-        db.Playlist.update({}, {
-          $pull: {
-            videos: req.params.id
-          }
-        }, {
-          multi: true
-        })).then(
-        db.Video
-        .findByIdAndRemove({
-          _id: req.params.id
-        }))
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  //deleting a video finds all instances of the video in all collections and removes it from any collection where it exists.  it also deletes the video from the user's "all videos" list.  it also deletes the video document
+  deleteVideo: function (req, res) {
+    db.User.update({}, { $pull: { allVideos: req.params.id }}, { multi: true })
+      .then(function (dbUser) {
+        db.Playlist.update({}, { $pull: { videos: req.params.id }}, { multi: true })
+          .then(function(dbPlaylist) {
+            db.Video.findByIdAndRemove(req.params.id)
+              .then(function(dbVideo) {
+                res.json(dbVideo);
+              })
+              .catch(function(err) {
+                console.log("Error removing the Video document");
+                res.json(err);
+              })
+          })
+          .catch(function(err) {
+            console.log("Error removing the video from the playlists");
+            res.json(err);
+          })
+      })
+      .catch(function(err) {
+        console.log("Error removing the video from the User's allVideos array");
+        res.json(err);
+      });
+  },  
 
-  //deleting a video will only delete it from the collection you're currently in.  this functionality will only be available from inside a collecction
-  delete: function (req, res) {
-    db.Playlist.update({_id: req.params.playlistId}, {$pull: {videos: req.body.videoId}}, )
+  //removing a video will only delete it from the collection you're currently in.  this functionality will only be available from inside a collection
+  removeVideo: function (req, res) {
+    db.Playlist.update({_id: req.params.playlistId}, {$pull: {videos: req.params.videoId}}, )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -204,9 +206,6 @@ module.exports = {
   //     }))
   //     .catch(err => res.status(422).json(err));
   // }
-
-  
-
 
   scrapeAndSave: function (req, res) {
     // get the data required to create the Video document

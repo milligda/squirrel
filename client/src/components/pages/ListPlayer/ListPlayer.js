@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../../../utils/API";
 import PlayerBackground from "../../partials/PlayerBackground";
@@ -14,60 +14,47 @@ class ListPlayer extends Component {
         nextVideo: {},
         videoPlaying: 0,
         playingLastVideo: false,
-        results: [
-            {
-                url: "https://vimeo.com/163505789",
-                videoId: "163505789",
-                videoPlatform: "vimeo",
-                title: "Meager Into Might"
-            },
-            {
-                url: "https://www.youtube.com/watch?v=4yikpWtIFU8",
-                videoId: "4yikpWtIFU8",
-                videoPlatform: "youtube",
-                title: "10 Funniest Squirrel Videos"
-            },
-            {
-                url: "https://www.nytimes.com/video/us/politics/100000006123538/trump-kavanaugh-accusations.html?playlistId=100000003890188&region=video-grid&version=video-grid-thumbnail&contentCollection=Times+Video&contentPlacement=0&module=recent-videos&action=click&pgType=Multimedia&eventName=video-grid-click",
-                videoId: "100000006123538",
-                videoPlatform: "nytimes",
-                title: "Trump Calls Kavanaugh Accusations Totally Political"
-            },
-            {
-                url: "https://www.youtube.com/watch?v=4yikpWtIFU8",
-                videoId: "4yikpWtIFU8",
-                videoPlatform: "youtube",
-                title: "10 Funniest Squirrel Videos"
-            }
-        ]
+        playlistId: "",
+        videos: []
     }
 
-    componentDidMount() {
-        this.setVideo(0);
+    componentDidMount = () => {
+        this.getPlaylistData();
+    }
 
-        // API.getPlaylist(this.props.match.params.id)
-        // .then(res => this.setState({ results: res.data }))
-        // .catch(err => console.log(err));
+    getPlaylistData = () => {
+        API.getPlaylistData(this.props.match.params.id)
+        .then(res => {
+            console.log("Playlist Data: ", res.data);
+            this.setState({
+                // ownerId: res.data.userId[0],
+                // isPrivate: res.data.private,
+                // title: res.data.title,
+                videos: res.data.videos
+            });
+            this.setVideo(0);
+        })
+        .catch(err => console.log(err));
     }
 
     setVideo = (videoNumber) => {
-        // set the variables
+        // set the lastVideo to false
         let lastVideo = false;
-        let nextVideo = {};
+        let nextVideo;
 
-        // if the current video number is the last item in the results array, set lastVideo to true
-        if (videoNumber + 1 > this.state.results.length - 1) { 
+        // if the current video number is the last item in the videos array, set lastVideo to true
+        if (videoNumber + 1 > this.state.videos.length - 1) { 
             lastVideo = true;
         }
 
         // if this is not the last video, store the next Video
         if (!lastVideo) {
-            nextVideo = this.state.results[videoNumber + 1];
+            nextVideo = this.state.videos[videoNumber + 1];
         }
 
         // update the state
         this.setState({
-            currentVideo: this.state.results[videoNumber],
+            currentVideo: this.state.videos[videoNumber],
             playingLastVideo: lastVideo,
             nextVideo: nextVideo
         });

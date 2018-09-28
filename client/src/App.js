@@ -15,6 +15,7 @@ import RecentlySaved from "./components/partials/RecentlySaved";
 import Video from "./components/pages/Video";
 import PlaylistPlayer from "./components/pages/ListPlayer";
 import AddVideo from "./components/pages/AddVideo";
+import Playlist from "./components/pages/Playlist";
 import EditPlaylist from "./components/pages/EditPlaylist/EditPlaylist.js"
 import "./App.css";
 import {SortableContainer, SortableElement} from 'react-sortable-hoc';
@@ -84,6 +85,8 @@ class App extends Component {
 
             <Route exact path="/video/:id" component={ Video } />
 
+            <Route exact path="/playlist/:id" component={ Playlist } />
+
             <Route exact path="/restricted" component={ Restricted } />
             <Route exact path="/playlists" component={PlaylistList} /> } />
             <Route exact path="/404" component= {PageNotFound} />
@@ -92,9 +95,9 @@ class App extends Component {
             
             <Route exact path="/playlists/new" component={ NewPlaylist } />
 
-            <CSSTransition in={true} appear={true} timeout={500} classNames="fade">
+            {/* <CSSTransition in={true} appear={true} timeout={500} classNames="fade"> */}
               <Route exact path="/playlist/play/:id" component={ PlaylistPlayer } />  
-            </CSSTransition>
+            {/* </CSSTransition> */}
             
 
           </Switch>
