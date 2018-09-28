@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import { Link } from "react-router-dom";
 import API from "../../../utils/API";
 import PlayerBackground from "../../partials/PlayerBackground";
 import VideoPlayer from "../../partials/VideoPlayer";
@@ -28,15 +27,17 @@ class Video extends Component {
         .catch(err => console.log(err));
     }
 
+    backButtonClick = () => {
+        this.props.history.goBack();
+    }
+
     render() {
         return (
             <div id="video-page-container">
                 <PlayerBackground>
                     <VideoPlayer video={this.state.video} />
                     <ControlsContainer>
-                        <Link to="/home">
-                            <img className="controls-button" src={ReturnButton} />
-                        </Link>
+                        <img className="controls-button" src={ReturnButton} onClick={this.backButtonClick} />
                     </ControlsContainer>
                 </PlayerBackground>
                 

@@ -18,14 +18,20 @@ const VideoTile = props => {
     <div className="tile-container">
       <div className="video-tile">
 
-        <Link to={videoUrl}>
-          <div className="tile-public">
-            <img className="video-tile-image" src={props.imageUrl} />
-            <p className="video-tile-title">{truncatedTitle}</p>
-          </div>
-        </Link>
+        <div className="video-tile-content">
+          
+            <div className="tile-public">
+              <img className="video-tile-image" src={props.imageUrl} />
+            </div>
 
-        {removeButton}
+          {removeButton}
+        
+        </div>
+        <Link to={videoUrl}>
+          <div className="video-tile-overlay">
+            <p className="video-tile-title">{truncatedTitle}</p>
+          </div>  
+        </Link>
       </div>
     </div>
   );
