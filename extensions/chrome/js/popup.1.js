@@ -6,7 +6,7 @@ var url = "";
 var selPlaylists = [];
 var videoObj = {};
 var reqObject = {};
-
+ 
 
 sq.authPromise = new Promise(
   function (resolve, reject) {
