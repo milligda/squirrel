@@ -1,6 +1,11 @@
 var domain = 'http://127.0.0.1:3000';
 var d = document;
-var reqObj = {};
+var reqObj = {
+  url: "",
+  username: "",
+  password: "",
+  playlist: []
+};
 var log = console.log;
 
 function createElem(elemName) {
@@ -26,12 +31,14 @@ sq = {
   checkUser: function () {
     var promise = new Promise(function (resolve, reject) {
       if (!localStorage.getItem("userId")) {
+        getElem("playlistSubmit").style.display = "none";
         getElem("login").style.display = "block";
         getElem("btn-login").onclick = function () {
+          getElem("login").style.display = "none";
+
           event.preventDefault();
           reqObj.username = getElemName("username")[0].value;
           reqObj.password = getElemName("password")[0].value;
-          getElem("login").style.display === "none";
           log(reqObj);
           resolve(reqObj);
         };
@@ -53,14 +60,12 @@ sq = {
             userId = JSON.parse(xhr.responseText).userId;
             localStorage.setItem("userId", userId);
             reqObj.userId = userId;
-
+            window.close();
             resolve(reqObj);
           } else {
-            reject(xhr.responseText);
+            // reject(xhr.responseText);
           }
         };
-        var username = "neue@new.com";
-        var password = "testPassword";
         authObj = {
           "username": reqObj.username,
           "password": reqObj.password
@@ -74,19 +79,21 @@ sq = {
     return promise;
   },
   urlGrab: function (reqObj) {
+    log(reqObj);
     var promise = new Promise(function (resolve, reject) {
       chrome.tabs.query({
         "active": true,
         "lastFocusedWindow": true
       }, function (tabs) {
         reqObj.url = tabs[0].url;
+        reqObj.password = "";
         resolve(reqObj);
       });
     });
     return promise;
   },
   getPlaylists: function (reqObj) {
-    getElem("login").style.display = "none";
+    log("getting playlists");
     var promise = new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
       xhr.open("GET", `${domain}/api/users/data/${reqObj.userId}`, true);
@@ -143,6 +150,7 @@ sq = {
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
           resolve(xhr.responseText);
+          window.close();
         } else {
           log(xhr.responseText);
         }
@@ -167,7 +175,6 @@ sq = {
         });
   }
 };
-
 window.onload = function () {
   sq.uirrel();
 };
