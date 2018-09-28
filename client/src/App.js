@@ -21,6 +21,7 @@ import "./App.css";
 import {SortableContainer, SortableElement} from 'react-sortable-hoc';
 import NewPlaylist from "./components/pages/NewPlaylist/";
 import PlaylistListItem from "./components/pages/Playlist/PlaylistListItem";
+import UserMessage from "./utils/UserMessage";
 
 
 
@@ -68,6 +69,8 @@ class App extends Component {
           <Switch>
 
             <Route exact path="/" component={ Welcome } />
+
+            <Route exact path="/test" component={ UserMessage } />
 
             <Route exact path="/login" render={() => (
               <Login updateUser={this.updateUser} />
