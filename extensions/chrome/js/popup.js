@@ -1,5 +1,5 @@
-// var domain = "https://squirrel-video.herokuapp.com/";
-var domain = "http://127.0.0.1:3000";
+var domain = "https://squirrel-video.herokuapp.com/";
+// var domain = "http://127.0.0.1:3000";
 var d = document;
 var reqObj = {};
 var log = console.log;
@@ -53,7 +53,13 @@ sq = {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onreadystatechange = function () {
           if (xhr.readyState == 4 && xhr.status == 200) {
-            userId = JSON.parse(xhr.responseText).userId;
+
+            //for deployment on localhost, the input has to be parsed
+            // userId = JSON.parse(xhr.responseText).userId;
+
+            //for deployment on heroku, the input must not be parsed
+            userId = xhr.responseText.userId;
+
             localStorage.setItem("userId", userId);
             reqObj.userId = userId;
             window.close();
