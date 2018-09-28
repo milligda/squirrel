@@ -1,5 +1,5 @@
-var domain = "https://squirrel-video.herokuapp.com/";
-// var domain = "http://127.0.0.1:3000";
+// var domain = "https://squirrel-video.herokuapp.com/";
+var domain = "http://127.0.0.1:3000";
 var d = document;
 var reqObj = {};
 var log = console.log;
