@@ -19,9 +19,13 @@ class Video extends Component {
     }
 
     componentDidMount() {
-        // API.getVideo(this.props.match.params.id)
-        // .then(res => this.setState({ video: res.data }))
-        // .catch(err => console.log(err));
+        this.loadVideo();
+    }
+
+    loadVideo = () => {
+        API.getVideo(this.props.match.params.id)
+        .then(res => this.setState({ video: res.data }))
+        .catch(err => console.log(err));
     }
 
     render() {
