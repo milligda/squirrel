@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import API from "../../../utils/API";
-import CollectionList from "../Collection/CollectionList";
-import CollectionListItem from "../Collection/CollectionListItem";
+import PlaylistList from "../Playlist/PlaylistList";
+import PlaylistListItem from "../Playlist/PlaylistListItem";
 import "./home.css";
 import RecentlySaved from "../../partials/RecentlySaved";
 import Header from "../../partials/Header";
-import PlaylistTile from "../../partials/PlaylistTile"
+import NewPlaylist from "../NewPlaylist/";
 
 
 
@@ -89,23 +89,28 @@ class Home extends Component {
           </Link>
 
           <div className="recents">
+            <h2>Recents</h2>
             {/* <RecentlySaved />  would go here*/}
           </div>   
 
           <div className="playlists-menu">
-            <CollectionList>
-            {this.state.playlists.map(playlist => {
-                return (
-                <CollectionListItem
-                    key={playlist.userId}
-                    id={playlist.userId}
-                    description={playlist.description}
-                    title={playlist.title}
-                    videos={playlist.videos}
-                />
-                );
-            })}
-            </CollectionList>
+            <h2>Playlists</h2>
+            <PlaylistList>
+              {this.state.playlists.map(playlist => {
+                  return (
+                // < Link to={"/playlists/"+ playlist._id}>
+                  <PlaylistListItem
+                      key={playlist.userId}
+                      id={playlist._id}
+                      description={playlist.description}
+                      title={playlist.title}
+                      videos={playlist.videos}
+                  />
+                // </ Link>
+                  );
+              })}
+              < PlaylistListItem title="Create New" id="new"/>
+            </PlaylistList>
           </div>
         </div>
         
