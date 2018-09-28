@@ -1,11 +1,7 @@
-var domain = 'http://127.0.0.1:3000';
+var domain = "https://squirrel-video.herokuapp.com/";
+// var domain = "http://127.0.0.1:3000";
 var d = document;
-var reqObj = {
-  url: "",
-  username: "",
-  password: "",
-  playlist: []
-};
+var reqObj = {};
 var log = console.log;
 
 function createElem(elemName) {
@@ -34,7 +30,7 @@ sq = {
         getElem("playlistSubmit").style.display = "none";
         getElem("login").style.display = "block";
         getElem("btn-login").onclick = function () {
-          getElem("login").style.display = "none";
+          // getElem("login").style.display = "none";
 
           event.preventDefault();
           reqObj.username = getElemName("username")[0].value;
