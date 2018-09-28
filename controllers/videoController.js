@@ -209,6 +209,8 @@ module.exports = {
 
 
   scrapeAndSave: function (req, res) {
+    console.log(req.body);
+    // req = JSON.parse(req);
     // get the data required to create the Video document
     getMetaData(req).then((response) => {
 

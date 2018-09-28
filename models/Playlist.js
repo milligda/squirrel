@@ -2,12 +2,12 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-const PlaylistSchema = new Schema({
+var PlaylistSchema = new Schema({
 
-  userId: [{
+  userId: {
     type: Schema.Types.ObjectId,
     ref: "User"
-  }],
+  },
   description: {
     type: String,
     required: false
@@ -64,7 +64,7 @@ PlaylistSchema.
   pre('create', autoPopulateVideos, autoPopulateUserId).
   pre('findById', autoPopulateVideos, autoPopulateUserId);
 
-const Playlist = mongoose.model("Playlist", PlaylistSchema);
+var Playlist = mongoose.model("Playlist", PlaylistSchema);
 
 module.exports = Playlist;
 
