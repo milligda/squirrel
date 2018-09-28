@@ -15,6 +15,10 @@ const playlistsController = require("../../controllers/playlistsController");
 router.route("/")
 .get(playlistsController.findAll);
 
+// Matches with "/api/playlists/data/:id"
+router.route("/data/:id")
+  .get(playlistsController.findById);
+
 router.route("/user/:userId")
   .get(playlistsController.findByUser)
   .post(playlistsController.create)
