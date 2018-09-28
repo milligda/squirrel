@@ -91,9 +91,9 @@ class App extends Component {
 
             <Route exact path="/edit" component={ EditPlaylist } />
 
-            <CSSTransition in={true} appear={true} timeout={500} classNames="fade">
+            {/* <CSSTransition in={true} appear={true} timeout={500} classNames="fade"> */}
               <Route exact path="/playlist/play/:id" component={ PlaylistPlayer } />  
-            </CSSTransition>
+            {/* </CSSTransition> */}
             
 
           </Switch>

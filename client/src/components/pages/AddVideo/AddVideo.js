@@ -111,17 +111,6 @@ class AddVideo extends Component {
       API.saveVideo(this.state.userId, storeVideoObj).then(res => {
         console.log(res);
       });
-
-      // API.loginUser({
-      //   username: this.state.username,
-      //   password: this.state.password
-      // })
-      // .then(res => {
-      //   console.log(res);
-      //   this.setState({ url: "" });
-      //   this.getUserData();
-      // })
-      // .catch(err => console.log(err));
     }
   };
 
@@ -154,7 +143,7 @@ class AddVideo extends Component {
               placeholder="Video URL"
             />
 
-            <button className="squirrel-btn squirrel-blue-btn"onClick={this.handleFormSubmit}>Add Video</button>
+            <button className="squirrel-btn squirrel-blue-btn" onClick={this.handleFormSubmit}>Add Video</button>
           </div>
         </div>
       </div>

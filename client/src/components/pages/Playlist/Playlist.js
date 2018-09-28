@@ -3,6 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import API from "../../../utils/API";
 import Header from "../../partials/Header";
 import { VideoTile, GridContainer } from "../../partials/Tiles";
+import { EditButton, PlayButton } from "../../partials/Controls";
 import "./playlist.css";
 
 class Playlist extends Component {
@@ -81,7 +82,15 @@ class Playlist extends Component {
                 <div className="playlist-page">
                     <Header />
                     <div className="page-container playlist-container">
-                        <h1 className="page-title">{this.state.title}</h1>
+                        <h1 className="page-title center-title">{this.state.title}</h1>
+
+                        <div className="playlist-controls">
+                            <PlayButton 
+                                playlistId={this.props.match.params.id}
+                                videos={this.state.videos}
+                            />
+                            {/* {this.state.isOwner ? <EditButton /> : ""} */}
+                        </div>
 
                         <GridContainer>
                             {this.state.videos.map(video => (

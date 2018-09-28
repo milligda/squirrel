@@ -60,6 +60,14 @@ h2 {
     margin: 0px auto 50px auto;
 }
 
+.page-title {
+    padding-bottom: 5px;
+}
+
+.center-title {
+    text-align: center;
+}
+
 .squirrel-btn {
     border-radius: 10px;
     height: 40px;
@@ -74,6 +82,11 @@ h2 {
 .squirrel-blue-btn {
     color: #ffffff;
     background-color: #21accc;
+}
+
+.squirrel-red-btn {
+    color: #ffffff;
+    background-color: #FF3E5E;
 }
 
 .squirrel-btn:hover {

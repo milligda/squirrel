@@ -12,7 +12,7 @@
 }
 
 button {
-    display: none;
+    /* display: none; */
     background: #fff;
     padding: 3px 4px 3px 4px;
     border: none;
