@@ -22,13 +22,23 @@ router.route("/external")
   .post(videoController.createExternal)
   .put(videoController.addUserVid);
 
-router.route("/:id")
-  .get(videoController.findById)
-  .delete(videoController.remove);
+// Matches with "/api/videos/delete/:id"
+// Deletes all instances of the video
+router.route("/delete/:id")
+  .put(videoController.deleteVideo);
 
-router.route("/:playlistId/:videoId")
-  .delete(videoController.delete);
+// Matches with "/api/videos/remove/:videoId/:playlistId"
+router.route("/remove/:videoId/:playlistId")
+  .put(videoController.removeVideo);
+
 router.route("/save/:id")
   .post(videoController.scrapeAndSave);
+
+// router.route("/:id")
+//   .get(videoController.findById)
+//   .delete(videoController.remove);
+
+// router.route("/:playlistId/:videoId")
+//   .delete(videoController.delete);
 
 module.exports = router;
