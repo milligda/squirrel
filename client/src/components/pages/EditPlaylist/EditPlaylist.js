@@ -4,6 +4,7 @@ import API from "../../../utils/API";
 import Header from "../../partials/Header";
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import "./EditPlaylist.css";
+import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
 
 const SortableItem = SortableElement(({value}) =>
   <li>{value}</li>
@@ -24,8 +25,17 @@ class EditPlaylist extends Component {
     state = {
         videos: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
       };
-      componentDidMount = () => {
-          
+
+      componentDidMount() {
+          API.getPlaylist(this.props.match.params.id)
+        .then(res => {
+          console.log("get videos: ", res.data);
+          this.setState({
+            videos: res.data.videos,
+            title: res.data.title
+          });
+        })
+        .catch(err => console.log(err));
       };
 
       onSortEnd = ({oldIndex, newIndex}) => {
@@ -39,27 +49,15 @@ class EditPlaylist extends Component {
                 < Header />
                 <div className="reorder-container">
                     <h1>Edit Playlists Page</h1>
+
+                    < BreadcrumbMenu title={this.state.title}/>
+
                     <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
                 </div>
             </div>
             
         );
       }
-
-    // state = {
-    //     videos: []
-    // }
-
-    // componentDidMount = () => {
-    // }
-
-    // render() {
-    //     return (
-    //         <div>
-    //            <h1>Edit Playlist Page</h1> 
-    //         </div>
-    //     )
-    // }
 }
 
 export default EditPlaylist;
