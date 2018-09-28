@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import { Link } from "react-router-dom";
 import API from "../../../utils/API";
 import PlayerBackground from "../../partials/PlayerBackground";
 import VideoPlayer from "../../partials/VideoPlayer";
@@ -19,9 +18,17 @@ class Video extends Component {
     }
 
     componentDidMount() {
-        // API.getVideo(this.props.match.params.id)
-        // .then(res => this.setState({ video: res.data }))
-        // .catch(err => console.log(err));
+        this.loadVideo();
+    }
+
+    loadVideo = () => {
+        API.getVideo(this.props.match.params.id)
+        .then(res => this.setState({ video: res.data }))
+        .catch(err => console.log(err));
+    }
+
+    backButtonClick = () => {
+        this.props.history.goBack();
     }
 
     render() {
@@ -30,9 +37,7 @@ class Video extends Component {
                 <PlayerBackground>
                     <VideoPlayer video={this.state.video} />
                     <ControlsContainer>
-                        <Link to="/home">
-                            <img className="controls-button" src={ReturnButton} />
-                        </Link>
+                        <img className="controls-button" src={ReturnButton} onClick={this.backButtonClick} />
                     </ControlsContainer>
                 </PlayerBackground>
                 
