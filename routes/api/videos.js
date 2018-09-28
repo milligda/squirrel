@@ -34,9 +34,9 @@ router.route("/remove/:videoId/:playlistId")
 router.route("/save/:id")
   .post(videoController.scrapeAndSave);
 
-// router.route("/:id")
-//   .get(videoController.findById)
-//   .delete(videoController.remove);
+// Matches with "/api/videos/:id"
+router.route("/:id")
+  .get(videoController.findById);
 
 // router.route("/:playlistId/:videoId")
 //   .delete(videoController.delete);
