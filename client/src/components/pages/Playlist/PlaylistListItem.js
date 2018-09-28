@@ -9,8 +9,6 @@ const PlaylistListItem = withRouter((props) => (
         
         <li className="playlist-item">
             <p>{props.title}</p>
-            <p>{props.videos}</p>
-            {/* <button type="button">Edit</button> */}
         </li>
         
     </div>
