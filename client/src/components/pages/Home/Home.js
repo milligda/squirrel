@@ -12,7 +12,7 @@ import NewPlaylist from "../NewPlaylist/";
 
 class Home extends Component {
   state = {
-    loggedIn: true,
+    loggedIn: null,
     userId: null,
     playlists: []
   };
@@ -69,53 +69,60 @@ class Home extends Component {
 
 
   render() {
-    if (!this.state.loggedIn) {
+    if (this.state.loggedIn === false) {
       return <Redirect to="/" />;
+    } else if (this.state.loggedIn === null) {
+      return (<div></div>)
     }
 
-    return (
-      <div className="home-container">
-        < Header />
-        <div className="home-content-container">
-          <h1>Hello user!</h1>
-          <h2>Here's everything you've squirreled away so far.</h2>
+    if (this.state.loggedIn === true) {
 
-          <Link to="/video/1">
-            <p className="sql-btn">Video Player</p>
-          </Link>
-
-          <Link to="/playlist/play/1">
-            <p className="sql-btn">Playlist Player</p>
-          </Link>
-
-          <div className="recents">
-            <h2>Recents</h2>
-            {/* <RecentlySaved />  would go here*/}
-          </div>   
-
-          <div className="playlists-menu">
-            <h2>Playlists</h2>
-            <PlaylistList>
-              {this.state.playlists.map(playlist => {
-                  return (
-                // < Link to={"/playlists/"+ playlist._id}>
-                  <PlaylistListItem
-                      key={playlist.userId}
-                      id={playlist._id}
-                      description={playlist.description}
-                      title={playlist.title}
-                      videos={playlist.videos}
-                  />
-                // </ Link>
-                  );
-              })}
-              < PlaylistListItem title="Create New" id="new"/>
-            </PlaylistList>
+      return (
+        <div className="home-container">
+          < Header />
+          <div className="home-content-container">
+            <h1>Hello user!</h1>
+            <h2>Here's everything you've squirreled away so far.</h2>
+  
+            <Link to="/video/1">
+              <p className="sql-btn">Video Player</p>
+            </Link>
+  
+            <Link to="/playlist/play/1">
+              <p className="sql-btn">Playlist Player</p>
+            </Link>
+  
+            <div className="recents">
+              <h2>Recents</h2>
+              {/* <RecentlySaved />  would go here*/}
+            </div>   
+  
+            <div className="playlists-menu">
+              <h2>Playlists</h2>
+              <PlaylistList>
+                {this.state.playlists.map(playlist => {
+                    return (
+                  // < Link to={"/playlists/"+ playlist._id}>
+                    <PlaylistListItem
+                        key={playlist.userId}
+                        id={playlist._id}
+                        description={playlist.description}
+                        title={playlist.title}
+                        videos={playlist.videos}
+                    />
+                  // </ Link>
+                    );
+                })}
+                < PlaylistListItem title="Create New" id="new"/>
+              </PlaylistList>
+            </div>
           </div>
+          
         </div>
-        
-      </div>
-    );
+      );
+      
+    }
+    
   }
 }
 
