@@ -114,15 +114,7 @@ class Playlist extends Component {
 
         
 
-    }
-
-    // get the playlist information - ownerID, private
-    // get the user status - userID
-    // get the videos 
-
-    
-    
-    
+    }    
 }
 
 export default Playlist;

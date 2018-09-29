@@ -82,7 +82,6 @@ router.route("/data/:id")
 router.route("/cookie")
   .get(authController.cookie);
 
-
 // Matches with "/api/users/:id"
 // router.route("/:id")
 //   .get(authController.findById);

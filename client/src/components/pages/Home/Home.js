@@ -84,12 +84,12 @@ class Home extends Component {
             <h1>Hello user!</h1>
             <h2>Here's everything you've squirreled away so far.</h2>
   
-            <Link to="/video/1">
-              <p className="sql-btn">Video Player</p>
+            <Link to="/playlist/create">
+              <button className="squirrel-btn squirrel-blue-btn">New Playlist</button>
             </Link>
   
-            <Link to="/playlist/play/1">
-              <p className="sql-btn">Playlist Player</p>
+            <Link to="/video/add">
+              <button className="squirrel-btn squirrel-blue-btn">Add Video</button>
             </Link>
   
             <RecentlySaved />

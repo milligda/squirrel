@@ -1,0 +1,23 @@
+.add-title-container {
+    width: 400px;
+    max-width: 95vw;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.add-title-container > .form-group > .form-control {
+    font-size: 14px;
+    color: #1a8799;
+    border-radius: 5px;
+    border: 1px solid #21accc;
+    width: 80%;
+    margin: 0px auto;
+    height: 40px;
+}
+
+.new-playlist-container > .save-icon {
+    position: fixed;
+    z-index: 10;
+    bottom: 20px;
+    right: 20px; 
+}

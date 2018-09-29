@@ -75,6 +75,7 @@ class App extends Component {
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/video/add" component={AddVideo} />
             <Route exact path="/video/:id" component={Video} />
+            <Route exact path="/playlist/create" component={NewPlaylist} />
             <Route exact path="/playlist/:id" component={Playlist} />
             <Route exact path="/restricted" component={Restricted} />
             <Route exact path="/playlists" component={PlaylistList} /> } />
