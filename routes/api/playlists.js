@@ -22,7 +22,6 @@ router.route("/data/:id")
 router.route("/user/:userId")
   .get(playlistsController.findByUser)
   .post(playlistsController.create)
-  .get(playlistsController.findAll);
 
 // Matches with "/api/playlists/:id"
 router
