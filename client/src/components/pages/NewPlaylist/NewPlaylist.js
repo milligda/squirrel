@@ -5,7 +5,7 @@ import { Input } from "../../partials/Form/";
 import Header from "../../partials/Header";
 import { SaveIcon } from "../../partials/Controls";
 import { GridContainer, VideoSelectTile } from "../../partials/Tiles";
-import "./newPlaylist.css";
+import "./NewPlaylist.css";
 
 class NewPlaylist extends Component {
   state = {
