@@ -80,7 +80,7 @@ class Home extends Component {
       return (
         <div className="home-container">
           < Header />
-          <div className="home-content-container">
+          <div className="home-content-container container">
             <h1>Hello user!</h1>
             <h2>Here's everything you've squirreled away so far.</h2>
   
