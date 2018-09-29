@@ -7,7 +7,7 @@ import "./EditPlaylist.css";
 import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
 
 const SortableItem = SortableElement(({value}) =>
-  <li className="sortable-item">{value}</li>
+  <li>{value}</li>
 );
 
 const SortableList = SortableContainer(({videos}) => {
@@ -47,7 +47,7 @@ class EditPlaylist extends Component {
         return (
             <div className="edit-container">
                 < Header />
-                <div className="reorder-container container">
+                <div className="reorder-container">
                     <h1>Edit Playlists Page</h1>
 
                     < BreadcrumbMenu title={this.state.title}/>

@@ -4,7 +4,7 @@ import API from "../../../utils/API";
 import PlaylistList from "../Playlist/PlaylistList";
 import PlaylistListItem from "../Playlist/PlaylistListItem";
 import "./home.css";
-import RecentlySaved from "../../partials/RecentlySaved/RecentlySaved.js";
+import RecentlySaved from "../../partials/RecentlySaved";
 import Header from "../../partials/Header";
 import NewPlaylist from "../NewPlaylist/";
 
@@ -80,7 +80,7 @@ class Home extends Component {
       return (
         <div className="home-container">
           < Header />
-          <div className="home-content-container container">
+          <div className="home-content-container">
             <h1>Hello user!</h1>
             <h2>Here's everything you've squirreled away so far.</h2>
   
@@ -92,13 +92,17 @@ class Home extends Component {
               <p className="sql-btn">Playlist Player</p>
             </Link>
   
-            <RecentlySaved />
+            <div className="recents">
+              <h2>Recents</h2>
+              {/* <RecentlySaved />  would go here*/}
+            </div>   
   
             <div className="playlists-menu">
               <h2>Playlists</h2>
               <PlaylistList>
                 {this.state.playlists.map(playlist => {
                     return (
+                  // < Link to={"/playlists/"+ playlist._id}>
                     <PlaylistListItem
                         key={playlist.userId}
                         id={playlist._id}
@@ -106,12 +110,14 @@ class Home extends Component {
                         title={playlist.title}
                         videos={playlist.videos}
                     />
+                  // </ Link>
                     );
                 })}
                 < PlaylistListItem title="Create New" id="new"/>
               </PlaylistList>
             </div>
-          </div>    
+          </div>
+          
         </div>
       );
       
