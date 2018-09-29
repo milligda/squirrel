@@ -1,20 +1,30 @@
-.welcome-container {
-    font-family: 'Josefin Sans', sans-serif;
+body {
+    color: #1a8799;
+    background-image: url("../../assets/images/leaves_bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    margin-top: 10%;
+    align-content: center;
+    padding: 15px;
+    height: auto;
+}
+
+h1 {
+    padding-bottom: 20px;
 }
 
 .app-info, .signup {
-    display: inline-block;
-    background: #ffaf5b;
-    border: 1px solid #ffaf5b;
-    border-radius: 5px;
+    position: relative;
+    top: -300px;
+    float: left;
     height: 300px;
-    width: 300px;
-    color: #fff;
-    font-size: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
+    background: #85deff;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px;
 }
 
 .signup {
@@ -22,5 +32,5 @@
 }
 
 .app-info {
-    width: 45%;
+    width: 50%;
 }

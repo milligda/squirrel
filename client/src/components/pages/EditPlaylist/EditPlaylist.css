@@ -7,13 +7,10 @@
     margin-right: 20%;
 }
 
-.sortable-item {
-    background: #ffaf5b;
-    border-radius: 5px;
-    margin: 3px;
+li {
     width: auto;
     height: auto;
     padding: 5px;
-    /* background-color: rgb(252, 233, 210);
-    border: 1px solid gray; */
+    background-color: rgb(252, 233, 210);
+    border: 1px solid gray;
 }

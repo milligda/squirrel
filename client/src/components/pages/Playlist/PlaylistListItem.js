@@ -5,7 +5,7 @@ import "./playlists.css";
 
 
 const PlaylistListItem = withRouter((props) => (
-    <div className="playlist-card" onClick={() => props.history.push(`/playlist/${props.id}`)}>
+    <div className="playlist-card" onClick={() => props.history.push(`/edit/${props.id}`)}>
         
         <li className="playlist-item">
             <p>{props.title}</p>
