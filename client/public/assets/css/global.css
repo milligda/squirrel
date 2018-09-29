@@ -54,6 +54,7 @@ a:hover {
 h1 {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 30px;
+    padding-bottom: 20px;
 }
 
 h2 {
