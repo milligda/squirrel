@@ -5,7 +5,9 @@ import Header from "../../partials/Header";
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import "./EditPlaylist.css";
 import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
-import PrivacyToggle from "../../partials/Controls/PrivacyToggle.js"
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 
 const SortableItem = SortableElement(({value}) =>
@@ -26,6 +28,7 @@ class EditPlaylist extends Component {
 
     state = {
         videos: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+        private: null
       };
 
       componentDidMount() {
@@ -34,10 +37,16 @@ class EditPlaylist extends Component {
           console.log("get videos: ", res.data);
           this.setState({
             videos: res.data.videos,
-            title: res.data.title
+            title: res.data.title,
+            private: res.data.private
           });
         })
         .catch(err => console.log(err));
+      };
+
+      handleChange = name => event => {
+        this.setState({ [name]: event.target.checked })
+        console.log("Private? :", this.state.private);
       };
 
       onSortEnd = ({oldIndex, newIndex}) => {
@@ -54,7 +63,20 @@ class EditPlaylist extends Component {
 
                     < BreadcrumbMenu title={this.state.title}/>
 
-                    <PrivacyToggle />
+                <div className="privacy-toggle">
+                  <FormGroup row>
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={this.state.private}
+                          onChange={this.handleChange('private')}
+                          value="private"
+                        />
+                      }
+                      label="Private"
+                    />
+                  </FormGroup>
+                </div>
 
                     <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
                 </div>
