@@ -1,14 +1,3 @@
-body {
-    background-image: url("../../assets/images/leaves_bg.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
 .home-container {
     margin-top: 5%;
-}
-
-.home-content-container{
-    margin-left: 20%;
-    margin-right: 20%;
 }

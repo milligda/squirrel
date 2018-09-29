@@ -1,9 +1,13 @@
 import React from "react";
+import EditButton from "../Controls/EditButton.js"
+// import PrivacyToggle from "";
 
 const EditMenu = (
     <div>
-        <button type="button">Edit</button>
-        {/* Options: Rename, Reorder, Make Public, DeleteCollection */}
+        <EditButton />
+        {/* <PrivacyToggle /> */}
+        {/* Options: Rename, 
+        DeleteCollection */}
     </div>
 );
 
