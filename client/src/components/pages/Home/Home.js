@@ -81,7 +81,7 @@ class Home extends Component {
         <div className="home-container">
           < Header />
           <div className="home-content-container container">
-            <h1>Hello user!</h1>
+            <h1>Hello!</h1>
             <h2>Here's everything you've squirreled away so far.</h2>
   
             <Link to="/playlist/create">
@@ -108,7 +108,6 @@ class Home extends Component {
                     />
                     );
                 })}
-                < PlaylistListItem title="Create New" id="new"/>
               </PlaylistList>
             </div>
           </div>    

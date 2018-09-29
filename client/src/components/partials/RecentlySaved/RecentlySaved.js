@@ -29,6 +29,6 @@ class RecentlySaved extends Component {
 
 // db call
 // sort with the most recent videos at the front of the array
-//limit 5
+// limit 5
 
 export default RecentlySaved;
