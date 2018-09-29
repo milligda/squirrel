@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 139 139"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="save_btn.svg"
+   inkscape:version="0.92.1 r15371">
+  <metadata
+     id="metadata16">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Asset 1</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#d2d2d2"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="3200"
+     inkscape:window-height="1644"
+     id="namedview14"
+     showgrid="false"
+     inkscape:zoom="6.7913669"
+     inkscape:cx="76.993481"
+     inkscape:cy="53.577596"
+     inkscape:window-x="-16"
+     inkscape:window-y="-16"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg12" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{fill:#21accc;}</style>
+  </defs>
+  <title
+     id="title6">Asset 1</title>
+  <path
+     class="cls-1"
+     d="m 56.42,102.65 v 0 L 56,103 30.35,77.42 37.42,70.35 56,88.93 l 49,-49 7,7.07 z"
+     id="path8"
+     inkscape:connector-curvature="0"
+     style="fill:#efefef;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke:#efefef;stroke-opacity:1;fill-opacity:1"
+     sodipodi:nodetypes="ccccccccc" />
+</svg>

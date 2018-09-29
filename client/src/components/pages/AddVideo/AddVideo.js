@@ -11,38 +11,7 @@ class AddVideo extends Component {
     loggedIn: true,
     userId: null,
     url: "",
-    playlist: [
-      {
-        description: "",
-        key: "playlist",
-        private: true,
-        selected: false,
-        title: "All Videos",
-        userId: "5ba999ad8f0e441ce4f8d6d2",
-        videos: [],
-        _id: "5ba999ad8f0e441ce4f8d6d3"
-      },
-      {
-        description: "",
-        key: "playlist",
-        private: true,
-        selected: false,
-        title: "News Videos",
-        userId: "5ba999ad8f0e441ce4f8d6d2",
-        videos: [],
-        _id: "5ba999ad8f0e441ce4f8d6d4"
-      },
-      {
-        description: "",
-        key: "playlist",
-        private: true,
-        selected: false,
-        title: "Movie Clips",
-        userId: "5ba999ad8f0e441ce4f8d6d2",
-        videos: [],
-        _id: "5ba999ad8f0e441ce4f8d6d5"
-      }
-    ]
+    playlist: []
   };
 
   componentDidMount = () => {
@@ -75,7 +44,11 @@ class AddVideo extends Component {
   };
 
   toggleSelected = (id, key) => {
+    console.log("id: " + id);
+    console.log("key: " + key);
     let temp = [...this.state[key]];
+    console.log("temp: ");
+    console.log(temp);
     temp[id].selected = !temp[id].selected;
     this.setState({
       [key]: temp

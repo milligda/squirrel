@@ -34,6 +34,25 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
+  createNew: function (req, res) {
+    console.log(req.body);
+    db.Playlist.create(req.body.playlist)
+      .then(newPlaylist => {
+        db.User.findByIdAndUpdate(req.body.userId, { $push: { playlists: newPlaylist._id }}, { new: true })
+        .then(dbUser => {
+          res.json(dbUser);
+        })
+        .catch(err => {
+          console.log("Error updating the User document");
+          res.json(err);
+        });
+      })
+      .catch(err => {
+        console.log("Error creating the new playlist");
+        res.json(err);
+      })
+  },
+
   findById: function (req, res) {
     db.Playlist
       .findById(req.params.id)
