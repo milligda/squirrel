@@ -5,6 +5,8 @@ import Header from "../../partials/Header";
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import "./EditPlaylist.css";
 import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
+import PrivacyToggle from "../../partials/Controls/PrivacyToggle.js"
+
 
 const SortableItem = SortableElement(({value}) =>
   <li className="sortable-item">{value}</li>
@@ -51,6 +53,8 @@ class EditPlaylist extends Component {
                     <h1>Edit Playlists Page</h1>
 
                     < BreadcrumbMenu title={this.state.title}/>
+
+                    <PrivacyToggle />
 
                     <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
                 </div>
