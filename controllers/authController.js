@@ -20,7 +20,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  // get the user's data
+  // get all the user's data
   userData: function(req, res) {
     db.User.findById(req.params.id)
       .populate("playlists")

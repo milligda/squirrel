@@ -50,6 +50,11 @@ h2 {
     font-size: 24px;
 }
 
+h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+}
+
 .header-present {
     padding-top: 60px;
 }
@@ -62,6 +67,10 @@ h2 {
 
 .page-title {
     padding-bottom: 5px;
+}
+
+.section-title {
+    padding-top: 20px;
 }
 
 .center-title {

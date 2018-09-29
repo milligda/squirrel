@@ -21,7 +21,7 @@
     z-index: 5;
     top: 10px;
     right: 10px;
-    width: 30px;
+    width: 25px;
     cursor: pointer;
     border-radius: 50px;
     box-shadow: 0px 0px 8px #cccccc;
@@ -31,4 +31,19 @@
 
 .delete-icon:hover {
     background-color: #FF3E5E;
+}
+
+.save-icon {
+    background-color: #21accc;
+    z-index: 5;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0px 0px 8px #cccccc;
+    -webkit-box-shadow: 0px 0px 8px #cccccc;
+    transition: 0.3s;
+}
+
+.save-icon:hover {
+    background-color: #ffaf5b;
 }
