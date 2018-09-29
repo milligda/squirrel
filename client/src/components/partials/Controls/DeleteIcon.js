@@ -4,7 +4,7 @@ import "./controls.css";
 
 const DeleteIcon = props => (
     <div className="delete-icon" {...props}>
-        <img src={RemoveIcon} />
+        <img src={RemoveIcon} alt="delete button" />
     </div>
 );
 

@@ -19,7 +19,7 @@ const VideoSelectTile = props => {
         <div className="video-tile-content">
           
             <div className="tile-public">
-              <img className="video-tile-image" src={props.imageUrl} />
+              <img className="video-tile-image" src={props.imageUrl} alt={props.title} />
             </div>
 
         </div>

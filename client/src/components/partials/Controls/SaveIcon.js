@@ -4,7 +4,7 @@ import "./controls.css";
 
 const SaveIcon = props => (
     <div className="save-icon" {...props}>
-        <img src={SaveIconImage} />
+        <img src={SaveIconImage} alt="save button" />
     </div>
 );
 

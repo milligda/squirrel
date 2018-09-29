@@ -39,10 +39,9 @@
     font-weight: 500;
     font-size: 16px;
     margin-left: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
     position: absolute;
-    bottom: 2px;
-
+    bottom: 4px;
 }
 
 .video-tile-title:hover {
@@ -63,6 +62,7 @@
 }
 
 .selected-tile {
+    border: 2px solid #ffaf5b;
     box-shadow: 0px 0px 15px #ffaf5b;
     -webkit-box-shadow: 0px 0px 15px #ffaf5b;
     transition: 0.3s;

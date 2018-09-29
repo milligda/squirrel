@@ -21,6 +21,9 @@ export default {
     getPlaylistData: function(playlistId) {
         return axios.get("/api/playlists/data/" + playlistId);
     },
+    createPlaylist: function(playlistData) {
+        return axios.post("/api/playlists/new", playlistData);
+    },
     // deletes the playlist based on id
     deletePlaylist: function(userId) {
         return axios.delete("/api/playlists/" + userId);

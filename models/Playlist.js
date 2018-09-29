@@ -4,10 +4,12 @@ var Schema = mongoose.Schema;
 
 var PlaylistSchema = new Schema({
 
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User"
-  },
+  userId: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ],
   description: {
     type: String,
     required: false

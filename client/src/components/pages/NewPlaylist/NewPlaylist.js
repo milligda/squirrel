@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import API from "../../../utils/API";
 import { Input } from "../../partials/Form/";
 import Header from "../../partials/Header";
@@ -11,6 +12,7 @@ class NewPlaylist extends Component {
       title: "",
       userId: "",
       videosLoaded: false,
+      redirect: false,
       video: []
   };
 
@@ -61,13 +63,39 @@ class NewPlaylist extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.title) {
+      let selectedVideos = [];
 
+      this.state.video.forEach(video => {
+        if (video.selected) {
+          selectedVideos.push(video._id);
+        }
+      });
+
+      const storePlaylistObj = {
+        userId: this.state.userId,
+        playlist: {
+          userId: [this.state.userId],
+          title: this.state.title,
+          videos: selectedVideos
+        }
+      }
+
+      console.log(storePlaylistObj);
+
+      API.createPlaylist(storePlaylistObj).then(res => {
+        console.log(res);
+        this.setState({ redirect: true });
+      });
     }
   }
 
 
 
   render() {
+
+    if (this.state.redirect) {
+      return <Redirect to="/home" />
+    }
 
     return (
         <div className="new-playlist-page">

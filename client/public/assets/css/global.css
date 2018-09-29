@@ -98,6 +98,7 @@ h3 {
     text-transform: uppercase;
     cursor: pointer;
     transition: all .2s ease-in-out;
+    margin: 0px 10px;
 }
 
 .squirrel-blue-btn {
