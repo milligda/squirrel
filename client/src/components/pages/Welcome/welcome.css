@@ -1,5 +1,8 @@
 .welcome-container {
     font-family: 'Josefin Sans', sans-serif;
+    background-image: url("../../assets/images/new_bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .app-info, .signup {

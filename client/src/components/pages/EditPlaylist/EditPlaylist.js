@@ -8,6 +8,7 @@ import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import { Input, FormBtn} from "../../partials/Form"
 
 
 const SortableItem = SortableElement(({value}) =>
@@ -27,8 +28,7 @@ const SortableList = SortableContainer(({videos}) => {
 class EditPlaylist extends Component {
 
     state = {
-        videos: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
-        private: null
+        videos: ['Item 1', 'Item 2', 'Item 3'],
       };
 
       componentDidMount() {
@@ -78,7 +78,16 @@ class EditPlaylist extends Component {
                   </FormGroup>
                 </div>
 
-                    <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
+                <div className="rename">
+                  <Input 
+                  value= {this.state.title}
+                  name="rename"
+                  placeholder="New Title"
+                  />
+                  <FormBtn />
+                </div>
+
+                  <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
                 </div>
             </div>
             
