@@ -28,7 +28,8 @@ const SortableList = SortableContainer(({videos}) => {
 class EditPlaylist extends Component {
 
     state = {
-        videos: ['Item 1', 'Item 2', 'Item 3'],
+        videos: [],
+        title: null
       };
 
       componentDidMount() {
@@ -78,14 +79,14 @@ class EditPlaylist extends Component {
                   </FormGroup>
                 </div>
 
-                <div className="rename">
+                {/* <div className="rename">
                   <Input 
                   value= {this.state.title}
                   name="rename"
                   placeholder="New Title"
                   />
                   <FormBtn />
-                </div>
+                </div> */}
 
                   <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
                 </div>

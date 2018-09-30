@@ -80,7 +80,7 @@ class App extends Component {
             <Route exact path="/restricted" component={Restricted} />
             <Route exact path="/playlists" component={PlaylistList} /> } />
             <Route exact path="/404" component={PageNotFound} />
-            <Route exact path="/edit/:id" component={EditPlaylist} />
+            <Route exact path="/playlists/:id/edit" component={EditPlaylist} />
             <Route exact path="/playlists/new" component={NewPlaylist} />
             <Route exact path="/playlist/play/:id" component={PlaylistPlayer} />
           </Switch>
