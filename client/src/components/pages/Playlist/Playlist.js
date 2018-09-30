@@ -89,7 +89,9 @@ class Playlist extends Component {
                                 playlistId={this.props.match.params.id}
                                 videos={this.state.videos}
                             />
-                            {/* {this.state.isOwner ? <EditButton /> : ""} */}
+                            {this.state.isOwner ? <EditButton 
+                                playlistId={this.props.match.params.id}
+                            /> : ""}
                         </div>
 
                         <GridContainer>

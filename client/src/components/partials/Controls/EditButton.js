@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./controls.css";
 
-const EditButton = (props) => {
+const EditButton = props => {
 
-    const editURL = `/playlist/${props.id}/edit`;
+    const editPlaylistUrl = `/edit/${props.playlistId}`;
 
-    <div className="edit-btn">
-        < Link to={editURL} >
-            <img src="../../assets/images/edit_btn.svg" />
+    return (
+        <Link to={editPlaylistUrl}>
+            <button className="squirrel-btn squirrel-blue-btn">Edit Playlist</button>  
         </Link>
-    </div>  
+    )
 }
 
 export default EditButton;

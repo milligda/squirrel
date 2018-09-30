@@ -25,9 +25,6 @@ class ListPlayer extends Component {
       .then(res => {
         console.log("Playlist Data: ", res.data);
         this.setState({
-          // ownerId: res.data.userId[0],
-          // isPrivate: res.data.private,
-          // title: res.data.title,
           videos: res.data.videos
         });
         this.setVideo(0);

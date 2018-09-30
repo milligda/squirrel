@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import API from "../../../utils/API";
-import PlaylistList from "../Playlist/PlaylistList";
-import PlaylistListItem from "../Playlist/PlaylistListItem";
+import { PlaylistGridContainer, PlaylistTile } from "../../partials/Tiles";
 import "./home.css";
 import RecentlySaved from "../../partials/RecentlySaved/RecentlySaved.js";
 import Header from "../../partials/Header";
@@ -14,6 +13,7 @@ class Home extends Component {
   state = {
     loggedIn: null,
     userId: null,
+    playlistsLoaded: false,
     playlists: []
   };
 
@@ -41,14 +41,13 @@ class Home extends Component {
     .then(res => {
       console.log("get playlists: ", res.data);
       this.setState({
-        playlists: res.data
+        playlists: res.data,
+        playlistsLoaded: true
       });
       console.log(this.state.playlists)
     })
     .catch(err => console.log(err));
   };
-
-
 
   setCookie = () => {
     API.setCookie()
@@ -81,7 +80,7 @@ class Home extends Component {
         <div className="home-container">
           < Header />
           <div className="home-content-container container">
-            <h1>Hello!</h1>
+            <h1>Welcome!</h1>
             <h2>Here's everything you've squirreled away so far.</h2>
   
             <Link to="/playlist/create">
@@ -96,19 +95,32 @@ class Home extends Component {
   
             <div className="playlists-menu">
               <h2>Playlists</h2>
-              <PlaylistList>
-                {this.state.playlists.map(playlist => {
-                    return (
-                    <PlaylistListItem
-                        key={playlist.userId}
-                        id={playlist._id}
-                        description={playlist.description}
-                        title={playlist.title}
-                        videos={playlist.videos}
+
+              <PlaylistGridContainer>
+
+                <PlaylistTile 
+                  title="Create New Playlist"
+                  _id="create"
+                  className="create-playlist-tile"
+                />
+                
+                {this.state.playlistsLoaded ? 
+                  this.state.playlists.map(playlist => (
+                    <PlaylistTile
+                      _id={playlist._id}
+                      key={playlist._id}
+                      title={playlist.title}
                     />
+<<<<<<< HEAD
                     );
                 })}
               </PlaylistList>
+=======
+                  )) : ""
+                }
+
+              </PlaylistGridContainer>
+>>>>>>> master
             </div>
           </div>    
         </div>
