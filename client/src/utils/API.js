@@ -21,6 +21,7 @@ export default {
     getPlaylistData: function(playlistId) {
         return axios.get("/api/playlists/data/" + playlistId);
     },
+    // create a new playlist
     createPlaylist: function(playlistData) {
         return axios.post("/api/playlists/new", playlistData);
     },
