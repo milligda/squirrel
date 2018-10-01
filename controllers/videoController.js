@@ -29,7 +29,7 @@ const getUrlParsedData = url => {
       videoPlatform = "youtube";
       break;
     case "vimeo.com":
-      videoId = domainArray[1];
+      videoId = domainArray[domainArray.length - 1];
       videoPlatform = "vimeo";
       break;
     case "www.youtube.com":
@@ -86,6 +86,11 @@ const getMetaData = (req, res) => {
           videoObj.videoId = $(element).attr("content");
           videoObj.videoPlatform = "nytimes";
         });
+      // } else if (siteName === "IMDb") {
+      //   $('meta[property="pageId"]').each(function(i, element) {
+      //     videoObj.videoId = $(element).attr("content");
+      //     videoObj.videoPlatform = "imdb";
+      //   });
       } else {
         videoObj.videoId = urlParsedData.videoId;
         videoObj.videoPlatform = urlParsedData.videoPlatform;

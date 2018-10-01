@@ -67,7 +67,6 @@ class Playlist extends Component {
 
     render() {
 
-
         // if the user is not the playlist owner and playlist is private, redirect to "restricted"
         if (!this.state.isOwner && this.state.isPrivate) {
             return <Redirect to="/restricted" />;
