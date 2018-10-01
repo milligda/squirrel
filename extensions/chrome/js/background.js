@@ -1,23 +1,25 @@
-//If available, get user information from cookie, set status to logged in
-
-// var userId = "5ba5bbf1ea35c93e7d9fe9de";
-// //If no cookie, set status to logged out
+chrome.browserAction.setBadgeBackgroundColor({color:[190, 190, 190, 230]});
+chrome.browserAction.setBadgeText({text:""});
 
 
-// //Request from server to get playlist information based on userID
+  chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    if (changeInfo.url.match(/youtube/)) {
+      chrome.browserAction.setIcon({path:"../img/icon_tailx38.png"});
+    } else {
+      chrome.browserAction.setIcon({path:"../img/icon_tail_grayx38.png"})
+    }
 
-// var xhr = new XMLHttpRequest();
-// xhr.open('GET', 'http://127.0.0.1:3000/api/playlists/' +userId, true);
-// xhr.setRequestHeader('Content-Type','application/json');
-// xhr.onreadystatechange = function() {
-//   if (xhr.readyState == 4 && xhr.status == 200) {
-//      // Typical action to be performed when the document is ready:
+ }); 
+ 
+ chrome.tabs.onActivated.addListener(function(activeInfo) {
+   // how to fetch tab url using activeInfo.tabid
+   chrome.tabs.get(activeInfo.tabId, function(tab){
+      if (tab.url.match(/youtube/)) {
+      chrome.browserAction.setIcon({path:"../img/icon_tailx38.png"});
+    } else {
+      chrome.browserAction.setIcon({path:"../img/icon_tail_grayx38.png"})
+    }
 
-// JSON.stringify(xhr.responseText)
-//   } else {
-//     // error result
-//     document.getElementById("mainText").innerHTML = "<p>Response:" + xhr.responseText + "</p>";
-
-//   }
-// };
-// xhr.send();
+   });
+ }); 
+// chrome.browserAction.setIcon({path: icon});

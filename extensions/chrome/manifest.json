@@ -4,7 +4,7 @@
 "description":"Squirrel away videos for a rainy day.",
 "version":"1.0",
 "browser_action":{
-"default_icon":"img/logo_tail.png",
+"default_icon":"img/icon_tail_gray.png",
 "default_title": "Squirrel Away",
 "default_popup":"html/popup.html"
 },
