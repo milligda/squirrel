@@ -111,16 +111,10 @@ class Home extends Component {
                       key={playlist._id}
                       title={playlist.title}
                     />
-<<<<<<< HEAD
-                    );
-                })}
-              </PlaylistList>
-=======
                   )) : ""
                 }
 
               </PlaylistGridContainer>
->>>>>>> master
             </div>
           </div>    
         </div>

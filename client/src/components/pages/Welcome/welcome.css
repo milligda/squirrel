@@ -5,20 +5,25 @@
     background-repeat: no-repeat;
 }
 
-.app-info, .signup {
+.welcome {
+    background-color: #21accc;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
+/* .app-info, .signup {
     display: inline-block;
     background: #ffaf5b;
     border: 1px solid #ffaf5b;
     border-radius: 5px;
-    height: 300px;
-    width: 300px;
     color: #fff;
     font-size: 26px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 10px;
-}
+} */
 
 .signup {
     width: 35%;
