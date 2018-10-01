@@ -70,6 +70,29 @@ module.exports = {
   },
 
   remove: function (req, res) {
+
+    // console.log("*****************************************");
+    // console.log("UserId: " + req.params.userId);
+    // console.log("PlaylistId: " + req.params.playlistId);
+
+    db.User.findByIdAndUpdate(req.params.userId, { $pull: { playlists: req.params.playlistId }})
+      .then(function(dbUser) {
+        db.Playlist.findByIdAndRemove(req.params.playlistId)
+          .then(function(dbPlaylist) {
+            res.json(dbPlaylist)
+          })
+          .catch(function(err) {
+            console.log("Error deleting the playlist");
+            res.json(err);
+          });
+      })
+      .catch(function(err) {
+        console.log("Error removing playlist from user document");
+        res.json(err);
+      });
+  },
+
+  delete: function (req, res) {
     db.Playlist
       .findById({
         _id: req.params.id

@@ -29,7 +29,7 @@ const getUrlParsedData = url => {
       videoPlatform = "youtube";
       break;
     case "vimeo.com":
-      videoId = domainArray[1];
+      videoId = domainArray[domainArray.length - 1];
       videoPlatform = "vimeo";
       break;
     case "www.youtube.com":

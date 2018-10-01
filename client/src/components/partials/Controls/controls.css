@@ -3,6 +3,11 @@
     text-align: center;
 }
 
+.options-container {
+    position: relative;
+    text-align: center;
+}
+
 .controls-button {
     border-radius: 10px;
     background-color: #555;
@@ -15,7 +20,7 @@
     transition: .75s;
 }
 
-.delete-icon {
+.delete-icon, .options-icon {
     position: absolute;
     background-color: #bfbfbf;
     z-index: 5;
@@ -26,10 +31,47 @@
     border-radius: 50px;
     box-shadow: 0px 0px 8px #cccccc;
     -webkit-box-shadow: 0px 0px 8px #cccccc;
-    transition: 0.3s;
+    transition: all ease-in-out 0.3s;
+}
+
+.options-container .edit-icon {
+    position: relative;
+    border-radius: 50px;
+    width: 35px;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #21accc;
+    box-shadow: 0px 0px 8px #cccccc;
+    -webkit-box-shadow: 0px 0px 8px #cccccc;
+    transition: all ease-in-out 0.3s;
+}
+
+.options-container > .delete-icon {
+    display: inline-block;
+    width: 35px;
+    top: unset;
+    left: unset;
+    right: unset;
+    margin: 5px;
+    position: relative;
+    background-color: #21accc;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0px 0px 8px #cccccc;
+    -webkit-box-shadow: 0px 0px 8px #cccccc;
+    transition: all ease-in-out 0.3s;
 }
 
 .delete-icon:hover {
+    background-color: #FF3E5E;
+}
+
+.options-icon:hover {
+    background-color: #FF3E5E;
+}
+
+.edit-icon:hover {
     background-color: #FF3E5E;
 }
 
