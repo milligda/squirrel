@@ -86,6 +86,11 @@ const getMetaData = (req, res) => {
           videoObj.videoId = $(element).attr("content");
           videoObj.videoPlatform = "nytimes";
         });
+      // } else if (siteName === "IMDb") {
+      //   $('meta[property="pageId"]').each(function(i, element) {
+      //     videoObj.videoId = $(element).attr("content");
+      //     videoObj.videoPlatform = "imdb";
+      //   });
       } else {
         videoObj.videoId = urlParsedData.videoId;
         videoObj.videoPlatform = urlParsedData.videoPlatform;
