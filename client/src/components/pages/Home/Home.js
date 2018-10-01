@@ -5,8 +5,6 @@ import { PlaylistGridContainer, PlaylistTile } from "../../partials/Tiles";
 import "./home.css";
 import RecentlySaved from "../../partials/RecentlySaved/RecentlySaved.js";
 import Header from "../../partials/Header";
-import NewPlaylist from "../NewPlaylist/";
-
 
 
 class Home extends Component {
@@ -48,6 +46,12 @@ class Home extends Component {
     })
     .catch(err => console.log(err));
   };
+
+  deletePlaylist = (playlistId) => {
+    API.removePlaylist(playlistId, this.state.userId)
+      .then(res => this.getPlaylists())
+      .catch(err => console.log(err));
+  }
 
   setCookie = () => {
     API.setCookie()
@@ -110,6 +114,7 @@ class Home extends Component {
                       _id={playlist._id}
                       key={playlist._id}
                       title={playlist.title}
+                      deletePlaylist={this.deletePlaylist}
                     />
                   )) : ""
                 }
