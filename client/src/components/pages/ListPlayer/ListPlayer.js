@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import API from "../../../utils/API";
 import PlayerBackground from "../../partials/PlayerBackground";
 import VideoPlayer from "../../partials/VideoPlayer";
 import { ControlsContainer, NextVideoButton } from "../../partials/Controls";
@@ -12,25 +11,11 @@ class ListPlayer extends Component {
     nextVideo: {},
     videoPlaying: 0,
     playingLastVideo: false,
-    playlistId: "",
-    videos: []
   };
 
   componentDidMount = () => {
-    this.getPlaylistData();
-  };
-
-  getPlaylistData = () => {
-    API.getPlaylistData(this.props.match.params.id)
-      .then(res => {
-        console.log("Playlist Data: ", res.data);
-        this.setState({
-          videos: res.data.videos
-        });
-        this.setVideo(0);
-      })
-      .catch(err => console.log(err));
-  };
+    this.setVideo(0);
+  }
 
   setVideo = videoNumber => {
     // set the lastVideo to false
@@ -38,18 +23,18 @@ class ListPlayer extends Component {
     let nextVideo;
 
     // if the current video number is the last item in the videos array, set lastVideo to true
-    if (videoNumber + 1 > this.state.videos.length - 1) {
+    if (videoNumber + 1 > this.props.videos.length - 1) {
       lastVideo = true;
     }
 
     // if this is not the last video, store the next Video
     if (!lastVideo) {
-      nextVideo = this.state.videos[videoNumber + 1];
+      nextVideo = this.props.videos[videoNumber + 1];
     }
 
     // update the state
     this.setState({
-      currentVideo: this.state.videos[videoNumber],
+      currentVideo: this.props.videos[videoNumber],
       playingLastVideo: lastVideo,
       nextVideo: nextVideo
     });
@@ -74,6 +59,9 @@ class ListPlayer extends Component {
   };
 
   render() {
+    console.log(this.props.videos);
+    console.log(this.state);
+    
     let nextButton;
 
     if (!this.state.playingLastVideo) {
@@ -90,7 +78,7 @@ class ListPlayer extends Component {
             <img
               className="controls-button"
               src={ReturnButton}
-              onClick={this.backButtonClick}
+              onClick={() => this.props.endPlayer()}
             />
             {nextButton}
           </ControlsContainer>

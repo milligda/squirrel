@@ -1,23 +1,32 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import API from "../../../utils/API";
 import Header from "../../partials/Header";
 import { VideoTile, GridContainer } from "../../partials/Tiles";
 import { EditButton, PlayButton } from "../../partials/Controls";
+import ListPlayer from "../ListPlayer";
 import "./playlist.css";
 
 class Playlist extends Component {
     state = {
         ownerId: null,
+        playlistId: this.props.match.params.id,
         title: null,
         userId: null,
         isOwner: true,
         isPrivate: false,
+        showPage: true,
+        showPlayer: false,
+        duration: 1000,
+        dataLoaded: false,
         videos: []
     }
 
     componentDidMount = () => {
-        this.getUser();
+        if (!this.state.dataLoaded) {
+            this.getUser();
+        }
     }
 
     getUser = () => {
@@ -33,7 +42,7 @@ class Playlist extends Component {
     }
 
     getPlaylistData = () => {
-        API.getPlaylistData(this.props.match.params.id)
+        API.getPlaylistData(this.state.playlistId)
         .then(res => {
             console.log("Playlist Data: ", res.data);
             this.setState({
@@ -49,7 +58,10 @@ class Playlist extends Component {
 
     checkOwner = () => {
         if (this.state.ownerId !== this.state.userId) {
-            this.setState({ isOwner: false });
+            this.setState({ 
+                isOwner: false,
+                dataLoaded: true
+            });
         }
     }
 
@@ -63,6 +75,28 @@ class Playlist extends Component {
             .then(res => this.getPlaylistData())
             .catch(err => console.log(err));
         }
+    }
+
+    startPlayer = () => {
+        this.setState({
+            showPage: !this.state.showPage
+        });
+        setTimeout(() => {
+            this.setState({
+                showPlayer: !this.state.showPlayer
+            });
+        }, this.state.duration);
+    }
+
+    endPlayer = () => {
+        this.setState({
+            showPlayer: !this.state.showPlayer
+        });
+        setTimeout(() => {
+            this.setState({
+                showPage: !this.state.showPage
+            });
+        }, this.state.duration);
     }
 
     render() {
@@ -79,36 +113,60 @@ class Playlist extends Component {
 
             return (
                 <div className="playlist-page">
-                    <Header />
-                    <div className="page-container playlist-container">
-                        <h1 className="page-title center-title">{this.state.title}</h1>
 
-                        <div className="playlist-controls">
-                            <PlayButton 
-                                playlistId={this.props.match.params.id}
-                                videos={this.state.videos}
-                            />
-                            {this.state.isOwner ? <EditButton 
-                                playlistId={this.props.match.params.id}
-                            /> : ""}
+                    <CSSTransition
+                        in={ this.state.showPage }
+                        timeout={this.state.duration}
+                        classNames="fade"
+                        mountOnEnter
+                        unmountOnExit
+                    >
+                        <div className="playlist-data-container">
+                            <Header />
+                            <div className="page-container playlist-container">
+                                <h1 className="page-title center-title">{this.state.title}</h1>
+
+                                <div className="playlist-controls">
+                                    <PlayButton startPlayer={this.startPlayer} />
+
+                                    {this.state.isOwner ? 
+                                        <EditButton 
+                                            playlistId={this.props.match.params.id}
+                                        /> 
+                                    : ""}
+                                </div>
+
+                                <GridContainer>
+                                    {this.state.videos.map(video => (
+                                        <VideoTile 
+                                            isOwner={this.state.isOwner}
+                                            imageUrl={video.imageUrl}
+                                            title={video.title}
+                                            key={video._id}
+                                            _id={video._id}
+                                            removeVideo={this.removeVideo}
+                                        />
+                                    ))}
+                                </GridContainer>
+                            </div>
                         </div>
+                    </CSSTransition>
 
-                        <GridContainer>
-                            {this.state.videos.map(video => (
-                                <VideoTile 
-                                    isOwner={this.state.isOwner}
-                                    imageUrl={video.imageUrl}
-                                    title={video.title}
-                                    key={video._id}
-                                    _id={video._id}
-                                    removeVideo={this.removeVideo}
-                                />
-                            ))}
-                        </GridContainer>
-
-                    </div>
-                    
+                    <CSSTransition
+                        in={ this.state.showPlayer }
+                        timeout={this.state.duration}
+                        classNames="fade"
+                        mountOnEnter
+                        unmountOnExit
+                    >
+                        <ListPlayer 
+                            videos={this.state.videos} 
+                            endPlayer={this.endPlayer}
+                        />
+                    </CSSTransition>
                 </div>  
+
+                
             )
 
         }
