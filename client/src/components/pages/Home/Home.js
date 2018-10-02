@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
+import RecentVideos from "../../partials/RecentVideos";
 import API from "../../../utils/API";
 import { PlaylistGridContainer, PlaylistTile } from "../../partials/Tiles";
+import Loading from "../../partials/Loading";
 import "./home.css";
-import RecentlySaved from "../../partials/RecentlySaved/RecentlySaved.js";
 import Header from "../../partials/Header";
 
 
@@ -19,7 +20,6 @@ class Home extends Component {
     this.getUser();
     this.getPlaylists();
     this.setCookie();
-    console.log("console did mount");
   };
 
   getUser = () => {
@@ -75,7 +75,7 @@ class Home extends Component {
     if (this.state.loggedIn === false) {
       return <Redirect to="/" />;
     } else if (this.state.loggedIn === null) {
-      return (<div></div>)
+      return <Loading />;
     }
 
     if (this.state.loggedIn === true) {
@@ -94,8 +94,6 @@ class Home extends Component {
             <Link to="/video/add">
               <button className="squirrel-btn squirrel-blue-btn">Add Video</button>
             </Link>
-  
-            <RecentlySaved />
   
             <div className="playlists-menu">
               <h2>Playlists</h2>
