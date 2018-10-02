@@ -94,7 +94,7 @@ class Home extends Component {
             <Link to="/video/add">
               <button className="squirrel-btn squirrel-blue-btn">Add Video</button>
             </Link>
-  
+
             <RecentlySaved />
   
             <div className="playlists-menu">

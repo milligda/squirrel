@@ -14,7 +14,7 @@ class RecentlySaved extends Component {
         .then(res => {
           console.log("array for 'all videos': ", res.data.videos);
           this.setState({
-            videos: res.data.videos,
+            videos: res.data.videos.slice(0, 4),
           });
         })
         .catch(err => console.log(err));
