@@ -1,17 +1,33 @@
 import React, { Component } from "react";
-import Input from "../Form/Input.js";
+import { Input, FormBtn } from "../Form";
 
 class Rename extends Component {
 
+    state = {
+        title: this.props.title
+    }
+
+    handleInputChange = event => {
+        const { title, value } = event.target;
+        this.setState({
+          title: value
+        });
+      };
+
     render() {
         return (
-            <div>
+            <div className="rename">
                 <Input 
-                value= {this.props.title}
+                onChange={this.handleInputChange}
                 name="rename"
                 placeholder="New Title"
                 />
-            </div>
+                <FormBtn
+                onClick={this.handleInputChange}
+                >
+                Rename
+                </FormBtn>
+          </div>
         )
     }
 }

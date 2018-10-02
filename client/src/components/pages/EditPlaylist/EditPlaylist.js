@@ -9,6 +9,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import { Input, FormBtn} from "../../partials/Form"
+import Rename from "../../partials/Rename/Rename.js"
 
 
 const SortableItem = SortableElement(({value}) =>
@@ -25,19 +26,20 @@ const SortableList = SortableContainer(({videos}) => {
     );
   });
 
+
 class EditPlaylist extends Component {
 
     state = {
-        videos: [],
+        videos: ["Item 1", "Item 2", "Item 3"],
         title: null
       };
 
       componentDidMount() {
-          API.getPlaylist(this.props.match.params.id)
+        API.getPlaylist(this.props.match.params.id)
         .then(res => {
           console.log("get videos: ", res.data);
           this.setState({
-            videos: res.data.videos,
+            // videos: res.data.videos,
             title: res.data.title,
             private: res.data.private
           });
@@ -56,11 +58,42 @@ class EditPlaylist extends Component {
         });
       };
       render() {
+        const isAllVideos = this.state.title;
+
+        (isAllVideos === "All Videos") && 
+        
+          (<div className="edit-container">
+            < Header />
+            <div className="reorder-container container">
+              <h1>Edit Playlists Page</h1>
+
+              < BreadcrumbMenu title={this.state.title} />
+
+              <div className="privacy-toggle">
+                <FormGroup row>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={this.state.private}
+                        onChange={this.handleChange('private')}
+                        value="private"
+                      />
+                    }
+                    label="Private"
+                  />
+                </FormGroup>
+              </div>
+
+              <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
+            </div>
+          </div>
+          )
+
         return (
             <div className="edit-container">
                 < Header />
                 <div className="reorder-container container">
-                    <h1>Edit Playlists Page</h1>
+                    <h1>Edit "{this.state.title}" Playlist</h1>
 
                     < BreadcrumbMenu title={this.state.title}/>
 
@@ -79,16 +112,9 @@ class EditPlaylist extends Component {
                   </FormGroup>
                 </div>
 
-                {/* <div className="rename">
-                  <Input 
-                  value= {this.state.title}
-                  name="rename"
-                  placeholder="New Title"
-                  />
-                  <FormBtn />
-                </div> */}
+                <Rename title={this.state.title}/>
 
-                  <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
+                <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
                 </div>
             </div>
             
