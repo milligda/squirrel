@@ -1,19 +1,26 @@
+.header {
+    position: relative;
+    width: 100%;
+}
+
 .header-container {
     position: fixed;
     top: 0;
     width: 100%;
-    min-height: 60px;
+    height: 28px;
     z-index: 10;
     padding-left: 10px;
     background-color: #ffe2c8;
-    margin-bottom: 5%;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 5px;
 }
 
 .home-icon {
-    width: 30px;
-    position: relative;
-    top: 6px;
-    left: 6px;
+    width: 50px;
+    position: fixed;
+    top: 5px;
+    left: 12px;
+    z-index: 11;
 }
 
 #link-home {

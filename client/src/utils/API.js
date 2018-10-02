@@ -21,10 +21,14 @@ export default {
     getPlaylistData: function(playlistId) {
         return axios.get("/api/playlists/data/" + playlistId);
     },
+    // create a new playlist
     createPlaylist: function(playlistData) {
         return axios.post("/api/playlists/new", playlistData);
     },
-    // deletes the playlist based on id
+    removePlaylist: function(playlistId, userId) {
+        return axios.put(`/api/playlists/remove/${playlistId}/${userId}`);
+    },
+    // deletes the playlist based on playlist id
     deletePlaylist: function(userId) {
         return axios.delete("/api/playlists/" + userId);
     },

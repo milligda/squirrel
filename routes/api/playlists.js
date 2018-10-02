@@ -25,13 +25,17 @@ router.route("/data/:id")
 
 router.route("/user/:userId")
   .get(playlistsController.findByUser)
-  .post(playlistsController.create)
+  .post(playlistsController.create);
+
+  // Matches with "/api/playlists/remove/:playlistId/:userId"
+router.route("/remove/:playlistId/:userId")
+  .put(playlistsController.remove);
 
 // Matches with "/api/playlists/:id"
 router
   .route("/:id")
   .get(playlistsController.findById)
   .put(playlistsController.update)
-  .delete(playlistsController.remove);
+  .delete(playlistsController.delete);
 
 module.exports = router;
