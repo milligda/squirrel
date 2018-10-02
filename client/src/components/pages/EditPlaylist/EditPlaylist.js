@@ -5,6 +5,12 @@ import Header from "../../partials/Header";
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import "./EditPlaylist.css";
 import BreadcrumbMenu from "../../partials/BreadcrumbMenu";
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import { Input, FormBtn} from "../../partials/Form"
+import Rename from "../../partials/Rename/Rename.js"
+
 
 const SortableItem = SortableElement(({value}) =>
   <li className="sortable-item">{value}</li>
@@ -20,22 +26,31 @@ const SortableList = SortableContainer(({videos}) => {
     );
   });
 
+
 class EditPlaylist extends Component {
 
     state = {
-        videos: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+        videos: ["Item 1", "Item 2", "Item 3"],
+        title: null
       };
 
       componentDidMount() {
-          API.getPlaylist(this.props.match.params.id)
+        API.getPlaylist(this.props.match.params.id)
         .then(res => {
           console.log("get videos: ", res.data);
           this.setState({
-            videos: res.data.videos,
-            title: res.data.title
+            videos: res.data.videos.map((o) => o.title),
+            title: res.data.title,
+            private: res.data.private
           });
+          console.log("map: ", this.state.videos)
         })
         .catch(err => console.log(err));
+      };
+
+      handleChange = name => event => {
+        this.setState({ [name]: event.target.checked })
+        console.log("Private? :", this.state.private);
       };
 
       onSortEnd = ({oldIndex, newIndex}) => {
@@ -44,15 +59,35 @@ class EditPlaylist extends Component {
         });
       };
       render() {
+        const isAllVideos = this.state.title;
+
         return (
+          
             <div className="edit-container">
                 < Header />
                 <div className="reorder-container container">
-                    <h1>Edit Playlists Page</h1>
+                    <h1>Edit "{this.state.title}" Playlist</h1>
 
-                    < BreadcrumbMenu title={this.state.title}/>
+                    {/* < BreadcrumbMenu title={this.state.title}/> */}
 
-                    <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
+                <div className="privacy-toggle">
+                  <FormGroup row>
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={this.state.private}
+                          onChange={this.handleChange('private')}
+                          value="private"
+                        />
+                      }
+                      label="Private"
+                    />
+                  </FormGroup>
+                </div>
+
+                {(isAllVideos !== "All Videos") && (<Rename title={this.state.title}/>)}
+
+                <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
                 </div>
             </div>
             
