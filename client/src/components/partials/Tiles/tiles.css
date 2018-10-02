@@ -66,6 +66,7 @@
     background-color: #ffaf5b;
     position: relative;
     transition: all .3s ease-in-out;
+    z-index: 2;
 }
 
 .playlist-tile-content:hover {
@@ -114,6 +115,28 @@
     box-shadow: 0px 0px 15px #ffaf5b;
     -webkit-box-shadow: 0px 0px 15px #ffaf5b;
     transition: 0.3s;
+}
+
+.move-enter {
+    opacity: 0.01;
+    transform: translateY(-100%);
+}
+
+.move-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: all 500ms ease-out;
+}
+
+.move-exit {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.move-exit-active {
+    opacity: 0.01;
+    transform: translateY(-100%);
+    transition: all 500ms ease-out;
 }
 
 @media only screen and (max-width: 1120px) {
