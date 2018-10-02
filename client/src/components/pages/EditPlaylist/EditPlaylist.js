@@ -39,10 +39,11 @@ class EditPlaylist extends Component {
         .then(res => {
           console.log("get videos: ", res.data);
           this.setState({
-            // videos: res.data.videos,
+            videos: res.data.videos.map((o) => o.title),
             title: res.data.title,
             private: res.data.private
           });
+          console.log("map: ", this.state.videos)
         })
         .catch(err => console.log(err));
       };
