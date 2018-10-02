@@ -59,9 +59,7 @@ class ListPlayer extends Component {
   };
 
   render() {
-    console.log(this.props.videos);
-    console.log(this.state);
-    
+
     let nextButton;
 
     if (!this.state.playingLastVideo) {
