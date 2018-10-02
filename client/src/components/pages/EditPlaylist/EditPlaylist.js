@@ -60,36 +60,8 @@ class EditPlaylist extends Component {
       render() {
         const isAllVideos = this.state.title;
 
-        (isAllVideos === "All Videos") && 
-        
-          (<div className="edit-container">
-            < Header />
-            <div className="reorder-container container">
-              <h1>Edit Playlists Page</h1>
-
-              < BreadcrumbMenu title={this.state.title} />
-
-              <div className="privacy-toggle">
-                <FormGroup row>
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={this.state.private}
-                        onChange={this.handleChange('private')}
-                        value="private"
-                      />
-                    }
-                    label="Private"
-                  />
-                </FormGroup>
-              </div>
-
-              <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
-            </div>
-          </div>
-          )
-
         return (
+          
             <div className="edit-container">
                 < Header />
                 <div className="reorder-container container">
@@ -112,7 +84,7 @@ class EditPlaylist extends Component {
                   </FormGroup>
                 </div>
 
-                <Rename title={this.state.title}/>
+                {(isAllVideos !== "All Videos") && (<Rename title={this.state.title}/>)}
 
                 <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
                 </div>
