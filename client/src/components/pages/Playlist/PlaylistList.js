@@ -12,10 +12,6 @@ const PlaylistList = ( props ) => {
                 <ul className="list-group">
                 {props.children}
                 </ul>
-                
-                {/* <ShareBtn>
-                <EditMenu>
-                <ReorderMenu> */}
             </div>
 
         </div>
@@ -26,7 +22,7 @@ const PlaylistList = ( props ) => {
 
 export default PlaylistList;
 
-// Reordering code --implementation to come
+// Reordering code
 
 // const CollectionListItem = SortableElement(({value}) =>
 //   <li>{value}</li>
@@ -58,5 +54,5 @@ export default PlaylistList;
 //   }
 // }
 
-// export default CollectionList;
+// export default PlaylistList;
 

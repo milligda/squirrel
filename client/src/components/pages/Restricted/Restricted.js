@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import Header from "../../partials/Header"
 
 class Restricted extends Component {
     render() {
         return (
-            <div>
-                <h1>You do not have permission to see this page</h1>
+            <div className="restricted-container">
+                < Header />
+                <div className="msg container">
+                    <h1>Restricted</h1>
+                </div>
             </div>
         );
     }

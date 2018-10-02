@@ -100,7 +100,7 @@ class NewPlaylist extends Component {
     return (
         <div className="new-playlist-page">
             <Header />
-            <div className="page-container new-playlist-container">
+            <div className="page-container new-playlist-container container">
                 <h1 className="page-title center-title">Create A New Playlist</h1>   
                 
                 {this.state.title ? <SaveIcon onClick={this.handleFormSubmit} /> : "" }
