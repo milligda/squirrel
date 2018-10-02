@@ -67,7 +67,7 @@ class EditPlaylist extends Component {
                 <div className="reorder-container container">
                     <h1>Edit "{this.state.title}" Playlist</h1>
 
-                    < BreadcrumbMenu title={this.state.title}/>
+                    {/* < BreadcrumbMenu title={this.state.title}/> */}
 
                 <div className="privacy-toggle">
                   <FormGroup row>
