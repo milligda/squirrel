@@ -10,10 +10,10 @@ class Video extends Component {
 
     state = {
         video: {
-            url: "https://www.youtube.com/watch?v=4yikpWtIFU8",
-            videoId: "4yikpWtIFU8",
+            url: "https://www.youtube.com/watch?v=RupUMJOEMO8",
+            videoId: "RupUMJOEMO8",
             videoPlatform: "youtube",
-            title: "10 Funniest Squirrel Videos"
+            title: "Wrecking Ball"
         }
     }
 
