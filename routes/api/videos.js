@@ -9,7 +9,6 @@ const videoController = require("../../controllers/videoController");
 // Videos API Routes
 // ==============================================================================
 
-
 // Matches with "/api/videos"
 router.route("/")
   .get(videoController.findAll)
