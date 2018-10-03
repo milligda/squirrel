@@ -34,31 +34,56 @@ class Welcome extends Component {
       return <Redirect to="/home" />;
     }
 
+    var welcomeContainerStyle = {
+      height: '100%',
+    }
+
+    var separationID ={
+      height: '100%',
+    }
+
+    var pageContainerStyles = {
+      'padding-top': '50px',
+      height: '800px',
+      'background-color':'#ffc897',
+    }
+
+    var formStyles = {
+      float: 'left',
+      background: '#ffc897',
+      padding: '10px',
+    }
+
+    
+
+    
+
     return (
-      <div className="welcome-container">
-        
-      
-        <div className="page-container welcome content">
-          < Login className="login"/>
+      <div className="welcome-container" style={welcomeContainerStyle}>
 
-          <div className="app-info">
-            <h1 classname="welcome-msg">Welcome to Squirrel.</h1>
-            <br/>
-            <h2>Your space to house videos from different parts of the web.</h2>
-            <br/>
-            <h2>Save videos to watch later or organize them into playlists as you go.</h2>
-            <br/>
+          <div className="page-container" id="welcome" style={pageContainerStyles}>
             
-            <a href="https://chrome.google.com/webstore/category/extensions?hl=en">Find us in the Chrome Web Store</a>
-          </div>
-          
-          < Signup />
-          
-        </div>
+            <div className="app-info" >
+              <h1 id="welcome-msg">Welcome to Squirrel.</h1>
+              <br/>
+              <h2>All the videos you want stored in one place.</h2>
+              <br/>
+              
+              <h2><a id="chrome-link" href="https://chrome.google.com/webstore/category/extensions?hl=en">Get the Chrome extension</a></h2>
+            </div>
 
-        {/* <Footer /> */}
-      </div>
-      
+            <div id="forms" style={formStyles}>
+            ` <br/>
+              < Login  />
+
+              < Signup />
+              <br/>
+              <br/>
+              <br/>
+            </div>
+              
+          </div>
+        </div>      
     );
   }
 }
