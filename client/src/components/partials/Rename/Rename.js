@@ -18,15 +18,11 @@ class Rename extends Component {
         return (
             <div className="rename">
                 <Input 
+                value={this.state.value}
                 onChange={this.handleInputChange}
                 name="rename"
                 placeholder="New Title"
                 />
-                <FormBtn
-                onClick={this.handleInputChange}
-                >
-                Rename
-                </FormBtn>
           </div>
         )
     }

@@ -82,6 +82,7 @@ h3 {
     padding: 70px 20px 0px 20px;
     max-width: 1170px;
     margin: 0px auto 50px auto;
+    height: 100%;
 }
 
 .page-title {
@@ -122,3 +123,18 @@ h3 {
 .squirrel-btn:hover {
     transform: scale(1.1);
 }
+
+html {
+    height: 100%;
+}
+
+.welcome-container{
+    height: 100%;
+}
+/* .form-container{
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    padding: 15px;
+    z-index: 12;
+} */
