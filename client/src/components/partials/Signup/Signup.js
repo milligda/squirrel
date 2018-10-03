@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
 import API from "../../../utils/API";
 import "./signup.css";
+import Notifier, { openSnackbar } from '../../Notifier';
 
 
 class Signup extends Component {
@@ -27,10 +28,15 @@ class Signup extends Component {
         password: this.state.password
       })
       .then(res => {
-        this.setState({ redirectTo: "/home" });
+        this.setState({ 
+          redirectTo: "/home",
+        });
+        //openSnackbar({ message: res.data });;
       })
       .catch(err => console.log(err));
-    }
+    }  
+
+    
   };
 
   render() {
@@ -56,6 +62,7 @@ class Signup extends Component {
                   name="password"
                   placeholder="password"
                 />
+                <Notifier />
                 <FormBtn
                   disabled={!(this.state.username && this.state.password)}
                   onClick={this.handleFormSubmit}

@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
 import API from "../../../utils/API";
 import "./login.css";
+import Notifier, { openSnackbar } from '../../Notifier';
 
 class Login extends Component {
   state = {
@@ -53,7 +54,9 @@ class Login extends Component {
                 type="password"
                 name="password"
                 placeholder="password"
-                /> <FormBtn
+                /> 
+                <Notifier /> 
+                <FormBtn
                 disabled={!(this.state.username && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
