@@ -70,7 +70,7 @@ After you run this command, follow the instructions provided in the Terminal.
     * 
 
 * In your  `server.js`, require the following:
-    * `express`, `body-parser`, `express-session` ,`passport` ,`cors` ,`connect-mongo` (if using MongoDB), database routes, and the database.
+    * `express`, `body-parser`, `express-session` ,`passport` ,`cors` ,`connect-mongo` (if using MongoDB), routes file, and the database.
 
 
 4. Build the Backend
