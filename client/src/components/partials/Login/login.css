@@ -1,7 +1,8 @@
-.form-container{
-    position: relative;
-    display: inline-block;
-    margin: auto;
-    padding: 15px;
-    z-index: 12;
+#login {
+    background-color: #21accc;
+}
+
+.login-container {
+    width: 500px;
+    max-width: 90vw;
 }
