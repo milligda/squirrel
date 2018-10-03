@@ -10,6 +10,10 @@
 outline: none;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
@@ -18,16 +22,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     color: #1a8799;
-    background-image: url("../images/new_bg.png");
-    background-size: cover;
+    background-color: #85DEFF;
+    background: linear-gradient(to bottom,#ffffff 0%, #e5f8ff 15%,#85DEFF 100%);
+    height: 100%;
     background-repeat: no-repeat;
-}
-
-.container {
-    background-color: #ffe2c8;
-    align-content: center;
-    padding: 15px;
-    height: auto;
+    background-attachment: fixed;
 }
 
 ul,
@@ -53,8 +52,9 @@ a:hover {
 
 h1 {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 30px;
+    font-size: 50px;
     padding-bottom: 20px;
+    font-weight: 500;
 }
 
 h2 {
@@ -75,6 +75,7 @@ h3 {
     padding: 70px 20px 0px 20px;
     max-width: 1170px;
     margin: 0px auto 50px auto;
+    height: 100%;
 }
 
 .page-title {
@@ -99,6 +100,7 @@ h3 {
     cursor: pointer;
     transition: all .2s ease-in-out;
     margin: 0px 10px;
+    box-shadow: 2px 3px 5px #bfbfbf;
 }
 
 .squirrel-blue-btn {
@@ -108,9 +110,37 @@ h3 {
 
 .squirrel-red-btn {
     color: #ffffff;
-    background-color: #FF3E5E;
+    background-color: #FF5773;
 }
 
 .squirrel-btn:hover {
     transform: scale(1.1);
+}
+
+.welcome-container{
+    height: 100%;
+}
+/* .form-container{
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    padding: 15px;
+    z-index: 12;
+} */
+
+.centered-container {
+    border: 2px solid #cccccc;
+    background-color: #ffffff;
+    border-radius: 25px;
+    width: 500px;
+    max-width: 90vw;
+    margin: 0px auto;
+    padding: 20px 10px;
+}
+
+.content {
+    background-color: #ffe2c8;
+    align-content: center;
+    padding: 15px;
+    height: auto;
 }

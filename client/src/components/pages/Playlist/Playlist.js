@@ -5,6 +5,7 @@ import API from "../../../utils/API";
 import Header from "../../partials/Header";
 import { VideoTile, GridContainer } from "../../partials/Tiles";
 import { EditButton, PlayButton } from "../../partials/Controls";
+import Loading from "../../partials/Loading";
 import ListPlayer from "../ListPlayer";
 import "./playlist.css";
 
@@ -14,8 +15,8 @@ class Playlist extends Component {
         playlistId: this.props.match.params.id,
         title: null,
         userId: null,
-        isOwner: true,
-        isPrivate: false,
+        isOwner: null,
+        isPrivate: null,
         showPage: true,
         showPlayer: false,
         duration: 1000,
@@ -57,12 +58,19 @@ class Playlist extends Component {
     }
 
     checkOwner = () => {
-        if (this.state.ownerId !== this.state.userId) {
+        if (this.state.ownerId === this.state.userId) {
             this.setState({ 
+                isOwner: true,
+                dataLoaded: true
+            });
+        } else {
+            this.setState({
                 isOwner: false,
                 dataLoaded: true
             });
         }
+        console.log("*****************************")
+        console.log(this.state);
     }
 
     removeVideo = (videoId) => {
@@ -101,12 +109,14 @@ class Playlist extends Component {
 
     render() {
 
-        // if the user is not the playlist owner and playlist is private, redirect to "restricted"
-        if (!this.state.isOwner && this.state.isPrivate) {
-            return <Redirect to="/restricted" />;
+        // until the data has been loaded, display the loading spinner
+        if (!this.state.dataLoaded) {
+            return <Loading />
+        } 
 
-        // if the ownerID !== userID and playlist is public, display public view
-        } else if (!this.state.isOwner) {
+        // if the user is not the playlist owner and playlist is private, redirect to "restricted"
+        if (this.state.isOwner === false && this.state.isPrivate === true) {
+            return <Redirect to="/restricted" />;
 
         // if the ownerID === userID, show everything
         } else {

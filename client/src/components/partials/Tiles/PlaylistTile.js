@@ -23,7 +23,7 @@ class PlaylistTile extends Component {
           isCreateTile: false
         });
         break;
-      case "Create New Playlist":
+      case "+":
         this.setState({
           isCreateTile: true,
           isAllVideosTile: false
@@ -38,8 +38,6 @@ class PlaylistTile extends Component {
   };
 
   expandContainer = () => {
-    console.log("we are here");
-
     this.setState({
       optionsVisible: !this.state.optionsVisible
     });
@@ -54,7 +52,7 @@ class PlaylistTile extends Component {
       <div className="playlist-tile-container">
         <div className="playlist-tile">
           <Link to={playlistUrl}>
-            <div className="playlist-tile-content">
+            <div className={this.props.className}>
               <h3 className="playlist-tile-title">{this.props.title}</h3>
             </div>
           </Link>

@@ -39,9 +39,10 @@ class Login extends Component {
       return <Redirect to={ this.state.redirectTo} />
     } else {
       return (
-        <div className="container">
-          <div className="row">
-            <div className="form-container">
+        // <div className="container">
+          /* <div className="row"> */
+            <div className="form-container login-container">
+            <h2>Login</h2>
               <form>
                 <Input
                   value={this.state.username}
@@ -58,14 +59,14 @@ class Login extends Component {
                 <Notifier /> 
                 <FormBtn
                 disabled={!(this.state.username && this.state.password)}
-                onClick={this.handleFormSubmit}
+                onClick={this.handleFormSubmit} id="login"
               >
                 Login
                 </FormBtn>
               </form>   
             </div>
-          </div>
-        </div>
+          /* </div> */
+        // </div>
       );
     }
   }

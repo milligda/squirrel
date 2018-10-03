@@ -61,20 +61,12 @@ module.exports = {
   },
 
   update: function (req, res) {
-    db.Playlist
-      .findOneAndUpdate({
-        _id: req.params.id
-      }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    db.Playlist.findByIdAndUpdate(req.params.playlistId, { $set: req.body }, { new: true })
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
   },
 
   remove: function (req, res) {
-
-    // console.log("*****************************************");
-    // console.log("UserId: " + req.params.userId);
-    // console.log("PlaylistId: " + req.params.playlistId);
-
     db.User.findByIdAndUpdate(req.params.userId, { $pull: { playlists: req.params.playlistId }})
       .then(function(dbUser) {
         db.Playlist.findByIdAndRemove(req.params.playlistId)

@@ -44,9 +44,9 @@ class Signup extends Component {
       return <Redirect to={ this.state.redirectTo} />
     } else {
       return (
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 form-container">
+        // <div className="container">
+          /* <div className="row"> */
+            <div className="form-container signup-container">
               <h2>Sign Up</h2>
               <form>
                 <Input
@@ -65,14 +65,14 @@ class Signup extends Component {
                 <Notifier />
                 <FormBtn
                   disabled={!(this.state.username && this.state.password)}
-                  onClick={this.handleFormSubmit}
+                  onClick={this.handleFormSubmit} id="signup"
                 >
                   Sign Up
                 </FormBtn>
               </form>
             </div>
-          </div>
-        </div>
+          /* </div> */
+        // </div>
       );
     }
   }

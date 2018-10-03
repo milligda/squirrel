@@ -1,0 +1,8 @@
+.restricted-container > h1 {
+    margin-bottom: 20px;
+    padding-bottom: 0px;
+}
+
+.restricted-container > h2 {
+    font-style: italic;
+}

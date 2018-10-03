@@ -32,6 +32,10 @@ export default {
     deletePlaylist: function(userId) {
         return axios.delete("/api/playlists/" + userId);
     },
+    // updates the playlist based on the playlist ID
+    updatePlaylist: function(playlistId, playlistObj) {
+        return axios.put(`/api/playlists/update/${playlistId}`, playlistObj);
+    },
     // determines if the user is logged in or not
     getUserStatus: function() {
         return axios.get(`/api/users/status`);
@@ -60,6 +64,4 @@ export default {
     saveVideo: function(userId, videoObj) {
         return axios.post(`/api/videos/save/${userId}`, videoObj);
     }
-
-
 };

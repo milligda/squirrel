@@ -5,7 +5,7 @@ import Header from "../../partials/Header";
 import Login from "../../partials/Login/Login";
 import "./welcome.css";
 import Signup from "../../partials/Signup";
-// import Footer from "../../partials/Footer"
+import Footer from "../../partials/Footer/Footer.js"
 
 class Welcome extends Component {
   state = {
@@ -34,33 +34,56 @@ class Welcome extends Component {
       return <Redirect to="/home" />;
     }
 
-    return (
-      <div className="welcome-container">
-        < Header/>
-      
-        <div className="container">
-          <div className="login">
-            < Login className="login"/>
-          </div>
-          <div className="app-info">
-            <h1>Squirrel Home Page Tagline!</h1>
-            <br/>
-            <h2>Save videos to watch later</h2>
-            <br/>
-            <h2>Create playlists of videos from multiple websites like YouTube and Vimeo</h2>
-            <br/>
-            
-            <a href="https://chrome.google.com/webstore/category/extensions?hl=en">Find us in the Chrome Web Store</a>
-          </div>
-          
-          <div className="signup">
-            < Signup />
-          </div>
-        </div>
+    var welcomeContainerStyle = {
+      height: '100%',
+    }
 
-        {/* <Footer /> */}
-      </div>
-      
+    var separationID ={
+      height: '100%',
+    }
+
+    var pageContainerStyles = {
+      'padding-top': '50px',
+      height: '800px',
+      'background-color':'#ffc897',
+    }
+
+    var formStyles = {
+      float: 'left',
+      background: '#ffc897',
+      padding: '10px',
+    }
+
+    
+
+    
+
+    return (
+      <div className="welcome-container" style={welcomeContainerStyle}>
+
+          <div className="page-container" id="welcome" style={pageContainerStyles}>
+            
+            <div className="app-info" >
+              <h1 id="welcome-msg">Welcome to Squirrel.</h1>
+              <br/>
+              <h2>All the videos you want stored in one place.</h2>
+              <br/>
+              
+              <h2><a id="chrome-link" href="https://chrome.google.com/webstore/category/extensions?hl=en">Get the Chrome extension</a></h2>
+            </div>
+
+            <div id="forms" style={formStyles}>
+            ` <br/>
+              < Login  />
+
+              < Signup />
+              <br/>
+              <br/>
+              <br/>
+            </div>
+              
+          </div>
+        </div>      
     );
   }
 }

@@ -12,6 +12,8 @@ const VideoTile = props => {
 
   if (props.isOwner === true) {
     removeButton = <DeleteIcon onClick={() => props.removeVideo(props._id)} />
+  } else {
+    removeButton = ""
   }
 
   return (

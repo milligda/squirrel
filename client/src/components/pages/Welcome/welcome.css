@@ -1,26 +1,36 @@
+.app-info > div {
+    color: #ffc897;
+}
+
 .welcome-container {
     font-family: 'Josefin Sans', sans-serif;
+    background-image: url("../../assets/images/new_bg.png");
+    background-size: cover;
+    background-repeat: repeat-y;
+    min-height: 100%;
 }
 
-.app-info, .signup {
-    display: inline-block;
-    background: #ffaf5b;
-    border: 1px solid #ffaf5b;
-    border-radius: 5px;
-    height: 300px;
-    width: 300px;
-    color: #fff;
-    font-size: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
+#welcome {
+    min-height: 100%;
 }
 
-.signup {
-    width: 35%;
+#welcome-msg {
+    font-size: 60px;
+}
+
+#chrome-link {
+    text-decoration: none;
+    color: #21accc;
+    size: 20px;
 }
 
 .app-info {
-    width: 45%;
+    float: left;
+    padding-right: 20px;
+    background: #ffc897;
+    border: solid #ffc897 10px;
+}
+
+.forms {
+    float: left;
 }
