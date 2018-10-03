@@ -2,7 +2,9 @@
 
 Squirrel away videos for a rainy day. Squirrel is a watch-later website that allows you to save videos from a variety of platforms.
 
-![logo](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/intro.jpg)
+![logo](https://github.com/milligda/squirrel/blob/master/resources/Squirrel%20Preview%20Tile%20Small.png)
+
+![intro](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/intro.jpg)
 
 ## Features
 * Store videos from different providers in one app
@@ -10,13 +12,13 @@ Squirrel away videos for a rainy day. Squirrel is a watch-later website that all
 * Create, edit, and delete playlists
 * Watch all of the videos in your playlist at the click of one button
 
-![home page](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/homepg.png)
+![home page](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/homepg.png)
 
-![playlist page](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/playlistpg.png)
+![playlist page](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/playlistpg.png)
 
-![add video page](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/addVideopg.png)
+![add video page](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/addVideopg.png)
 
-![create playlist page](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/createpg.png)
+![create playlist page](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/createpg.png)
 
 
 ## Steps to Build the App
