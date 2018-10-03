@@ -5,17 +5,17 @@ chrome.browserAction.setBadgeText({
   text: ""
 });
 
-compSites = ["/youtube/", "/vimeo/"]
-
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+
+
   if ((changeInfo.url.match(/youtube/)) || (changeInfo.url.match(/vimeo/))) {
     chrome.browserAction.setIcon({
-      path: "../img/icon_tailx38.png"
+      path: "../img/icon_acorn38px.png"
     });
   } else {
     chrome.browserAction.setIcon({
-      path: "../img/icon_tail_grayx38.png"
+      path: "../img/icon_acorn_gray38px.png"
     });
   }
 
@@ -26,14 +26,13 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
   chrome.tabs.get(activeInfo.tabId, function (tab) {
     if ((tab.url.match(/youtube/)) || (tab.url.match(/vimeo/))) {
       chrome.browserAction.setIcon({
-        path: "../img/icon_tailx38.png"
+        path: "../img/icon_acorn38px.png"
       });
     } else {
       chrome.browserAction.setIcon({
-        path: "../img/icon_tail_grayx38.png"
+        path: "../img/icon_tail_gray38px.png"
       });
     }
-
   });
 });
 // chrome.browserAction.setIcon({path: icon});
