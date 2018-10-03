@@ -76,16 +76,16 @@
 }
 
 .save-icon {
-    background-color: #21accc;
+    background-color: #FF5773;
     z-index: 5;
     width: 40px;
     cursor: pointer;
     border-radius: 50px;
-    box-shadow: 0px 0px 8px #cccccc;
-    -webkit-box-shadow: 0px 0px 8px #cccccc;
+    box-shadow: 2px 3px 5px #bfbfbf;
+    -webkit-box-shadow: 2px 3px 5px #bfbfbf;
     transition: 0.3s;
 }
 
 .save-icon:hover {
-    background-color: #ffaf5b;
+    background-color: #21accc;
 }
