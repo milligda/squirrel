@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
-import RecentVideos from "../../partials/RecentVideos";
+// import RecentVideos from "../../partials/RecentVideos";
 import API from "../../../utils/API";
 import { PlaylistGridContainer, PlaylistTile } from "../../partials/Tiles";
 import Loading from "../../partials/Loading";
-import "./home.css";
 import Header from "../../partials/Header";
+import "./home.css";
+
 
 
 class Home extends Component {
@@ -44,6 +45,7 @@ class Home extends Component {
         playlistsLoaded: true
       });
       console.log(this.state.playlists)
+      this.firstTimeUser();
     })
     .catch(err => console.log(err));
   };
@@ -52,7 +54,7 @@ class Home extends Component {
     API.removePlaylist(playlistId, this.state.userId)
       .then(res => this.getPlaylists())
       .catch(err => console.log(err));
-  }
+  };
 
   setCookie = () => {
     API.setCookie()
@@ -62,6 +64,16 @@ class Home extends Component {
       })
       .catch(err => console.log(err));
   };
+
+  firstTimeUser = () => {
+    // the first playlist will be All Videos - if 0, display the first Time message
+    console.log(this.state.playlists)
+    if (this.state.playlists[0].videos.length > 0) {
+      this.setState({
+        firstTime: false
+      });
+    }
+  }
 
 
   render() {
@@ -79,7 +91,6 @@ class Home extends Component {
     } else if (this.state.loggedIn === null) {
       return <Loading />;
     }
-
     if (this.state.loggedIn === true) {
 
       return (

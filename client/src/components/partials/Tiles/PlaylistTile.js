@@ -38,8 +38,6 @@ class PlaylistTile extends Component {
   };
 
   expandContainer = () => {
-    console.log("we are here");
-
     this.setState({
       optionsVisible: !this.state.optionsVisible
     });
