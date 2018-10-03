@@ -1,9 +1,8 @@
-.restricted-container {
-    margin-top: 5%;
+.restricted-container > h1 {
+    margin-bottom: 20px;
+    padding-bottom: 0px;
 }
 
-.msg {
-    margin-left: 20%;
-    margin-right: 20%;
-    top: 20%;
+.restricted-container > h2 {
+    font-style: italic;
 }
