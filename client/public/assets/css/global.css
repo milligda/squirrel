@@ -29,13 +29,6 @@ body {
     background-attachment: fixed;
 }
 
-.content {
-    background-color: #ffe2c8;
-    align-content: center;
-    padding: 15px;
-    height: auto;
-}
-
 ul,
 li {
   margin: 0;
@@ -124,10 +117,6 @@ h3 {
     transform: scale(1.1);
 }
 
-html {
-    height: 100%;
-}
-
 .welcome-container{
     height: 100%;
 }
@@ -138,3 +127,20 @@ html {
     padding: 15px;
     z-index: 12;
 } */
+
+.centered-container {
+    border: 2px solid #cccccc;
+    background-color: #ffffff;
+    border-radius: 25px;
+    width: 500px;
+    max-width: 90vw;
+    margin: 0px auto;
+    padding: 20px 10px;
+}
+
+.content {
+    background-color: #ffe2c8;
+    align-content: center;
+    padding: 15px;
+    height: auto;
+}

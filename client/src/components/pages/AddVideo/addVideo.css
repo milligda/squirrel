@@ -7,16 +7,6 @@
     margin-bottom: 5px;
 }
 
-.centered-container {
-    border: 2px solid #cccccc;
-    background-color: #ffffff;
-    border-radius: 25px;
-    width: 500px;
-    max-width: 90vw;
-    margin: 0px auto;
-    padding: 20px 10px;
-}
-
 .centered-container > .wrapper > .dd-wrapper {
     margin: 10px auto;
 }
