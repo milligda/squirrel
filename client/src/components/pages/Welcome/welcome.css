@@ -7,16 +7,15 @@
     background-image: url("../../assets/images/new_bg.png");
     background-size: cover;
     background-repeat: repeat-y;
-    height: 100%;
+    min-height: 100%;
+}
+
+#welcome {
+    min-height: 100%;
 }
 
 #welcome-msg {
     font-size: 60px;
-}
-
-#welcome {
-    background: #ffc897;
-    margin: 50px;
 }
 
 #chrome-link {
@@ -24,24 +23,14 @@
     color: #21accc;
     size: 20px;
 }
- 
-#page-container .app-info {
-    float: left;
-    padding-right: 10px;
-}
 
-#page-container .forms {
+.app-info {
     float: left;
-}
-
-/* .page-container .forms .container .form-container {
-    float: right; */
-
-/* .app-info {
-    float: left;
-    padding-right: 100px;
+    padding-right: 20px;
+    background: #ffc897;
+    border: solid #ffc897 10px;
 }
 
 .forms {
     float: left;
-} */
+}

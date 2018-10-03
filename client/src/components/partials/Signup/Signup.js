@@ -38,8 +38,8 @@ class Signup extends Component {
       return <Redirect to={ this.state.redirectTo} />
     } else {
       return (
-        <div className="container">
-          {/* <div className="row"> */}
+        // <div className="container">
+          /* <div className="row"> */
             <div className="form-container signup-container">
               <h2>Sign Up</h2>
               <form>
@@ -64,8 +64,8 @@ class Signup extends Component {
                 </FormBtn>
               </form>
             </div>
-          {/* </div> */}
-        </div>
+          /* </div> */
+        // </div>
       );
     }
   }
