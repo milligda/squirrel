@@ -10,6 +10,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import { Input, FormBtn} from "../../partials/Form"
 import Rename from "../../partials/Rename/Rename.js"
+import GridContainer from "../../partials/Tiles/PlaylistGridContainer";
+import { SaveIcon } from "../../partials/Controls";
+import { EventEmitter } from "events";
+
 
 
 const SortableItem = SortableElement(({value}) =>
@@ -18,11 +22,14 @@ const SortableItem = SortableElement(({value}) =>
 
 const SortableList = SortableContainer(({videos}) => {
     return (
-      <ul>
-        {videos.map((value, index) => (
-          <SortableItem key={`item-${index}`} index={index} value={value} />
-        ))}
-      </ul>
+      <div>
+        <h2>Drag to Reorder</h2>
+        <ul>
+          {videos.map((value, index) => (
+            <SortableItem key={`item-${index}`} index={index} value={value} />
+          ))}
+        </ul>
+      </div>
     );
   });
 
@@ -58,17 +65,22 @@ class EditPlaylist extends Component {
           videos: arrayMove(this.state.videos, oldIndex, newIndex),
         });
       };
+
+      handleFormSubmit = event => {
+        const storeRename = {
+          title: this.state.title,
+        }
+      }
+      
       render() {
         const isAllVideos = this.state.title;
 
         return (
           
-            <div className="edit-container">
+            <div className="edit-page">
                 < Header />
-                <div className="reorder-container container">
+                <div className="page-container reorder-container container">
                     <h1>Edit "{this.state.title}" Playlist</h1>
-
-                    {/* < BreadcrumbMenu title={this.state.title}/> */}
 
                 <div className="privacy-toggle">
                   <FormGroup row>
@@ -85,9 +97,15 @@ class EditPlaylist extends Component {
                   </FormGroup>
                 </div>
 
-                {(isAllVideos !== "All Videos") && (<Rename title={this.state.title}/>)}
+                <SaveIcon onClick={this.handleFormSubmit} />
 
-                <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
+                
+                <GridContainer>
+                  {(isAllVideos !== "All Videos") && (<Rename title={this.state.title}/>)}
+
+                  <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
+
+                </GridContainer>
                 </div>
             </div>
             

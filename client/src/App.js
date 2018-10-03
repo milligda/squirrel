@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Welcome from "./components/pages/Welcome";
 import Home from "./components/pages/Home";
 import Signup from "./components/partials/Signup";
@@ -8,16 +8,12 @@ import Logout from "./utils/Logout";
 import Restricted from "./components/pages/Restricted";
 import API from "./utils/API";
 import PageNotFound from "./components/pages/PageNotFound";
-import PlaylistList from "./components/pages/Playlist/PlaylistList";
-import RecentlySaved from "./components/partials/RecentlySaved";
 import Video from "./components/pages/Video";
 import AddVideo from "./components/pages/AddVideo";
 import Playlist from "./components/pages/Playlist";
 import EditPlaylist from "./components/pages/EditPlaylist/EditPlaylist.js";
 import "./App.css";
-import { SortableContainer, SortableElement } from "react-sortable-hoc";
 import NewPlaylist from "./components/pages/NewPlaylist/";
-import PlaylistListItem from "./components/pages/Playlist/PlaylistListItem";
 import UserMessage from "./utils/UserMessage";
 
 class App extends Component {
@@ -35,23 +31,23 @@ class App extends Component {
     this.setState(userObject);
   };
 
-  loadCollections = () => {
-    API.getPlaylists()
-      .then(res => this.setState({ collections: res.data }))
-      .catch(err => console.log(err));
-  };
+  // loadCollections = () => {
+  //   API.getPlaylists()
+  //     .then(res => this.setState({ collections: res.data }))
+  //     .catch(err => console.log(err));
+  // };
 
-  getUser = () => {
-    API.getUserStatus()
-      .then(res => {
-        console.log(res);
-        this.setState({
-          loggedIn: res.data.loggedIn,
-          userId: res.data.userId
-        });
-      })
-      .catch(err => console.log(err));
-  };
+  // getUser = () => {
+  //   API.getUserStatus()
+  //     .then(res => {
+  //       console.log(res);
+  //       this.setState({
+  //         loggedIn: res.data.loggedIn,
+  //         userId: res.data.userId
+  //       });
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   render() {
     return (
@@ -60,7 +56,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Welcome} />
             <Route exact path="/test" component={UserMessage} />
-            <Route
+            {/* <Route
               exact
               path="/login"
               render={() => <Login updateUser={this.updateUser} />}
@@ -69,7 +65,7 @@ class App extends Component {
               exact
               path="/signup"
               render={() => <Signup updateUser={this.updateUser} />}
-            />
+            /> */}
             <Route exact path="/home" component={Home} />
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/video/add" component={AddVideo} />
@@ -77,9 +73,9 @@ class App extends Component {
             <Route exact path="/playlist/create" component={NewPlaylist} />
             <Route exact path="/playlist/:id" component={Playlist} />
             <Route exact path="/restricted" component={Restricted} />
-            <Route exact path="/playlists" component={PlaylistList} /> } />
+            {/* <Route exact path="/playlists" component={PlaylistList} /> } /> */}
             <Route exact path="/edit/:id" component={EditPlaylist} />
-            <Route exact path="/playlists/new" component={NewPlaylist} />
+            {/* <Route exact path="/playlists/new" component={NewPlaylist} /> */}
             <Route component={PageNotFound} />
           </Switch>
         </div>

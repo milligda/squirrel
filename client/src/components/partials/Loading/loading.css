@@ -1,0 +1,14 @@
+.spinner-container {
+    margin: 80px auto;
+    text-align: center;
+}
+
+.spinner-icon {
+    animation: loading-spin infinite 2.5s linear;
+    width: 75px;
+}
+
+@keyframes loading-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }

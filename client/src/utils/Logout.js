@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import Loading from "../components/partials/Loading";
 import API from "./API";
 
 class Logout extends Component {
@@ -33,9 +34,7 @@ class Logout extends Component {
     }
 
     return (
-      <div>
-        <h1>You are currently being logged out</h1>
-      </div>
+      <Loading />
     );
   }
 }
