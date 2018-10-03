@@ -23,7 +23,7 @@ class PlaylistTile extends Component {
           isCreateTile: false
         });
         break;
-      case "Create New Playlist":
+      case "+":
         this.setState({
           isCreateTile: true,
           isAllVideosTile: false

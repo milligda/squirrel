@@ -63,9 +63,9 @@ class EditPlaylist extends Component {
 
         return (
           
-            <div className="edit-container">
+            <div className="edit-page">
                 < Header />
-                <div className="reorder-container container">
+                <div className="page-container reorder-container container">
                     <h1>Edit "{this.state.title}" Playlist</h1>
 
                     {/* < BreadcrumbMenu title={this.state.title}/> */}
