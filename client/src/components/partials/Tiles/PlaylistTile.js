@@ -54,7 +54,7 @@ class PlaylistTile extends Component {
       <div className="playlist-tile-container">
         <div className="playlist-tile">
           <Link to={playlistUrl}>
-            <div className="playlist-tile-content">
+            <div className={this.props.className}>
               <h3 className="playlist-tile-title">{this.props.title}</h3>
             </div>
           </Link>

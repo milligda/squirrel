@@ -114,7 +114,7 @@ class NewPlaylist extends Component {
                     />
                 </div>
 
-                <h2 className="section-title center-title">Add Videos To Your Playlist</h2>
+                <h2 className="section-title center-title">Add Videos From Your Collection:</h2>
 
                 <GridContainer>
                   {this.state.videosLoaded ? 
