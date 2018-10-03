@@ -2,7 +2,7 @@
 
 Squirrel away videos for a rainy day. Squirrel is a watch-later website that allows you to save videos from a variety of platforms.
 
-![logo](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/icon_acorn.svg)
+![logo](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/intro.jpg)
 
 ## Features
 * Store videos from different providers in one app
