@@ -6,6 +6,7 @@
     width: auto;
     height: auto;
     padding: 5px;
+    cursor: pointer;
 }
 
 .reorder-container > .save-icon {
