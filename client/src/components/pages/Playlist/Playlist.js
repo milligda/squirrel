@@ -69,6 +69,8 @@ class Playlist extends Component {
                 dataLoaded: true
             });
         }
+        console.log("*****************************")
+        console.log(this.state);
     }
 
     removeVideo = (videoId) => {
@@ -107,13 +109,13 @@ class Playlist extends Component {
 
     render() {
 
-        // until the owner is determined, display the loading spinner
-        if (this.state.isOwner === null) {
+        // until the data has been loaded, display the loading spinner
+        if (!this.state.dataLoaded) {
             return <Loading />
-        }
+        } 
 
         // if the user is not the playlist owner and playlist is private, redirect to "restricted"
-        if (this.state.isOwner === false && this.state.isPrivate === false) {
+        if (this.state.isOwner === false && this.state.isPrivate === true) {
             return <Redirect to="/restricted" />;
 
         // if the ownerID === userID, show everything
