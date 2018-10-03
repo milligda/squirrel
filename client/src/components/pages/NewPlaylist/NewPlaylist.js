@@ -5,12 +5,14 @@ import { Input } from "../../partials/Form/";
 import Header from "../../partials/Header";
 import { SaveIcon } from "../../partials/Controls";
 import { GridContainer, VideoSelectTile } from "../../partials/Tiles";
+import Loading from "../../partials/Loading";
 import "./NewPlaylist.css";
 
 class NewPlaylist extends Component {
   state = {
       title: "",
       userId: "",
+      loggedIn: null,
       videosLoaded: false,
       redirect: false,
       video: []
@@ -25,6 +27,7 @@ class NewPlaylist extends Component {
     .then(res => {
       console.log("getUser: ", res);
       this.setState({
+        loggedIn: res.data.loggedIn,
         userId: res.data.userId
       });
       this.getUserData(res.data.userId);
@@ -89,52 +92,58 @@ class NewPlaylist extends Component {
     }
   }
 
-
-
   render() {
 
     if (this.state.redirect) {
       return <Redirect to="/home" />
     }
 
-    return (
-        <div className="new-playlist-page">
-            <Header />
-            <div className="page-container new-playlist-container container">
-                <h1 className="page-title center-title">Create A New Playlist</h1>   
-                
-                {this.state.title ? <SaveIcon onClick={this.handleFormSubmit} /> : "" }
-                     
-                <div className="add-title-container">
-                    <Input
-                    value={this.state.title}
-                    onChange={this.handleInputChange}
-                    name="title"
-                    placeholder="Title"
-                    />
-                </div>
+    if (this.state.loggedIn === false) {
+      return <Redirect to="/" />;
+    } else if (this.state.loggedIn === null) {
+      return <Loading />;
+    }
+    if (this.state.loggedIn === true) {
 
-                <h2 className="section-title center-title">Add Videos From Your Collection:</h2>
-
-                <GridContainer>
-                  {this.state.videosLoaded ? 
-                    this.state.video.map((video, index) => (
-                      <VideoSelectTile
-                        imageUrl={video.imageUrl}
-                        title={video.title}
-                        key={video._id}
-                        index={index}
-                        _id={video._id}
-                        selected={video.selected}
-                        selectVideo={this.selectVideo}
+      return (
+          <div className="new-playlist-page">
+              <Header />
+              <div className="page-container new-playlist-container container">
+                  <h1 className="page-title center-title">Create A New Playlist</h1>   
+                  
+                  {this.state.title ? <SaveIcon onClick={this.handleFormSubmit} /> : "" }
+                      
+                  <div className="add-title-container">
+                      <Input
+                      value={this.state.title}
+                      onChange={this.handleInputChange}
+                      name="title"
+                      placeholder="Title"
                       />
-                    )) : ""
-                  }
-                </GridContainer>
-                
-            </div>
-        </div>
-    )
+                  </div>
+
+                  <h2 className="section-title center-title">Add Videos From Your Collection:</h2>
+
+                  <GridContainer>
+                    {this.state.videosLoaded ? 
+                      this.state.video.map((video, index) => (
+                        <VideoSelectTile
+                          imageUrl={video.imageUrl}
+                          title={video.title}
+                          key={video._id}
+                          index={index}
+                          _id={video._id}
+                          selected={video.selected}
+                          selectVideo={this.selectVideo}
+                        />
+                      )) : ""
+                    }
+                  </GridContainer>
+                  
+              </div>
+          </div>
+      )
+    }
   }
 }
 
