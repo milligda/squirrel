@@ -1,0 +1,29 @@
+.welcome-message h1 {
+    margin-bottom: 10px;
+    padding: 0px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.welcome-message h2 {
+    margin: 10px 0px;
+    font-style: italic;
+}
+
+.welcome-message {
+    padding-bottom: 30px;
+}
+
+.add-videos-container {
+    padding-bottom: 30px;
+}
+
+.create-playlist-tile {
+    background-color: #ffc897;
+}
+
+.create-playlist-tile > .playlist-tile-title {
+    font-weight: 500;
+    font-size: 100px;
+
+}

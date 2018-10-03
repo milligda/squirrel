@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
+import RecentVideos from "../../partials/RecentVideos";
 import API from "../../../utils/API";
 import { PlaylistGridContainer, PlaylistTile } from "../../partials/Tiles";
+import Loading from "../../partials/Loading";
 import "./home.css";
-import RecentlySaved from "../../partials/RecentlySaved/RecentlySaved.js";
 import Header from "../../partials/Header";
 
 
@@ -12,6 +13,7 @@ class Home extends Component {
     loggedIn: null,
     userId: null,
     playlistsLoaded: false,
+    firstTime: true,
     playlists: []
   };
 
@@ -19,7 +21,6 @@ class Home extends Component {
     this.getUser();
     this.getPlaylists();
     this.setCookie();
-    console.log("console did mount");
   };
 
   getUser = () => {
@@ -57,55 +58,57 @@ class Home extends Component {
     API.setCookie()
       .then(res => {
         console.log("userID: ", res.data.userId);
-  
-        // document.cookie = ({'userId': res.userId,  maxAge: 2592000000});  // Expires in one month    
-        // res.json();
         localStorage.setItem('squirrelId', res.data.userId);
-    
-        // this.setState({
-        //   loggedIn: res.data.loggedIn,
-        //   userId: res.data.userId
-        // });
       })
       .catch(err => console.log(err));
   };
 
 
   render() {
+
+    let welcomeMessage;
+
+    if (this.state.firstTime) {
+      welcomeMessage = <div className="welcome-message"> <h1>Welcome to Squirrel!</h1> <h2>Add videos, create playlists, and watch when you're ready!</h2> </div>;
+    } else {
+      welcomeMessage = <div className="welcome-message"><h1>Welcome Back!</h1></div>;
+    }
+
     if (this.state.loggedIn === false) {
       return <Redirect to="/" />;
     } else if (this.state.loggedIn === null) {
-      return (<div></div>)
+      return <Loading />;
     }
 
     if (this.state.loggedIn === true) {
 
       return (
-        <div className="home-container">
+        <div className="home-page">
           < Header />
-          <div className="home-content-container content">
-            <h1>Welcome!</h1>
-            <h2>Here's everything you've squirreled away so far.</h2>
-  
-            <Link to="/playlist/create">
-              <button className="squirrel-btn squirrel-blue-btn">New Playlist</button>
-            </Link>
-  
-            <Link to="/video/add">
-              <button className="squirrel-btn squirrel-blue-btn">Add Video</button>
-            </Link>
+          <div className="page-container home-container">
+            {welcomeMessage}
 
-            <RecentlySaved />
-  
+            <div className="add-videos-container">
+              <h2>Squirrel Away Videos:</h2>
+
+              <Link to="/video/add">
+                <button className="squirrel-btn squirrel-red-btn">Add Video</button>
+              </Link>
+
+              <a href="https://chrome.google.com/webstore/detail/squirrel/ddfnjccdalikdhoaelepmoldpgookabe">
+                <button className="squirrel-btn squirrel-red-btn">Get Chrome Extension</button>
+              </a>
+            </div>
+            
             <div className="playlists-menu">
-              <h2>Playlists</h2>
+              <h2>Your Playlists:</h2>
 
               <PlaylistGridContainer>
 
                 <PlaylistTile 
-                  title="Create New Playlist"
+                  title="+"
                   _id="create"
-                  className="create-playlist-tile"
+                  className="playlist-tile-content create-playlist-tile"
                 />
                 
                 {this.state.playlistsLoaded ? 
@@ -115,6 +118,7 @@ class Home extends Component {
                       key={playlist._id}
                       title={playlist.title}
                       deletePlaylist={this.deletePlaylist}
+                      className="playlist-tile-content"
                     />
                   )) : ""
                 }
