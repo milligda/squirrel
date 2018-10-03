@@ -1,6 +1,5 @@
 .playlist-item {
     background: #ffaf5b;
-    border: 1px solid #ffaf5b;
     border-radius: 5px;
     height: 300px;
     width: 300px;
@@ -11,7 +10,6 @@
     justify-content: center;
     margin: 10px;
     font-family: 'Josefin Sans', sans-serif;
-
 }
 
 .playlist-card :hover {

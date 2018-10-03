@@ -5,7 +5,7 @@ import Header from "../../partials/Header";
 import Login from "../../partials/Login/Login";
 import "./welcome.css";
 import Signup from "../../partials/Signup";
-// import Footer from "../../partials/Footer"
+import Footer from "../../partials/Footer/Footer.js"
 
 class Welcome extends Component {
   state = {
@@ -36,26 +36,24 @@ class Welcome extends Component {
 
     return (
       <div className="welcome-container">
-        < Header/>
+        
       
-        <div className="container">
-          <div className="login">
-            < Login className="login"/>
-          </div>
+        <div className="page-container welcome content">
+          < Login className="login"/>
+
           <div className="app-info">
-            <h1>Squirrel Home Page Tagline!</h1>
+            <h1 classname="welcome-msg">Welcome to Squirrel.</h1>
             <br/>
-            <h2>Save videos to watch later</h2>
+            <h2>Your space to house videos from different parts of the web.</h2>
             <br/>
-            <h2>Create playlists of videos from multiple websites like YouTube and Vimeo</h2>
+            <h2>Save videos to watch later or organize them into playlists as you go.</h2>
             <br/>
             
             <a href="https://chrome.google.com/webstore/category/extensions?hl=en">Find us in the Chrome Web Store</a>
           </div>
           
-          <div className="signup">
-            < Signup />
-          </div>
+          < Signup />
+          
         </div>
 
         {/* <Footer /> */}

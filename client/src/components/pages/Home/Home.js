@@ -83,7 +83,7 @@ class Home extends Component {
       return (
         <div className="home-container">
           < Header />
-          <div className="home-content-container container">
+          <div className="home-content-container content">
             <h1>Welcome!</h1>
             <h2>Here's everything you've squirreled away so far.</h2>
   
@@ -94,7 +94,7 @@ class Home extends Component {
             <Link to="/video/add">
               <button className="squirrel-btn squirrel-blue-btn">Add Video</button>
             </Link>
-  
+
             <RecentlySaved />
   
             <div className="playlists-menu">
