@@ -44,7 +44,6 @@ class Welcome extends Component {
 
     var pageContainerStyles = {
       'padding-top': '50px',
-      // 'min-height': '100%',
       height: '800px',
       'background-color':'#ffc897',
     }
