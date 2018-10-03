@@ -1,29 +1,91 @@
-# Create React Express App
+# Squirrel
 
-## About This Boilerplate
+Squirrel away videos for a rainy day. Squirrel is a watch-later website that allows you to save videos from a variety of platforms.
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+![logo](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/icon_acorn.svg)
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## Features
+* Store videos from different providers in one app
+* Add videos to watch later through a Chrome extension or through the web app
+* Create, edit, and delete playlists
+* Watch all of the videos in your playlist at the click of one button
 
-## Starting the app locally
+![home page](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/homepg.png)
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+![playlist page](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/playlistpg.png)
+
+![add video page](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/addVideopg.png)
+
+![create playlist page](https://github.com/milligda/squirrel/blob/master/client/public/assets/images/createpg.png)
+
+
+## Steps to Build the App
+
+1. Make a project folder/repository and clone it into your machine
+
+2. Create your React app inside the repository folder using create-react-app. This is where you will do all of your front-end handling.
 
 ```
-yarn install
-```
-
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
+npx create-react-app client
 
 ```
-yarn start
-```
+After you run this command, follow the instructions provided in the Terminal.
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
 
-## Deployment (Heroku)
+"Client" is the title of the folder which houses the React app. Within it is a "src" folder and "public" folder, in which you will create the following hierarchy: 
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+ ```
+  client
+    - src
+      - components
+        - assets
+            -images
+        - pages
+            - ExampleComponentFolder
+                - index.js
+                - ExampleComponentFolder.js
+                - ExampleComponentFolder.css
+        - partials
+      - utils
+        - API.js
+
+    - public
+        - assets
+            - css
+                - global.css
+                - reset.css
+
+  ```
+
+* `pages` house the site's pages.
+* `partials` house components to be used on your pages
+* for both pages and partials, create a folder for your component. Within it, always include an `index.js`, `.css`, and `.js` specific to each 
+* `utils/API.js` houses API calls using the npm package "axios"
+* `public/assets/css/` stores your stylesheets
+
+3. Install your dependencies
+
+* In your `client/src/App.js` from React, import the following:
+    * For routing: `react-router-dom`, `axios`
+    * 
+
+* In your  `server.js`, require the following:
+    * `express`, `body-parser`, `express-session` ,`passport` ,`cors` ,`connect-mongo` (if using MongoDB), database routes, and the database.
+
+
+4. Build the Backend
+
+Outside of the 'client' folder, within your main respository folder, create the components necessary to connect your database to your front-end React app.
+
+Your app will be run on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+
+* server.js
+* set up your database
+* create models, routes, and controllers to handle database calls
+
+
+## Extension
+
+[Get the Chrome Extension](https://chrome.google.com/webstore/detail/squirrel/ddfnjccdalikdhoaelepmoldpgookabe)
+
+
