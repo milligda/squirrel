@@ -10,6 +10,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import { Input, FormBtn} from "../../partials/Form"
 import Rename from "../../partials/Rename/Rename.js"
+import GridContainer from "../../partials/Tiles/PlaylistGridContainer";
 
 
 const SortableItem = SortableElement(({value}) =>
@@ -84,10 +85,12 @@ class EditPlaylist extends Component {
                     />
                   </FormGroup>
                 </div>
+                
+                <GridContainer>
+                  {(isAllVideos !== "All Videos") && (<Rename title={this.state.title}/>)}
 
-                {(isAllVideos !== "All Videos") && (<Rename title={this.state.title}/>)}
-
-                <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
+                  <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
+                </GridContainer>
                 </div>
             </div>
             

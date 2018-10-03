@@ -33,27 +33,39 @@ class Welcome extends Component {
     if (this.state.loggedIn) {
       return <Redirect to="/home" />;
     }
+    var welcomeStyles = {
+      float: 'left',
+    }
+    var mainContainerStyles = {
+      background: '#ffc897'
+    }
 
     return (
       <div className="welcome-container">
         
-      
-        <div className="page-container welcome content">
-          < Login className="login"/>
-
-          <div className="app-info">
-            <h1 classname="welcome-msg">Welcome to Squirrel.</h1>
+        <div className="page-container" id="welcome" style={mainContainerStyles}>
+          
+          <div className="app-info" >
+            <h1 id="welcome-msg">Welcome to Squirrel.</h1>
             <br/>
-            <h2>Your space to house videos from different parts of the web.</h2>
+            <h2>All the videos you want stored in one place.</h2>
             <br/>
-            <h2>Save videos to watch later or organize them into playlists as you go.</h2>
-            <br/>
+            {/* <h2>Save videos to watch later or organize them into playlists as you go.</h2> */}
+            {/* <br/> */}
             
-            <a href="https://chrome.google.com/webstore/category/extensions?hl=en">Find us in the Chrome Web Store</a>
+            <h2><a id="chrome-link" href="https://chrome.google.com/webstore/category/extensions?hl=en">Get the Chrome extension</a></h2>
           </div>
-          
-          < Signup />
-          
+
+          <div id="forms" sstyle={welcomeStyles}>
+          ` <br/>
+            < Login  />
+
+            < Signup />
+            <br/>
+            <br/>
+            <br/>
+          </div>
+            
         </div>
 
         {/* <Footer /> */}
