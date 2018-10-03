@@ -11,6 +11,9 @@ import Switch from '@material-ui/core/Switch';
 import { Input, FormBtn} from "../../partials/Form"
 import Rename from "../../partials/Rename/Rename.js"
 import GridContainer from "../../partials/Tiles/PlaylistGridContainer";
+import { SaveIcon } from "../../partials/Controls";
+import { EventEmitter } from "events";
+
 
 
 const SortableItem = SortableElement(({value}) =>
@@ -19,11 +22,14 @@ const SortableItem = SortableElement(({value}) =>
 
 const SortableList = SortableContainer(({videos}) => {
     return (
-      <ul>
-        {videos.map((value, index) => (
-          <SortableItem key={`item-${index}`} index={index} value={value} />
-        ))}
-      </ul>
+      <div>
+        <h2>Drag to Reorder</h2>
+        <ul>
+          {videos.map((value, index) => (
+            <SortableItem key={`item-${index}`} index={index} value={value} />
+          ))}
+        </ul>
+      </div>
     );
   });
 
@@ -59,6 +65,13 @@ class EditPlaylist extends Component {
           videos: arrayMove(this.state.videos, oldIndex, newIndex),
         });
       };
+
+      handleFormSubmit = event => {
+        const storeRename = {
+          title: this.state.title,
+        }
+      }
+      
       render() {
         const isAllVideos = this.state.title;
 
@@ -68,8 +81,6 @@ class EditPlaylist extends Component {
                 < Header />
                 <div className="reorder-container container">
                     <h1>Edit "{this.state.title}" Playlist</h1>
-
-                    {/* < BreadcrumbMenu title={this.state.title}/> */}
 
                 <div className="privacy-toggle">
                   <FormGroup row>
@@ -85,11 +96,15 @@ class EditPlaylist extends Component {
                     />
                   </FormGroup>
                 </div>
+
+                <SaveIcon onClick={this.handleFormSubmit} />
+
                 
                 <GridContainer>
                   {(isAllVideos !== "All Videos") && (<Rename title={this.state.title}/>)}
 
                   <SortableList videos={this.state.videos} onSortEnd={this.onSortEnd} />
+
                 </GridContainer>
                 </div>
             </div>

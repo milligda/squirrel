@@ -50,8 +50,6 @@ class Welcome extends Component {
             <br/>
             <h2>All the videos you want stored in one place.</h2>
             <br/>
-            {/* <h2>Save videos to watch later or organize them into playlists as you go.</h2> */}
-            {/* <br/> */}
             
             <h2><a id="chrome-link" href="https://chrome.google.com/webstore/category/extensions?hl=en">Get the Chrome extension</a></h2>
           </div>
