@@ -2,6 +2,8 @@
 
 # Use as a Chrome extension and a watch-later website that allows you to save videos from a variety of platforms.
 
+[Explore the app](https://squirrel-video.herokuapp.com/)
+
 ![intro](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/intro.jpg)
 
 ## Features
@@ -32,14 +34,6 @@
     * Node
     * Express
 
-## Dependencies
-
-* In your `client/src/App.js` from React, import the following:
-    * For routing: `react-router-dom`, `axios`
-    * 
-
-* In your  `server.js`, require the following:
-    * `express`, `body-parser`, `express-session` ,`passport` ,`cors` ,`connect-mongo` (if using MongoDB), routes file, and the database.
 
 ## App Organization
 
