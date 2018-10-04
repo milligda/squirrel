@@ -4,6 +4,7 @@ import { Input, FormBtn } from "../Form";
 import API from "../../../utils/API";
 import "./signup.css";
 import Notifier, { openSnackbar } from '../../Notifier';
+import { ENOPROTOOPT } from "constants";
 
 
 class Signup extends Component {
@@ -31,8 +32,7 @@ class Signup extends Component {
         this.setState({ 
           redirectTo: "/home",
         });
-        //openSnackbar({ message: res.data });;
-      })
+      }).then(res => {openSnackbar({ message: res.data })})
       .catch(err => console.log(err));
     }  
 

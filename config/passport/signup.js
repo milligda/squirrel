@@ -37,7 +37,8 @@ module.exports = function(passport) {
               return done(
                 null,
                 false,
-                req.flash("message", "User already exists")
+                res.data("User already exists")
+                //req.flash("message", "User already exists")
               );
             } else {
               const newUser = new User();
