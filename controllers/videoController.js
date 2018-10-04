@@ -36,6 +36,10 @@ const getUrlParsedData = url => {
       videoId = domainArray[1].replace(/watch\?v=/g, "");
       videoPlatform = "youtube";
       break;
+    case "www.ted.com":
+      videoId = domainArray[domainArray.length - 1];
+      videoPlatform = "ted";
+      break;
     default:
       videoId = "NaN";
       videoPlatform = "NaN";

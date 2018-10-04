@@ -29,6 +29,14 @@
     transition: .5s;
 }
 
+.ted-container {
+    width: 800px;
+    height: 450px;
+    max-width: 98vw;
+    max-height: calc(98vw * 480 / 854);
+    transition: .5s;
+}
+
 @media only screen and (max-width: 800px) {
 
     .video-player-container {

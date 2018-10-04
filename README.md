@@ -4,7 +4,8 @@
 
 [Explore the app](https://squirrel-video.herokuapp.com/)
 
-![intro](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/intro.jpg)
+
+![intro](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/intro.png)
 
 ## Features
 * Store videos from different providers in one app
