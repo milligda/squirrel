@@ -1,5 +1,5 @@
-// var domain = "https://squirrel-video.herokuapp.com/";
-var domain = "http://127.0.0.1:3000";
+var domain = "https://squirrel-video.herokuapp.com";
+// var domain = "http://127.0.0.1:3000";
 var d = document;
 var reqObj = {};
 var log = console.log;
@@ -35,7 +35,7 @@ sq = {
           event.preventDefault();
           reqObj.username = getElemName("username")[0].value;
           reqObj.password = getElemName("password")[0].value;
-          log(reqObj);
+          // log(reqObj);
           resolve(reqObj);
         };
       } else {
@@ -54,18 +54,25 @@ sq = {
         xhr.onreadystatechange = function () {
           if (xhr.readyState == 4 && xhr.status == 200) {
 
-            //for deployment on localhost, the input has to be parsed
-            userId = JSON.parse(xhr.responseText).userId;
-
-            //for deployment on heroku, the input must not be parsed
-            // userId = xhr.responseText.userId;
-
-            localStorage.setItem("userId", userId);
-            reqObj.userId = userId;
-            window.close();
-            resolve(reqObj);
-          } else {
-            // reject(xhr.responseText);
+            if (JSON.parse(xhr.responseText).userId) {
+              var userId = JSON.parse(xhr.responseText).userId;
+              // console.log(userId);
+              localStorage.setItem("userId", userId);
+              reqObj.userId = userId;
+              getElem("login").style.display = "none";
+              getElem("successMsg").style.display = "block";
+              setTimeout(function () {
+                window.close()
+              }, 500);
+              reject(reqObj);
+            } else {
+              getElem("login").style.display = "none";
+              getElem("loginErr").style.display = "block";
+            }
+          } else if (xhr.readyState == 4 && xhr.status != 200) {
+            getElem("login").style.display = "none";
+            getElem("loginErr").style.display = "block";
+            reject(xhr.responseText);
           }
         };
         authObj = {
@@ -73,7 +80,7 @@ sq = {
           "password": reqObj.password
         };
         xhr.send(JSON.stringify(authObj));
-        log("logging in");
+        // log("logging in");
       } else {
         resolve(reqObj);
       }
@@ -81,7 +88,7 @@ sq = {
     return promise;
   },
   urlGrab: function (reqObj) {
-    log(reqObj);
+    // log(reqObj);
     var promise = new Promise(function (resolve, reject) {
       chrome.tabs.query({
         "active": true,
@@ -95,42 +102,56 @@ sq = {
     return promise;
   },
   getPlaylists: function (reqObj) {
-    log("getting playlists");
+    // log("getting playlists");
     var promise = new Promise(function (resolve, reject) {
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", `${domain}/api/users/data/${reqObj.userId}`, true);
-      xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          var playlists = JSON.parse(xhr.responseText).playlists;
-          for (var i = 0; i < playlists.length; i++) {
-            var playCheck = createElem("input");
-            playCheck.setAttribute("type", "checkbox");
-            playCheck.name = "playlist";
-            playCheck.value = playlists[i]._id;
-            playCheck.class = "playCheck";
-            playCheck.id = "playListNum" + (i + 1);
-            var playText = createElem("label");
-            playText.htmlFor = "playListNum" + (i + 1);
-            playText.appendChild(createTextNode(playlists[i].title));
+      if (reqObj.url.match(".*youtube\.com\/watch.*|vimeo\.com\/.*[0-9]|.*nytimes\.com\/video\/.*|.*ted.com\/talks\/.+")) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", `${domain}/api/users/data/${reqObj.userId}`, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            var playlists = JSON.parse(xhr.responseText).playlists;
+            reqObj.playlists = playlists;
+            for (var i = 1; i < playlists.length; i++) {
+              var playCheck = createElem("input");
+              playCheck.setAttribute("type", "checkbox");
+              playCheck.name = "playlist";
+              playCheck.value = playlists[i]._id;
+              playCheck.class = "playCheck";
+              playCheck.id = "playListNum" + (i + 1);
+              var playText = createElem("label");
+              playText.htmlFor = "playListNum" + (i + 1);
+              playText.appendChild(createTextNode(playlists[i].title));
 
-            getElem("playOptions").appendChild(playCheck);
-            getElem("playOptions").appendChild(playText);
-            getElem("playOptions").appendChild(d.createElement("br"));
+              getElem("playOptions").appendChild(playCheck);
+              getElem("playOptions").appendChild(playText);
+              getElem("playOptions").appendChild(d.createElement("br"));
+            }
+            resolve(reqObj);
+          } else if (xhr.readyState == 4 && xhr.status != 200) {
+            {
+              getElem("playlistSubmit").style.display = "none";
+              getElem("sendErr").style.display = "block";
+              reject(xhr.responseText);
           }
-          resolve(reqObj);
-        } else {
-          // log(xhr.responseText);
-          // reject(xhr.responseText);
         }
       };
-      xhr.send();
+        xhr.send();
+      } else {
+        getElem("vidErr").style.display = "block";
+        getElem("playlistSubmit").style.display = "none";
+        // getElem("footText").innerHTML = "<p>" + reqObj.url + "</p>";
+        reject("video URL error")
+
+      }
     });
+
     return promise;
   },
   getChecks: function (reqObj) {
     var promise = new Promise(function (resolve, reject) {
       var selPlaylists = [];
+      selPlaylists.push(reqObj.playlists[0]._id);
       getElem("btn-submit").onclick = function () {
         event.preventDefault();
         selected = querySelector("[name='playlist']:checked");
@@ -139,6 +160,7 @@ sq = {
           selPlaylists.push(selected[i].value);
         }
         reqObj.playlist = selPlaylists;
+        getElem("playlistSubmit").style.display = "none";
         resolve(reqObj);
       };
     });
@@ -151,11 +173,16 @@ sq = {
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          resolve(xhr.responseText);
-          window.close();
-        } else {
-          log(xhr.responseText);
-        }
+          getElem("successMsg").style.display = "block";
+          setTimeout(function () {
+            window.close();
+          }, 500);
+      resolve(xhr.responseText);
+        } else if (xhr.readyState == 4 && xhr.status != 200) {
+          getElem("playlistSubmit").style.display = "none";
+          getElem("sendErr").style.display = "block";
+          reject(xhr.responseText);
+      }
       };
       xhr.send(JSON.stringify(reqObj));
     });
