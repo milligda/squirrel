@@ -41,6 +41,41 @@
 * In your  `server.js`, require the following:
     * `express`, `body-parser`, `express-session` ,`passport` ,`cors` ,`connect-mongo` (if using MongoDB), routes file, and the database.
 
+## App Organization
+
+The React app is housed within the repository folder in a `client` folder. This houses all of the frontend calls and strucutre. Outside of this client folder and within the repository folder are all of the backend folders and files (ex: `server.js`)
+
+Below is an example of organization within the client folder, specifically using the `/src` and `/public` folders.
+
+```
+  client
+    - src
+      - components
+        - assets
+            -images
+        - pages
+            - ExampleComponentFolder
+                - index.js
+                - ExampleComponentFolder.js
+                - ExampleComponentFolder.css
+        - partials
+      - utils
+        - API.js
+
+    - public
+        - assets
+            - css
+                - global.css
+                - reset.css
+
+  ```
+
+* `pages` house the site's pages.
+* `partials` house components to be used on your pages
+* for both pages and partials, create a folder for your component. Within it, always include an `index.js`, `.css`, and `.js` specific to each 
+* `utils/API.js` houses API calls using the npm package "axios"
+* `public/assets/css/` stores your stylesheets
+
 
 ## Extension
 
