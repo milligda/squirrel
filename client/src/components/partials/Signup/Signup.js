@@ -31,8 +31,10 @@ class Signup extends Component {
       .then(res => {
         this.setState({ 
           redirectTo: "/home",
-        });
-      }).then(res => {openSnackbar({ message: res.data })})
+        })
+      })
+      //.then(res => openSnackbar({ message: res.err }))
+      //.then(res=> openSnackbar({err}))
       .catch(err => console.log(err));
     }  
 
