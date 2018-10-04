@@ -1,15 +1,17 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import API from "../../../utils/API";
 import Dropdown from "../../partials/Dropdown";
 import { Input } from "../../partials/Form";
-import Loading from "../../partials/Loading";
 import Header from "../../partials/Header";
 import "./addVideo.css";
+import Notifier, { openSnackbar } from '../../Notifier';
+
+
 
 class AddVideo extends Component {
   state = {
-    loggedIn: null,
+    loggedIn: true,
     userId: null,
     url: "",
     playlist: []
@@ -64,6 +66,8 @@ class AddVideo extends Component {
     });
   };
 
+  
+
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.url) {
@@ -82,48 +86,47 @@ class AddVideo extends Component {
 
       console.log(storeVideoObj);
 
-      API.saveVideo(this.state.userId, storeVideoObj).then(res => {
-        console.log(res);
+      API.saveVideo(this.state.userId, storeVideoObj).then(function(res) {
+        openSnackbar({ message: res.data });
       });
     }
   };
 
   render() {
-    if (this.state.loggedIn === false) {
+    if (!this.state.loggedIn) {
       return <Redirect to="/restricted" />;
-    } else if (this.state.loggedIn === null) {
-      return <Loading />;
-    } else {
-      return (
-        <div className="add-video-page">
-          <Header />
+    }
 
-          <div className="add-video-container header-present">
-            <h1 className="add-video-title">Squirrel away a video.</h1>
+    return (
+      <div className="add-video-page">
+        <Header />
 
-            <div className="centered-container">
-              <div className="wrapper">
-                <Dropdown
-                  titleHelper="Playlist"
-                  title="Select Playlists"
-                  list={this.state.playlist}
-                  toggleItem={this.toggleSelected}
-                />
-              </div>
+        <div className="add-video-container header-present">
+          <h1 className="add-video-title">Squirrel away a video.</h1>
 
-              <Input
-                value={this.state.url}
-                onChange={this.handleInputChange}
-                name="url"
-                placeholder="Video URL"
+          <div className="centered-container">
+            <div className="wrapper">
+              <Dropdown
+                titleHelper="Playlist"
+                title="Select Playlists"
+                list={this.state.playlist}
+                toggleItem={this.toggleSelected}
               />
-
-              <button className="squirrel-btn squirrel-blue-btn" onClick={this.handleFormSubmit}>Add Video</button>
             </div>
+
+            <Input
+              value={this.state.url}
+              onChange={this.handleInputChange}
+              name="url"
+              placeholder="Video URL"
+            />
+            <Notifier />
+
+            <button className="squirrel-btn squirrel-blue-btn" onClick={this.handleFormSubmit}>Add Video</button>
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
