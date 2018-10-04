@@ -231,7 +231,7 @@ module.exports = {
           // update the playlist documents to include the new video ID
           db.Playlist.updateMany({ $or: playlistsToUpdate }, {$push: { videos: newVideo._id }}, { new: true })
           .then(function(newPlaylistData) {
-            res.json(newPlaylistData);
+            return res.send("Video added!")
           })
           .catch(function(err) {
             console.log("Error updating the Playlists with the new video ID");
