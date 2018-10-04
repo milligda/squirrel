@@ -49,12 +49,16 @@ class EditPlaylist extends Component {
   getPlaylistData = () => {
     API.getPlaylist(this.props.match.params.id)
       .then(res => {
-        console.log("get videos: ", res.data);
+        console.log("get videos: ", res.data.private);
+        console.log("PUBLIC STATE: ", this.state.public);
+
         this.setState({
           videos: res.data.videos,
           title: res.data.title,
           public: !res.data.private
         });
+        console.log("get videos: ", res.data.private);
+        console.log("PUBLIC STATE: ", this.state.public);
 
         // determine if this is the All Videos playlist
         if (res.data.title === "All Videos") {
@@ -135,7 +139,7 @@ class EditPlaylist extends Component {
                 <FormControlLabel
                   control={
                     <Switch
-                      checked={this.state.public}
+                      checked={switchName==="Public" ? true : false}
                       onChange={this.handleToggleChange("public")}
                       value="public"
                     />
