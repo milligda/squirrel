@@ -22,6 +22,10 @@ const VideoPlayer = props => {
       url = `https://www.nytimes.com/video/players/offsite/index.html?videoId=${videoObj.videoId}`;
       className = `video-frame ${videoObj.videoPlatform}-container`;
       break;
+    case "ted":
+      url = `https://embed.ted.com/talks/${videoObj.videoId}`;
+      className = `video-frame ${videoObj.videoPlatform}-container`;
+      break;
     case "imdb":
       url = `https://www.imdb.com/videoembed/${videoObj.videoId}?autoplay=true`;
       className = `video-frame ${videoObj.videoPlatform}-container`
