@@ -1,5 +1,5 @@
-// var domain = "https://squirrel-video.herokuapp.com/";
-var domain = "http://127.0.0.1:3000";
+var domain = "https://squirrel-video.herokuapp.com/";
+// var domain = "http://127.0.0.1:3000";
 var d = document;
 var reqObj = {};
 var log = console.log;
@@ -55,10 +55,10 @@ sq = {
           if (xhr.readyState == 4 && xhr.status == 200) {
 
             //for deployment on localhost, the input has to be parsed
-            userId = JSON.parse(xhr.responseText).userId;
+            // userId = JSON.parse(xhr.responseText).userId;
 
             //for deployment on heroku, the input must not be parsed
-            // userId = xhr.responseText.userId;
+            userId = xhr.responseText.userId;
 
             localStorage.setItem("userId", userId);
             reqObj.userId = userId;
@@ -97,6 +97,7 @@ sq = {
   getPlaylists: function (reqObj) {
     log("getting playlists");
     var promise = new Promise(function (resolve, reject) {
+      if(reqObj.url.match(/youtube\.com\/watch/|/vimeo\.com\/.*[0-9]/)){
       var xhr = new XMLHttpRequest();
       xhr.open("GET", `${domain}/api/users/data/${reqObj.userId}`, true);
       xhr.setRequestHeader("Content-Type", "application/json");
@@ -125,7 +126,14 @@ sq = {
         }
       };
       xhr.send();
+    } else {
+      getElem("vidErr").style.display = "block";
+      getElem("playlistSubmit").style.display = "none";
+      reject("video URL error")
+
+    }
     });
+  
     return promise;
   },
   getChecks: function (reqObj) {

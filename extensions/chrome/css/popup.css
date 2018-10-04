@@ -29,7 +29,12 @@ body {
   /* margin-left: auto;
   margin-right: auto; */
 }
-
+#vidErr {
+    padding-bottom: 10px;
+    width:275px;
+    padding-left: 20px;
+    display: none;
+  }
 #btn-submit {
   color: #ffffff;
   background-color: #21accc;
