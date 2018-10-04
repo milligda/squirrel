@@ -65,13 +65,13 @@ class Home extends Component {
 
   deletePlaylist = playlistId => {
     API.removePlaylist(playlistId, this.state.userId)
-      .then(res => this.getPlaylists())
+      .then(res => this.getUserData(this.state.userId))
       .catch(err => console.log(err));
   };
 
   removeVideo = (videoId) => {
     API.deleteVideo(videoId)
-    .then(res => this.getPlaylists())
+    .then(res => this.getUserData(this.state.userId))
     .catch(err => console.log(err));
   }
 

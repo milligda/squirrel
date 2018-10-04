@@ -85,6 +85,10 @@ class AddVideo extends Component {
 
       API.saveVideo(this.state.userId, storeVideoObj).then(res => {
         openSnackbar({ message: res.data });
+        this.setState({
+          url: "",
+          playlist: [],
+        })
       });
     }
   };
