@@ -5,17 +5,21 @@ body {
   /* padding: 0; */
   padding-left: 10px;
   -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  color: #1a8799;}
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: #1a8799;
+}
+
 #login {
   display: none;
   margin: 10px;
 }
+
 #playOptions {
   padding-bottom: 10px;
-  width:275px;
+  width: 275px;
   padding-left: 20px;
 }
+
 .squirrel-btn {
   border-radius: 10px;
   height: 40px;
@@ -29,23 +33,42 @@ body {
   /* margin-left: auto;
   margin-right: auto; */
 }
+
 #vidErr {
-    padding-bottom: 10px;
-    width:275px;
-    padding-left: 20px;
-    display: none;
-  }
+  padding-bottom: 10px;
+  width: 275px;
+  padding-left: 20px;
+  display: none;
+}
+
+#loginErr {
+  padding-bottom: 10px;
+  width: 275px;
+  padding-left: 20px;
+  display: none;
+}
+
+
+#successMsg {
+  padding-bottom: 10px;
+  width: 125px;
+  padding-left: 20px;
+  display: none;
+}
+
 #btn-submit {
   color: #ffffff;
   background-color: #21accc;
   margin: 10px;
 
 }
+
 #btn-login {
   color: #ffffff;
   background-color: #21accc;
   margin: 10px;
 }
+
 .squirrel-btn:hover {
   transform: scale(1.1);
 }
