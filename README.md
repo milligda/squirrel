@@ -1,8 +1,6 @@
-# Squirrel
-
-Squirrel away videos for a rainy day. Squirrel is a watch-later website that allows you to save videos from a variety of platforms.
-
 ![logo](https://github.com/milligda/squirrel/blob/master/resources/Squirrel%20Preview%20Tile%20Small.png)
+
+# A watch-later website that allows you to save videos from a variety of platforms.
 
 ![intro](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/intro.jpg)
 
@@ -19,6 +17,20 @@ Squirrel away videos for a rainy day. Squirrel is a watch-later website that all
 ![add video page](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/addVideopg.png)
 
 ![create playlist page](https://github.com/milligda/squirrel/blob/master/resources/screengrabs/createpg.png)
+
+
+## Technologies
+* Front-end
+    * React
+    * react-router-dom
+    * axios
+    * react-sortable-hoc
+
+* Back-end
+    * MongoDB
+    * Passport.js
+    * Node
+    * Express
 
 
 ## Steps to Build the App
