@@ -40,8 +40,8 @@ class Login extends Component {
       return (
         // <div className="container">
           /* <div className="row"> */
-            <div className="form-container login-container">
-            <h2>Login</h2>
+            <div className="form-group form-container login-container">
+            <h2>Login:</h2>
               <form>
                 <Input
                   value={this.state.username}
