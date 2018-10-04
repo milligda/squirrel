@@ -35,7 +35,7 @@ sq = {
           event.preventDefault();
           reqObj.username = getElemName("username")[0].value;
           reqObj.password = getElemName("password")[0].value;
-          log(reqObj);
+          // log(reqObj);
           resolve(reqObj);
         };
       } else {
@@ -56,7 +56,7 @@ sq = {
 
             if (JSON.parse(xhr.responseText).userId) {
               var userId = JSON.parse(xhr.responseText).userId;
-              console.log(userId);
+              // console.log(userId);
               localStorage.setItem("userId", userId);
               reqObj.userId = userId;
               getElem("login").style.display = "none";
@@ -80,7 +80,7 @@ sq = {
           "password": reqObj.password
         };
         xhr.send(JSON.stringify(authObj));
-        log("logging in");
+        // log("logging in");
       } else {
         resolve(reqObj);
       }
@@ -88,7 +88,7 @@ sq = {
     return promise;
   },
   urlGrab: function (reqObj) {
-    log(reqObj);
+    // log(reqObj);
     var promise = new Promise(function (resolve, reject) {
       chrome.tabs.query({
         "active": true,
@@ -102,9 +102,9 @@ sq = {
     return promise;
   },
   getPlaylists: function (reqObj) {
-    log("getting playlists");
+    // log("getting playlists");
     var promise = new Promise(function (resolve, reject) {
-      if (reqObj.url.match(".*youtube\.com\/watch.*|vimeo\.com\/.*[0-9]|.*nytimes\.com\/video\/.*")) {
+      if (reqObj.url.match(".*youtube\.com\/watch.*|vimeo\.com\/.*[0-9]|.*nytimes\.com\/video\/.*|.*ted.com\/talks\/.+")) {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", `${domain}/api/users/data/${reqObj.userId}`, true);
         xhr.setRequestHeader("Content-Type", "application/json");
@@ -128,16 +128,19 @@ sq = {
               getElem("playOptions").appendChild(d.createElement("br"));
             }
             resolve(reqObj);
-          } else {
-            // log(xhr.responseText);
-            // reject(xhr.responseText);
+          } else if (xhr.readyState == 4 && xhr.status != 200) {
+            {
+              getElem("playlistSubmit").style.display = "none";
+              getElem("sendErr").style.display = "block";
+              reject(xhr.responseText);
           }
-        };
+        }
+      };
         xhr.send();
       } else {
         getElem("vidErr").style.display = "block";
         getElem("playlistSubmit").style.display = "none";
-        getElem("footText").innerHTML = "<p>" + reqObj.url + "</p>";
+        // getElem("footText").innerHTML = "<p>" + reqObj.url + "</p>";
         reject("video URL error")
 
       }
@@ -170,13 +173,13 @@ sq = {
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          getElem("success").style.display = "block";
+          getElem("successMsg").style.display = "block";
           setTimeout(function () {
-            window.close()
+            window.close();
           }, 500);
       resolve(xhr.responseText);
         } else if (xhr.readyState == 4 && xhr.status != 200) {
-          getElem("login").style.display = "none";
+          getElem("playlistSubmit").style.display = "none";
           getElem("sendErr").style.display = "block";
           reject(xhr.responseText);
       }

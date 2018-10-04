@@ -41,6 +41,13 @@ body {
   display: none;
 }
 
+#sendErr {
+  padding-bottom: 10px;
+  width: 275px;
+  padding-left: 20px;
+  display: none;
+}
+
 #loginErr {
   padding-bottom: 10px;
   width: 275px;
