@@ -9,7 +9,7 @@ chrome.browserAction.setBadgeText({
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
 
-  if ((changeInfo.url.match(/youtube/)) || (changeInfo.url.match(/vimeo/))) {
+  if ((changeInfo.url.match(/youtube\.com\/watch/)) || (changeInfo.url.match(/vimeo\.com\/**/))) {
     chrome.browserAction.setIcon({
       path: "../img/icon_acorn38px.png"
     });
