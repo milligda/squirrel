@@ -1,8 +1,9 @@
 #signup {
-    background-color: #21accc;
+    border-radius: 10px;
+    border: none;
+    background-color: #FF5773;
 }
 
 .signup-container {
-    width: 500px;
-    max-width: 90vw;
+    margin-top: 60px;
 }

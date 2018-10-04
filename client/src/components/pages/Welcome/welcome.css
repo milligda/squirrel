@@ -1,36 +1,41 @@
-.app-info > div {
-    color: #ffc897;
+.welcome-page-container {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .welcome-container {
     font-family: 'Josefin Sans', sans-serif;
     background-image: url("../../assets/images/new_bg.png");
     background-size: cover;
-    background-repeat: repeat-y;
-    min-height: 100%;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-#welcome {
-    min-height: 100%;
+.welcome-content-container {
+    background-color: #ffc897;
+    border-radius: 10px;
+    box-shadow: 2px 3px 7px #8c8c8c;
+    -webkit-box-shadow: 2px 3px 7px #8c8c8c;
 }
 
-#welcome-msg {
-    font-size: 60px;
+.welcome-msg-container {
+    padding-top: 30px;
+    text-align: center;
 }
 
-#chrome-link {
-    text-decoration: none;
-    color: #21accc;
-    size: 20px;
+.welcome-msg-container h2 {
+    font-style: italic;
 }
 
-.app-info {
-    float: left;
-    padding-right: 20px;
-    background: #ffc897;
-    border: solid #ffc897 10px;
+.welcome-msg-container button {
+    margin: 20px 0px 30px 0px;
 }
 
-.forms {
-    float: left;
+.auth-container {
+    padding: 20px 10px;
+}
+
+.spacer-div {
+    margin-bottom: 20px;
 }
