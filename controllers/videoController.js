@@ -230,22 +230,22 @@ module.exports = {
         .then(function(newUserData) {
           // update the playlist documents to include the new video ID
           db.Playlist.updateMany({ $or: playlistsToUpdate }, {$push: { videos: newVideo._id }}, { new: true })
-          .then(function() {
-            return res.send("Video added!");
+          .then(function(newPlaylistData) {
+            return res.send("Video added!")
           })
           .catch(function(err) {
             console.log("Error updating the Playlists with the new video ID");
-            return res.send("Error updating the Playlists with the new video ID");
+            res.json(err);
           });
         })
         .catch(function(err) { 
           console.log("Error updating the User's All Video array with the new video ID");
-          return res.send("Error updating the User's All Video array with the new video ID");
+          res.json(err);
         });
       })
       .catch(function(err) {
         console.log("Error saving the new video");
-        return res.send("Error saving the new video");
+        res.json(err);
       });
     });
   }

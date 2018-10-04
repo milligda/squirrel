@@ -1,49 +1,40 @@
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 let openSnackbarFn;
-
-
-class Notifier extends React.Component {
+ class Notifier extends React.Component {
   state = {
     open: false,
     message: '',
   };
-
-  componentDidMount() {
+   componentDidMount() {
     openSnackbarFn = this.openSnackbar;
   }
-
-  openSnackbar = ({ message }) => {
+   openSnackbar = ({ message }) => {
     this.setState({
       open: true,
       message,
     });
   };
-
-  handleSnackbarClose = () => {
+   handleSnackbarClose = () => {
     this.setState({
       open: false,
       message: '',
     });
   };
-
-  render() {
+   render() {
     const message = (
       <span
         id="snackbar-message-id"
         dangerouslySetInnerHTML={{ __html: this.state.message }}
       />
     );
-
-    const styles = {
+     const styles = {
         root: {
             background: 'red'
         }
     };
-
-    const { classes } = this.props;
-
-    return (
+     const { classes } = this.props;
+     return (
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         message={message}
@@ -57,9 +48,7 @@ class Notifier extends React.Component {
     );
   }
 }
-
-export function openSnackbar({ message }) {
+ export function openSnackbar({ message }) {
     openSnackbarFn({ message })
   }
-
-export default Notifier;
+ export default Notifier; 
