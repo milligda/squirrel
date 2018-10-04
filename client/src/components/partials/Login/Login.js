@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
 import API from "../../../utils/API";
+import Notifier, { openSnackbar } from '../../Notifier';
 import "./login.css";
 
 class Login extends Component {
@@ -29,7 +30,9 @@ class Login extends Component {
         console.log(res);
         this.setState({ redirectTo: "/home" });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        openSnackbar({message: "You entered an invalid username and/or password. Please try again."})
+      });
     }
   };
 
@@ -60,6 +63,7 @@ class Login extends Component {
               >
                 Login
                 </FormBtn>
+                <Notifier />
               </form>   
             </div>
           /* </div> */

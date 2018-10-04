@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
 import API from "../../../utils/API";
+import Notifier, { openSnackbar } from '../../Notifier';
 import "./signup.css";
 
 
@@ -29,7 +30,9 @@ class Signup extends Component {
       .then(res => {
         this.setState({ redirectTo: "/home" });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        openSnackbar({message: "That username already exists. Please try again."})
+      });
     }
   };
 
@@ -62,6 +65,7 @@ class Signup extends Component {
                 >
                   Sign Up
                 </FormBtn>
+                <Notifier />
               </form>
             </div>
           /* </div> */
