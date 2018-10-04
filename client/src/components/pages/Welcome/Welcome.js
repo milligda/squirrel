@@ -34,54 +34,57 @@ class Welcome extends Component {
       return <Redirect to="/home" />;
     }
 
-    var welcomeContainerStyle = {
-      height: '100%',
-    }
+    // var welcomeContainerStyle = {
+    //   height: '100%',
+    // }
 
-    var separationID ={
-      height: '100%',
-    }
+    // var separationID ={
+    //   height: '100%',
+    // }
 
-    var pageContainerStyles = {
-      'padding-top': '50px',
-      height: '800px',
-      'background-color':'#ffc897',
-    }
+    // var pageContainerStyles = {
+    //   'padding-top': '50px',
+    //   height: '800px',
+    //   'background-color':'#ffc897',
+    // }
 
-    var formStyles = {
-      float: 'left',
-      background: '#ffc897',
-      padding: '10px',
-    }
-
-    
-
-    
+    // var formStyles = {
+    //   float: 'left',
+    //   background: '#ffc897',
+    //   padding: '10px',
+    // }
 
     return (
-      <div className="welcome-container" style={welcomeContainerStyle}>
+      <div className="welcome-container">
 
-          <div className="page-container" id="welcome" style={pageContainerStyles}>
+        <Header />
+
+          <div className="page-container container welcome-page-container">
+          
+            <div className="row">
             
-            <div className="app-info" >
-              <h1 id="welcome-msg">Welcome to Squirrel.</h1>
-              <br/>
-              <h2>All the videos you want stored in one place.</h2>
-              <br/>
-              
-              <h2><a id="chrome-link" href="https://chrome.google.com/webstore/category/extensions?hl=en">Get the Chrome extension</a></h2>
-            </div>
+              <div className="col-md-6 welcome-content-container welcome-msg-container">
+                <h1>Welcome to Squirrel!</h1>
+                <h2>Squirrel away videos from YouTube or Vimeo.</h2>
+                <h2>Curate your own playlists.</h2>
+                <h2>Watch when you want!</h2>
 
-            <div id="forms" style={formStyles}>
-            ` <br/>
-              < Login  />
+                <a href="https://chrome.google.com/webstore/detail/squirrel/ddfnjccdalikdhoaelepmoldpgookabe">
+                  <button className="squirrel-btn squirrel-red-btn">
+                    Get The Chrome Extension
+                  </button>
+                </a>  
+              </div>
 
-              < Signup />
-              <br/>
-              <br/>
-              <br/>
+              <div className="col-md-1 spacer-div"></div>
+
+              <div className="col-md-5 welcome-content-container auth-container">
+                <Login />
+                <Signup />
+              </div>
+            
             </div>
-              
+          
           </div>
         </div>      
     );
